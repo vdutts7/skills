@@ -1,0 +1,17 @@
+# mirror - error signals during dialogue and how to fix
+
+shallow_round:
+  signal: "MIRROR says 'I agree' or PRIME says 'exactly'"
+  fix: "force MIRROR to find a dimension PRIME missed"
+
+circular_dialogue:
+  signal: "round N repeats insights from round N-2"
+  fix: "jump one abstraction level: 'what does the PATTERN of these findings reveal'"
+
+premature_synthesis:
+  signal: "Claude starts producing JSON before completing all rounds"
+  fix: "complete all rounds first, then synthesize"
+
+scope_collapse:
+  signal: "dialogue narrows to one sub-topic, ignoring others"
+  fix: "PRIME explicitly re-broadens: 'stepping back to the full picture...'"

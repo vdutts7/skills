@@ -1,0 +1,53 @@
+# mirror - canonical synthesis structures (produce ALL on every invocation)
+
+decision_tree:
+  format: "nodes with question/answer/severity/evidence/children"
+  purpose: "traversable path from entry to each finding"
+  construction: "root = initial question, leaves = deepest findings"
+
+vector_space:
+  format: "N dimensions, each 0.0-1.0, with aggregate score"
+  purpose: "quantified posture across all relevant properties"
+  construction:
+    - "identify all relevant dimensions from the dialogue"
+    - "score each dimension based on evidence"
+    - "compute aggregate (geometric mean, not arithmetic - one 0 kills it)"
+    - "identify weakest and strongest dimensions"
+
+ontology:
+  format: "entities with type/properties + relations with labels"
+  purpose: "the knowledge graph itself - what exists and how it connects"
+  construction:
+    - "extract all named entities from dialogue"
+    - "classify each entity (type, properties)"
+    - "extract all relations between entities"
+    - "verify: every dialogue finding maps to at least one entity or relation"
+
+causal_chains:
+  format: "ordered links with break_points"
+  purpose: "if X then Y then Z - and where to intervene"
+  construction:
+    - "identify all cause-effect sequences from dialogue"
+    - "chain them into paths"
+    - "for each chain, identify break points (remove edge -> chain breaks)"
+    - "rank break points by intervention cost"
+
+kill_chains:
+  format: "phases with method/difficulty/detection/mitigation"
+  purpose: "adversarial paths from entry to impact"
+  construction: "only if the topic involves security/risk/adversarial dynamics"
+
+surfaces:
+  format: "named surfaces with area (high/medium/low) and access method"
+  purpose: "what's exposed, how much, through what"
+  construction: "group findings by exposure category"
+
+inference_map:
+  format: "level_0 through level_N, each with findings at that depth"
+  purpose: "the vertical stack of understanding - what's visible at each altitude"
+  construction: "directly maps to dialogue rounds"
+
+remediation_matrix:
+  format: "P0/P1/P2 with finding/fix/effort/impact"
+  purpose: "if actionable, prioritized action plan"
+  construction: "only if findings are actionable; skip for pure analysis"

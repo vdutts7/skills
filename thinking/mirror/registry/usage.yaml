@@ -1,0 +1,14 @@
+# mirror - invocation and composability
+
+invocation:
+  - "/mirror                              # mirror the current conversation"
+  - "/mirror --depth 5                    # 5 depth levels instead of default 3"
+  - "/mirror --rounds 6                   # 6 rounds instead of default 4"
+  - "/mirror --topic 'the auth findings'  # mirror a specific subset"
+  - "/mirror --no-synth                   # dialogue only, skip canonical synthesis"
+
+composability:
+  after_deep_research: "mirror research results for deeper implications"
+  after_premortem: "mirror the premortem for downstream failure modes"
+  before_yaml_workflow: "mirror to identify what the workflow should optimize for"
+  standalone: "mirror any body of knowledge or completed task"
