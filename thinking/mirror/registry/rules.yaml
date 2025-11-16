@@ -1,0 +1,30 @@
+# mirror - expansion rules (R1-R5, enforced every round)
+
+R1_no_pruning:
+  description: "never discard, downweight, or 'balance' an insight"
+  rationale: "pruning at depth N may delete a prerequisite for depth N+2"
+  enforcement: "MIRROR calls out any pruning attempt explicitly"
+
+R2_no_hedging:
+  description: "never say 'on the other hand' or 'to be fair' to weaken a finding"
+  rationale: "hedging is depth-0 thinking applied at depth-N"
+  enforcement: "every statement must advance, not qualify"
+
+R3_name_the_invisible:
+  description: "each round must name something not visible at the prior depth"
+  rationale: "if a round doesn't reveal something new, it wasn't a real round"
+  enforcement: "MIRROR's last sentence must be a newly surfaced insight"
+
+R4_connect_distant:
+  description: "MIRROR must connect the topic to at least one distant domain per round"
+  rationale: "novel insight comes from structural isomorphism across domains"
+  examples:
+    - "security finding → organizational psychology"
+    - "code architecture → biological systems"
+    - "infrastructure design → political theory"
+    - "dependency chains → supply chain economics"
+
+R5_formalize_the_informal:
+  description: "any qualitative insight that can be quantified or formalized, must be"
+  rationale: "formalization is compression; compression reveals structure"
+  enforcement: "synthesis phase catches any un-formalized findings"

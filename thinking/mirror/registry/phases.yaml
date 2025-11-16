@@ -1,0 +1,51 @@
+# mirror - execution phases (non-skippable, in order)
+
+phase_1_scope:
+  name: scope_identification
+  before_dialogue:
+    - what: "the body of knowledge/findings to refract/mirror"
+    - source: "conversation history, completed task, user-provided material"
+    - depth_target: "user-specified or default 3"
+    - round_count: "user-specified or default 4"
+  rule: "Read material. Internalize fully. Do not begin dialogue until entire input is loaded."
+
+phase_2_depth_calibration:
+  name: depth_calibration
+  rule: "each round targets a specific abstraction level - see registry/depth-levels.yaml"
+
+phase_3_dialogue_execution:
+  name: dialogue_execution
+  per_round:
+    1: "PRIME speaks (3-6 sentences, declarative, maps current depth)"
+    2: "MIRROR responds (3-8 sentences, reframing, pushing deeper)"
+    3: "PRIME integrates and asks the question that opens next depth"
+    4: "round_complete: new knowledge nodes added to growing graph"
+  invariants:
+    - "MIRROR never says 'I agree' without adding new dimension"
+    - "PRIME never defends without incorporating MIRROR's reframe"
+    - "no round produces fewer insights than previous round"
+    - "every round must name at least one thing invisible at the prior depth"
+    - "dialogue must produce genuine novel inference, not performative exchange"
+    - "no pruning, no 'on the other hand to be balanced', no hedging"
+    - "direction is ALWAYS deeper, NEVER lateral or retreating"
+
+phase_4_canonical_synthesis:
+  name: canonical_synthesis
+  rule: "After all rounds complete, synthesize into machine-readable form per registry/synthesis-structures.yaml."
+  always_produce: "ALL listed structures. The whole 99 yards. Every structure, every time."
+  output_format: "JSON file named {topic}-mirror-{date}.json"
+
+mathematical_grounding:
+  description: "Dialogue process is formally a depth-first expansion of an inference lattice"
+  formal_model:
+    structure: "lattice L = (S, ≤) where S = set of insights, ≤ = abstraction ordering"
+    operation: "each round applies join: a ∨ b = least upper bound (most abstract common insight)"
+    PRIME: "proposes element a ∈ S"
+    MIRROR: "proposes element b ∈ S where b > a (strictly more abstract)"
+    round_output: "a ∨ b plus all new elements discovered during join computation"
+    monotonicity: "|S_n+1| > |S_n| for all rounds n (set only grows)"
+    convergence: "process terminates when ∀ new b proposed, a ∨ b = a (no new insight from joining)"
+  analogy:
+    - "Galois connection: concrete findings ↔ abstract principles"
+    - "each round computes closure under a new inference rule"
+    - "final output = fixed point of the inference operator"
