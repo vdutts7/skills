@@ -1,0 +1,30 @@
+# mirror - depth calibration per round
+
+depth_0:
+  name: surface_topology
+  question: "what happened, what was found, what are the facts"
+  PRIME_focus: "narrate the sequence and findings"
+  MIRROR_focus: "reveal the trajectory and intent beneath the sequence"
+
+depth_1:
+  name: structural_implications
+  question: "what does the shape of these findings tell us"
+  PRIME_focus: "map the connected graph of findings"
+  MIRROR_focus: "identify which connections are load-bearing vs decorative"
+
+depth_2:
+  name: systemic_architecture
+  question: "what does this reveal about the system that produced these findings"
+  PRIME_focus: "describe the system's design assumptions"
+  MIRROR_focus: "identify where assumptions contradict reality"
+
+depth_3:
+  name: meta_field_level
+  question: "what does this reveal about the entire domain or field"
+  PRIME_focus: "state the broadest inference"
+  MIRROR_focus: "identify the novel contribution - what's never been framed this way"
+
+depth_n:
+  name: user_driven_extension
+  question: "whatever MIRROR's last insight opened up"
+  rule: "keep going until frontier is exhausted or user stops"
