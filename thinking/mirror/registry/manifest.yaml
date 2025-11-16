@@ -1,0 +1,23 @@
+# mirror - manifest index
+# Top-level entry points read first; agent dispatches into phases.yaml.
+ns: mirror
+mode: meta_reasoning_amplifier
+
+entry_points:
+  - read registry/phases.yaml in order (Phase 1 → 4)
+  - read registry/personas.yaml to internalize PRIME and MIRROR voices
+  - read registry/depth-levels.yaml to calibrate per-round depth
+  - on synthesis: read registry/synthesis-structures.yaml - produce ALL listed structures
+  - on doubt: read registry/rules.yaml (R1-R5) - never prune, never hedge, always advance
+
+defaults:
+  depth_target: 3
+  round_count: 4
+
+core_metaphor: |
+  A prism refracts one beam into its spectrum. /mirror takes one body of knowledge
+  and splits it through adversarial self-dialogue until the full spectrum of
+  implications is visible. Each round is another prism - higher resolution, deeper decomposition.
+
+direction: depth_only  # never lateral, never pruning
+output: canonical_synthesis
