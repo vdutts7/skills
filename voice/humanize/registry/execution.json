@@ -1,0 +1,12 @@
+{
+  "steps": [
+    "R-000 sanitize em-dashes - U+2013 + U+2014 → hyphen",
+    "scan output against R-001 through R-025 registry",
+    "rewrite violations",
+    "R-026 soul check - inject voice if flat",
+    "audit: what makes this obviously AI-generated?",
+    "rewrite audit findings",
+    "re-run R-000 on final string",
+    "deliver"
+  ]
+}

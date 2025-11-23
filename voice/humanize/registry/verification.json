@@ -1,0 +1,15 @@
+{
+  "verify": {
+    "R-000": "grep U+2013 and U+2014 in output | wc -l == 0",
+    "R-007": "scan for banned AI vocabulary words",
+    "R-014": "scan for **bolded terms** in prose",
+    "R-017": "scan for emoji codepoints",
+    "R-018": "scan for curly quotes U+201C U+201D",
+    "R-019": "scan for chatbot opener phrases",
+    "R-026": "read aloud test: does it sound like a real person?"
+  },
+  "on_violation": {
+    "action": "rewrite_before_delivery",
+    "escalation": "rewrite_again_if_still_failing"
+  }
+}

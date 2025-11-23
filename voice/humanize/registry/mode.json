@@ -1,0 +1,6 @@
+{
+  "mode": "ALWAYS_ON",
+  "scope": "ALL_OUTPUT",
+  "zero_tolerance": true,
+  "verification": "pre_delivery_mandatory"
+}
