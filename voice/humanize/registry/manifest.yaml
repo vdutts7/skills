@@ -1,0 +1,37 @@
+name: humanize
+always_on: true
+read_first: registry/manifest.yaml
+schema: laws keyed JSON - laws.{id} O(1); law_ids = activation filter only
+laws: registry/laws.json
+verification: registry/verification.json
+execution: registry/execution.json
+quick_reference: registry/quick-reference.json
+law_ids:
+- R-000
+- R-001
+- R-002
+- R-003
+- R-004
+- R-005
+- R-006
+- R-007
+- R-008
+- R-009
+- R-010
+- R-011
+- R-012
+- R-013
+- R-014
+- R-015
+- R-016
+- R-017
+- R-018
+- R-019
+- R-020
+- R-021
+- R-022
+- R-023
+- R-024
+- R-025
+- R-026
+- R-027
