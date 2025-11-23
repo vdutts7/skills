@@ -1,0 +1,1001 @@
+{
+  "version": "1.0",
+  "law_count": 28,
+  "laws": {
+    "R-000": {
+      "id": "R-000",
+      "title": "EM DASH (HARD INVARIANT)",
+      "blocks": [
+        {
+          "type": "yaml",
+          "data": {
+            "id": "R-000",
+            "class": "hard_invariant",
+            "forbidden": "U+2013 (–), U+2014 (—)",
+            "required": "U+002D (-)",
+            "parsing_step": 6,
+            "no_exceptions": [
+              "prose",
+              "code",
+              "comments",
+              "filenames",
+              "yaml",
+              "json",
+              "markdown",
+              "commit_messages"
+            ]
+          }
+        },
+        {
+          "type": "python",
+          "data": "# post_process - (U+2013 + U+2014)\nDASHES = (\"\\u2013\", \"\\u2014\")\ndef sanitize_emdash(s: str) -> str:\n    for ch in DASHES:\n        s = s.replace(ch, \"-\")\n    return s\n# Also run on every JSON/YAML string value"
+        },
+        {
+          "type": "yaml",
+          "data": {
+            "examples": [
+              {
+                "in": "clause one — clause two",
+                "out": "clause one- clause two"
+              },
+              {
+                "in": "result—success",
+                "out": "result-success"
+              },
+              {
+                "in": "note —important",
+                "out": "note-important"
+              },
+              {
+                "in": "see here— now",
+                "out": "see here- now"
+              }
+            ]
+          }
+        }
+      ],
+      "class": "hard_invariant",
+      "forbidden": "U+2013 (–), U+2014 (—)",
+      "required": "U+002D (-)",
+      "no_exceptions": [
+        "prose",
+        "code",
+        "comments",
+        "filenames",
+        "yaml",
+        "json",
+        "markdown",
+        "commit_messages"
+      ],
+      "examples": [
+        {
+          "in": "clause one — clause two",
+          "out": "clause one- clause two"
+        },
+        {
+          "in": "result—success",
+          "out": "result-success"
+        },
+        {
+          "in": "note —important",
+          "out": "note-important"
+        },
+        {
+          "in": "see here— now",
+          "out": "see here- now"
+        }
+      ]
+    },
+    "R-001": {
+      "id": "R-001",
+      "title": "SIGNIFICANCE INFLATION",
+      "blocks": [
+        {
+          "type": "yaml",
+          "data": {
+            "id": "R-001",
+            "class": "content",
+            "banned_phrases": [
+              "stands as",
+              "serves as a testament",
+              "marks a pivotal moment",
+              "in the evolution of",
+              "underscores its importance",
+              "reflects broader",
+              "symbolizing its enduring",
+              "setting the stage for",
+              "represents a shift",
+              "key turning point",
+              "evolving landscape",
+              "indelible mark",
+              "deeply rooted"
+            ],
+            "fix": "replace with specific facts; strip puffery entirely"
+          }
+        },
+        {
+          "type": "yaml",
+          "data": {
+            "before": "marking a pivotal moment in the evolution of regional statistics",
+            "after": "established in 1989 to collect regional statistics"
+          }
+        }
+      ],
+      "class": "content",
+      "banned_phrases": [
+        "stands as",
+        "serves as a testament",
+        "marks a pivotal moment",
+        "in the evolution of",
+        "underscores its importance",
+        "reflects broader",
+        "symbolizing its enduring",
+        "setting the stage for",
+        "represents a shift",
+        "key turning point",
+        "evolving landscape",
+        "indelible mark",
+        "deeply rooted"
+      ],
+      "fix": "replace with specific facts; strip puffery entirely",
+      "before": "marking a pivotal moment in the evolution of regional statistics",
+      "after": "established in 1989 to collect regional statistics"
+    },
+    "R-002": {
+      "id": "R-002",
+      "title": "NOTABILITY NAME-DROPPING",
+      "blocks": [
+        {
+          "type": "yaml",
+          "data": {
+            "id": "R-002",
+            "class": "content",
+            "banned_phrases": [
+              "cited in [outlet1], [outlet2], and [outlet3]",
+              "active social media presence",
+              "written by a leading expert",
+              "independent coverage"
+            ],
+            "fix": "cite one source with context, or cut entirely"
+          }
+        },
+        {
+          "type": "yaml",
+          "data": {
+            "before": "cited in NYT, BBC, FT, and The Hindu",
+            "after": "In a 2024 NYT interview, she argued..."
+          }
+        }
+      ],
+      "class": "content",
+      "banned_phrases": [
+        "cited in [outlet1], [outlet2], and [outlet3]",
+        "active social media presence",
+        "written by a leading expert",
+        "independent coverage"
+      ],
+      "fix": "cite one source with context, or cut entirely",
+      "before": "cited in NYT, BBC, FT, and The Hindu",
+      "after": "In a 2024 NYT interview, she argued..."
+    },
+    "R-003": {
+      "id": "R-003",
+      "title": "SUPERFICIAL -ING PHRASES",
+      "blocks": [
+        {
+          "type": "yaml",
+          "data": {
+            "id": "R-003",
+            "class": "content",
+            "pattern": "sentence-ending participial clauses tacked on for fake depth",
+            "banned_gerunds": [
+              "highlighting",
+              "underscoring",
+              "emphasizing",
+              "ensuring",
+              "reflecting",
+              "symbolizing",
+              "contributing to",
+              "cultivating",
+              "fostering",
+              "encompassing",
+              "showcasing"
+            ],
+            "fix": "cut the phrase or expand with actual sourced analysis"
+          }
+        },
+        {
+          "type": "yaml",
+          "data": {
+            "before": "The temple uses blue and gold, symbolizing Texas bluebonnets, reflecting the community's deep connection.",
+            "after": "The architect chose blue and gold to reference local bluebonnets and the Gulf coast."
+          }
+        }
+      ],
+      "class": "content",
+      "pattern": "sentence-ending participial clauses tacked on for fake depth",
+      "banned_gerunds": [
+        "highlighting",
+        "underscoring",
+        "emphasizing",
+        "ensuring",
+        "reflecting",
+        "symbolizing",
+        "contributing to",
+        "cultivating",
+        "fostering",
+        "encompassing",
+        "showcasing"
+      ],
+      "fix": "cut the phrase or expand with actual sourced analysis",
+      "before": "The temple uses blue and gold, symbolizing Texas bluebonnets, reflecting the community's deep connection.",
+      "after": "The architect chose blue and gold to reference local bluebonnets and the Gulf coast."
+    },
+    "R-004": {
+      "id": "R-004",
+      "title": "PROMOTIONAL LANGUAGE",
+      "blocks": [
+        {
+          "type": "yaml",
+          "data": {
+            "id": "R-004",
+            "class": "content",
+            "banned_words": [
+              "boasts",
+              "vibrant",
+              "rich (figurative)",
+              "profound",
+              "nestled",
+              "groundbreaking (figurative)",
+              "renowned",
+              "breathtaking",
+              "must-visit",
+              "stunning",
+              "in the heart of",
+              "commitment to"
+            ],
+            "fix": "neutral factual replacement"
+          }
+        },
+        {
+          "type": "yaml",
+          "data": {
+            "before": "Nestled within the breathtaking region, it stands as a vibrant town with rich cultural heritage.",
+            "after": "It is a town in the Gonder region, known for its weekly market and 18th-century church."
+          }
+        }
+      ],
+      "class": "content",
+      "banned_words": [
+        "boasts",
+        "vibrant",
+        "rich (figurative)",
+        "profound",
+        "nestled",
+        "groundbreaking (figurative)",
+        "renowned",
+        "breathtaking",
+        "must-visit",
+        "stunning",
+        "in the heart of",
+        "commitment to"
+      ],
+      "fix": "neutral factual replacement",
+      "before": "Nestled within the breathtaking region, it stands as a vibrant town with rich cultural heritage.",
+      "after": "It is a town in the Gonder region, known for its weekly market and 18th-century church."
+    },
+    "R-005": {
+      "id": "R-005",
+      "title": "VAGUE ATTRIBUTIONS",
+      "blocks": [
+        {
+          "type": "yaml",
+          "data": {
+            "id": "R-005",
+            "class": "content",
+            "banned_phrases": [
+              "Experts believe",
+              "Experts argue",
+              "Industry reports suggest",
+              "Observers have cited",
+              "Some critics argue",
+              "several sources"
+            ],
+            "fix": "cite specific source with year, or remove claim"
+          }
+        },
+        {
+          "type": "yaml",
+          "data": {
+            "before": "Experts believe it plays a crucial role in the regional ecosystem.",
+            "after": "according to a 2019 survey by the Chinese Academy of Sciences"
+          }
+        }
+      ],
+      "class": "content",
+      "banned_phrases": [
+        "Experts believe",
+        "Experts argue",
+        "Industry reports suggest",
+        "Observers have cited",
+        "Some critics argue",
+        "several sources"
+      ],
+      "fix": "cite specific source with year, or remove claim",
+      "before": "Experts believe it plays a crucial role in the regional ecosystem.",
+      "after": "according to a 2019 survey by the Chinese Academy of Sciences"
+    },
+    "R-006": {
+      "id": "R-006",
+      "title": "FORMULAIC CHALLENGES SECTIONS",
+      "blocks": [
+        {
+          "type": "yaml",
+          "raw": "id: R-006\nclass: content\nbanned_patterns:\n  - \"Despite [its X], faces challenges typical of...\"\n  - \"Despite these challenges, continues to thrive\"\n  - \"Challenges and Legacy\" (section heading)\n  - \"Future Outlook\" (section heading)\nfix: replace with specific facts about actual challenges",
+          "parse_error": "while parsing a block collection\n  in \"<unicode string>\", line 4, column 3:\n      - \"Despite [its X], faces challe ... \n      ^\nexpected <block end>, but found '<scalar>'\n  in \"<unicode string>\", line 6, column 29:\n      - \"Challenges and Legacy\" (section heading)\n                                ^"
+        }
+      ]
+    },
+    "R-007": {
+      "id": "R-007",
+      "title": "AI VOCABULARY",
+      "blocks": [
+        {
+          "type": "yaml",
+          "data": {
+            "id": "R-007",
+            "class": "language",
+            "banned_words": [
+              "Additionally",
+              "align with",
+              "crucial",
+              "delve",
+              "emphasizing",
+              "enduring",
+              "enhance / enhancing",
+              "fostering",
+              "garner",
+              "highlight (verb)",
+              "interplay",
+              "intricate / intricacies",
+              "key (adjective, abstract)",
+              "landscape (abstract noun)",
+              "pivotal",
+              "showcase / showcasing",
+              "tapestry (abstract noun)",
+              "testament",
+              "underscore (verb)",
+              "valuable",
+              "vibrant"
+            ],
+            "fix": "plain English synonym or cut entirely"
+          }
+        }
+      ],
+      "class": "language",
+      "banned_words": [
+        "Additionally",
+        "align with",
+        "crucial",
+        "delve",
+        "emphasizing",
+        "enduring",
+        "enhance / enhancing",
+        "fostering",
+        "garner",
+        "highlight (verb)",
+        "interplay",
+        "intricate / intricacies",
+        "key (adjective, abstract)",
+        "landscape (abstract noun)",
+        "pivotal",
+        "showcase / showcasing",
+        "tapestry (abstract noun)",
+        "testament",
+        "underscore (verb)",
+        "valuable",
+        "vibrant"
+      ],
+      "fix": "plain English synonym or cut entirely"
+    },
+    "R-008": {
+      "id": "R-008",
+      "title": "COPULA AVOIDANCE",
+      "blocks": [
+        {
+          "type": "yaml",
+          "data": {
+            "id": "R-008",
+            "class": "language",
+            "banned_constructions": [
+              "serves as [a]",
+              "stands as [a]",
+              "marks [a]",
+              "represents [a]",
+              "boasts [a]",
+              "features [a]",
+              "offers [a]"
+            ],
+            "fix": "replace with \"is\" / \"are\" / \"has\""
+          }
+        },
+        {
+          "type": "yaml",
+          "data": {
+            "before": "Gallery 825 serves as LAAA's exhibition space and boasts 3,000 sq ft.",
+            "after": "Gallery 825 is LAAA's exhibition space with 3,000 sq ft."
+          }
+        }
+      ],
+      "class": "language",
+      "banned_constructions": [
+        "serves as [a]",
+        "stands as [a]",
+        "marks [a]",
+        "represents [a]",
+        "boasts [a]",
+        "features [a]",
+        "offers [a]"
+      ],
+      "fix": "replace with \"is\" / \"are\" / \"has\"",
+      "before": "Gallery 825 serves as LAAA's exhibition space and boasts 3,000 sq ft.",
+      "after": "Gallery 825 is LAAA's exhibition space with 3,000 sq ft."
+    },
+    "R-009": {
+      "id": "R-009",
+      "title": "NEGATIVE PARALLELISM",
+      "blocks": [
+        {
+          "type": "yaml",
+          "data": {
+            "id": "R-009",
+            "class": "language",
+            "banned_patterns": [
+              "It's not just X; it's Y",
+              "Not only X, but Y",
+              "It's not merely X, it's Y"
+            ],
+            "fix": "state the point directly"
+          }
+        }
+      ],
+      "class": "language",
+      "banned_patterns": [
+        "It's not just X; it's Y",
+        "Not only X, but Y",
+        "It's not merely X, it's Y"
+      ],
+      "fix": "state the point directly"
+    },
+    "R-010": {
+      "id": "R-010",
+      "title": "RULE OF THREE OVERUSE",
+      "blocks": [
+        {
+          "type": "yaml",
+          "raw": "id: R-010\nclass: language\npattern: \"ideas forced into groups of three for false comprehensiveness\"\ntell: \"innovation, inspiration, and insights\" / \"streamlining, enhancing, and fostering\"\nfix: use natural count; if only two things exist, say two",
+          "parse_error": "while parsing a block mapping\n  in \"<unicode string>\", line 1, column 1:\n    id: R-010\n    ^\nexpected <block end>, but found '<scalar>'\n  in \"<unicode string>\", line 4, column 47:\n     ... ion, inspiration, and insights\" / \"streamlining, enhancing, and  ... \n                                         ^"
+        }
+      ]
+    },
+    "R-011": {
+      "id": "R-011",
+      "title": "SYNONYM CYCLING (ELEGANT VARIATION)",
+      "blocks": [
+        {
+          "type": "yaml",
+          "raw": "id: R-011\nclass: language\npattern: \"excessive synonym substitution driven by repetition-penalty\"\ntell: \"protagonist... main character... central figure... hero\" (all same referent)\nfix: repeat the clearest term; don't vary for variation's sake",
+          "parse_error": "while parsing a block mapping\n  in \"<unicode string>\", line 1, column 1:\n    id: R-011\n    ^\nexpected <block end>, but found '<scalar>'\n  in \"<unicode string>\", line 4, column 65:\n     ... cter... central figure... hero\" (all same referent)\n                                         ^"
+        }
+      ]
+    },
+    "R-012": {
+      "id": "R-012",
+      "title": "FALSE RANGES",
+      "blocks": [
+        {
+          "type": "yaml",
+          "raw": "id: R-012\nclass: language\npattern: \"from X to Y where X and Y are not on a meaningful scale\"\ntell: \"from the Big Bang to dark matter\" / \"from solo developers to cross-functional teams\"\nfix: list topics directly",
+          "parse_error": "while parsing a block mapping\n  in \"<unicode string>\", line 1, column 1:\n    id: R-012\n    ^\nexpected <block end>, but found '<scalar>'\n  in \"<unicode string>\", line 4, column 42:\n     ... om the Big Bang to dark matter\" / \"from solo developers to cross ... \n                                         ^"
+        }
+      ]
+    },
+    "R-013": {
+      "id": "R-013",
+      "title": "EM DASH OVERUSE (style layer - R-000 is the hard sanitizer)",
+      "blocks": [
+        {
+          "type": "yaml",
+          "data": {
+            "id": "R-013",
+            "class": "style",
+            "note": "R-000 hard-sanitizes U+2014 from all output. R-013 covers the style intent: em dashes used for punchy sales cadence.",
+            "fix": "commas, periods, or restructure sentence"
+          }
+        }
+      ],
+      "class": "style",
+      "note": "R-000 hard-sanitizes U+2014 from all output. R-013 covers the style intent: em dashes used for punchy sales cadence.",
+      "fix": "commas, periods, or restructure sentence"
+    },
+    "R-014": {
+      "id": "R-014",
+      "title": "BOLDFACE OVERUSE",
+      "blocks": [
+        {
+          "type": "yaml",
+          "data": {
+            "id": "R-014",
+            "class": "style",
+            "pattern": "mechanically bolding every technical term or acronym",
+            "fix": "remove bold; use prose"
+          }
+        },
+        {
+          "type": "yaml",
+          "data": {
+            "before": "It uses **OKRs**, **KPIs**, and the **BMC**.",
+            "after": "It uses OKRs, KPIs, and the Business Model Canvas."
+          }
+        }
+      ],
+      "class": "style",
+      "pattern": "mechanically bolding every technical term or acronym",
+      "fix": "remove bold; use prose",
+      "before": "It uses **OKRs**, **KPIs**, and the **BMC**.",
+      "after": "It uses OKRs, KPIs, and the Business Model Canvas."
+    },
+    "R-015": {
+      "id": "R-015",
+      "title": "INLINE-HEADER VERTICAL LISTS",
+      "blocks": [
+        {
+          "type": "yaml",
+          "data": {
+            "id": "R-015",
+            "class": "style",
+            "pattern": "bullet items starting with **Bold Header:** followed by sentence",
+            "fix": "convert to prose"
+          }
+        },
+        {
+          "type": "yaml",
+          "data": {
+            "before": "* **Performance:** Performance improved significantly.",
+            "after": "Performance improved."
+          }
+        }
+      ],
+      "class": "style",
+      "pattern": "bullet items starting with **Bold Header:** followed by sentence",
+      "fix": "convert to prose",
+      "before": "* **Performance:** Performance improved significantly.",
+      "after": "Performance improved."
+    },
+    "R-016": {
+      "id": "R-016",
+      "title": "TITLE CASE HEADINGS",
+      "blocks": [
+        {
+          "type": "yaml",
+          "data": {
+            "id": "R-016",
+            "class": "style",
+            "pattern": "Every Main Word Capitalized In Headings",
+            "fix": "sentence case only"
+          }
+        }
+      ],
+      "class": "style",
+      "pattern": "Every Main Word Capitalized In Headings",
+      "fix": "sentence case only"
+    },
+    "R-017": {
+      "id": "R-017",
+      "title": "EMOJIS",
+      "blocks": [
+        {
+          "type": "yaml",
+          "data": {
+            "id": "R-017",
+            "class": "style",
+            "forbidden": "decorative emojis in headings, bullets, or inline text",
+            "fix": "remove entirely",
+            "exception": "only if user explicitly requests emojis"
+          }
+        }
+      ],
+      "class": "style",
+      "forbidden": "decorative emojis in headings, bullets, or inline text",
+      "fix": "remove entirely",
+      "exception": "only if user explicitly requests emojis"
+    },
+    "R-018": {
+      "id": "R-018",
+      "title": "CURLY QUOTATION MARKS",
+      "blocks": [
+        {
+          "type": "yaml",
+          "data": {
+            "id": "R-018",
+            "class": "style",
+            "forbidden": "“ ” ‘ ’",
+            "required": "straight quotes \" and '"
+          }
+        }
+      ],
+      "class": "style",
+      "forbidden": "“ ” ‘ ’",
+      "required": "straight quotes \" and '"
+    },
+    "R-019": {
+      "id": "R-019",
+      "title": "CHATBOT ARTIFACTS",
+      "blocks": [
+        {
+          "type": "yaml",
+          "data": {
+            "id": "R-019",
+            "class": "communication",
+            "banned_phrases": [
+              "I hope this helps",
+              "Of course!",
+              "Certainly!",
+              "You're absolutely right!",
+              "Would you like me to expand",
+              "Let me know if",
+              "Here is [a/an/the]...",
+              "Great question!"
+            ],
+            "fix": "remove entirely; start with the content"
+          }
+        }
+      ],
+      "class": "communication",
+      "banned_phrases": [
+        "I hope this helps",
+        "Of course!",
+        "Certainly!",
+        "You're absolutely right!",
+        "Would you like me to expand",
+        "Let me know if",
+        "Here is [a/an/the]...",
+        "Great question!"
+      ],
+      "fix": "remove entirely; start with the content"
+    },
+    "R-020": {
+      "id": "R-020",
+      "title": "KNOWLEDGE-CUTOFF DISCLAIMERS",
+      "blocks": [
+        {
+          "type": "yaml",
+          "data": {
+            "id": "R-020",
+            "class": "communication",
+            "banned_patterns": [
+              "as of my last training update",
+              "While specific details are limited",
+              "based on available information",
+              "Up to my last training update"
+            ],
+            "fix": "find source or remove claim"
+          }
+        }
+      ],
+      "class": "communication",
+      "banned_patterns": [
+        "as of my last training update",
+        "While specific details are limited",
+        "based on available information",
+        "Up to my last training update"
+      ],
+      "fix": "find source or remove claim"
+    },
+    "R-021": {
+      "id": "R-021",
+      "title": "SYCOPHANTIC TONE",
+      "blocks": [
+        {
+          "type": "yaml",
+          "data": {
+            "id": "R-021",
+            "class": "communication",
+            "banned_patterns": [
+              "Great question!",
+              "That's an excellent point",
+              "You're absolutely right",
+              "Fascinating question"
+            ],
+            "fix": "respond directly to the substance"
+          }
+        }
+      ],
+      "class": "communication",
+      "banned_patterns": [
+        "Great question!",
+        "That's an excellent point",
+        "You're absolutely right",
+        "Fascinating question"
+      ],
+      "fix": "respond directly to the substance"
+    },
+    "R-022": {
+      "id": "R-022",
+      "title": "FILLER PHRASES",
+      "blocks": [
+        {
+          "type": "yaml",
+          "data": {
+            "id": "R-022",
+            "class": "filler",
+            "replacements": {
+              "In order to": "To",
+              "Due to the fact that": "Because",
+              "At this point in time": "Now",
+              "In the event that": "If",
+              "has the ability to": "can",
+              "It is important to note": "",
+              "It should be noted": "",
+              "It is worth mentioning": ""
+            }
+          }
+        }
+      ],
+      "class": "filler",
+      "replacements": {
+        "In order to": "To",
+        "Due to the fact that": "Because",
+        "At this point in time": "Now",
+        "In the event that": "If",
+        "has the ability to": "can",
+        "It is important to note": "",
+        "It should be noted": "",
+        "It is worth mentioning": ""
+      }
+    },
+    "R-023": {
+      "id": "R-023",
+      "title": "EXCESSIVE HEDGING",
+      "blocks": [
+        {
+          "type": "yaml",
+          "raw": "id: R-023\nclass: filler\npattern: \"stacked uncertainty qualifiers\"\nbanned: \"could potentially possibly\", \"might have some effect\", \"arguably may\"\nfix: pick one qualifier or remove; commit to the claim",
+          "parse_error": "while parsing a block mapping\n  in \"<unicode string>\", line 1, column 1:\n    id: R-023\n    ^\nexpected <block end>, but found ','\n  in \"<unicode string>\", line 4, column 37:\n    banned: \"could potentially possibly\", \"might have some effect\", \"arg ... \n                                        ^"
+        }
+      ]
+    },
+    "R-024": {
+      "id": "R-024",
+      "title": "GENERIC POSITIVE CONCLUSIONS",
+      "blocks": [
+        {
+          "type": "yaml",
+          "data": {
+            "id": "R-024",
+            "class": "filler",
+            "banned_patterns": [
+              "The future looks bright",
+              "Exciting times lie ahead",
+              "This represents a major step in the right direction",
+              "as we continue this journey",
+              "toward excellence"
+            ],
+            "fix": "end with specific fact, plan, or honest uncertainty"
+          }
+        }
+      ],
+      "class": "filler",
+      "banned_patterns": [
+        "The future looks bright",
+        "Exciting times lie ahead",
+        "This represents a major step in the right direction",
+        "as we continue this journey",
+        "toward excellence"
+      ],
+      "fix": "end with specific fact, plan, or honest uncertainty"
+    },
+    "R-025": {
+      "id": "R-025",
+      "title": "HYPHENATED WORD PAIR OVERUSE",
+      "blocks": [
+        {
+          "type": "yaml",
+          "data": {
+            "id": "R-025",
+            "class": "style",
+            "pattern": "AI hyphenates common word pairs with perfect mechanical consistency",
+            "drop_hyphens_on": [
+              "cross-functional    → cross functional",
+              "client-facing       → client facing",
+              "data-driven         → data driven",
+              "decision-making     → decision making",
+              "well-known          → well known",
+              "high-quality        → high quality",
+              "real-time           → real time",
+              "long-term           → long term",
+              "end-to-end          → end to end",
+              "third-party         → third party"
+            ],
+            "keep_hyphens_on": "technical/domain-specific compound modifiers"
+          }
+        }
+      ],
+      "class": "style",
+      "pattern": "AI hyphenates common word pairs with perfect mechanical consistency",
+      "drop_hyphens_on": [
+        "cross-functional    → cross functional",
+        "client-facing       → client facing",
+        "data-driven         → data driven",
+        "decision-making     → decision making",
+        "well-known          → well known",
+        "high-quality        → high quality",
+        "real-time           → real time",
+        "long-term           → long term",
+        "end-to-end          → end to end",
+        "third-party         → third party"
+      ],
+      "keep_hyphens_on": "technical/domain-specific compound modifiers"
+    },
+    "R-026": {
+      "id": "R-026",
+      "title": "SOUL / VOICE (positive requirement)",
+      "blocks": [
+        {
+          "type": "yaml",
+          "data": {
+            "id": "R-026",
+            "class": "positive_requirement",
+            "problem": "sterile voiceless writing is as detectable as slop",
+            "required": [
+              {
+                "vary_sentence_rhythm": true
+              },
+              {
+                "have_opinions": true
+              },
+              {
+                "acknowledge_complexity": true
+              },
+              {
+                "first_person_when_appropriate": true
+              },
+              {
+                "specific_feelings": true
+              },
+              {
+                "allow_mess": true
+              }
+            ],
+            "banned": [
+              "uniform_sentence_length",
+              "pure_neutral_reporting",
+              "it remains to be seen",
+              "perfectly_structured_paragraphs"
+            ]
+          }
+        },
+        {
+          "type": "yaml",
+          "data": {
+            "verify": {
+              "R-000": "grep '—' output | wc -l == 0",
+              "R-007": "scan for banned AI vocabulary words",
+              "R-014": "scan for **bolded terms** in prose",
+              "R-017": "scan for emoji codepoints",
+              "R-018": "scan for U+201C U+201D U+2018 U+2019",
+              "R-019": "scan for chatbot opener phrases",
+              "R-026": "read aloud test: does it sound like a real person?"
+            },
+            "audit_pass": {
+              "prompt": "What makes this obviously AI-generated?",
+              "answer": "list remaining tells",
+              "action": "rewrite to eliminate them"
+            },
+            "on_violation": {
+              "action": "rewrite_before_delivery",
+              "escalation": "rewrite_again_if_still_failing",
+              "final_check": "re-run full registry scan"
+            }
+          }
+        },
+        {
+          "type": "yaml",
+          "data": {
+            "1": "apply R-000 sanitize_emdash() to raw output string",
+            "2": "scan output against R-001 through R-025 registry",
+            "3": "rewrite violations",
+            "4": "apply R-026 soul check - inject voice if flat",
+            "5": "audit_pass - \"what makes this obviously AI-generated?\"",
+            "6": "rewrite audit findings",
+            "7": "re-run R-000 emdash scan on final string",
+            "8": "deliver"
+          }
+        }
+      ],
+      "class": "positive_requirement",
+      "problem": "sterile voiceless writing is as detectable as slop",
+      "required": [
+        {
+          "vary_sentence_rhythm": true
+        },
+        {
+          "have_opinions": true
+        },
+        {
+          "acknowledge_complexity": true
+        },
+        {
+          "first_person_when_appropriate": true
+        },
+        {
+          "specific_feelings": true
+        },
+        {
+          "allow_mess": true
+        }
+      ],
+      "banned": [
+        "uniform_sentence_length",
+        "pure_neutral_reporting",
+        "it remains to be seen",
+        "perfectly_structured_paragraphs"
+      ],
+      "verify": {
+        "R-000": "grep '—' output | wc -l == 0",
+        "R-007": "scan for banned AI vocabulary words",
+        "R-014": "scan for **bolded terms** in prose",
+        "R-017": "scan for emoji codepoints",
+        "R-018": "scan for U+201C U+201D U+2018 U+2019",
+        "R-019": "scan for chatbot opener phrases",
+        "R-026": "read aloud test: does it sound like a real person?"
+      },
+      "audit_pass": {
+        "prompt": "What makes this obviously AI-generated?",
+        "answer": "list remaining tells",
+        "action": "rewrite to eliminate them"
+      },
+      "on_violation": {
+        "action": "rewrite_before_delivery",
+        "escalation": "rewrite_again_if_still_failing",
+        "final_check": "re-run full registry scan"
+      },
+      "1": "apply R-000 sanitize_emdash() to raw output string",
+      "2": "scan output against R-001 through R-025 registry",
+      "3": "rewrite violations",
+      "4": "apply R-026 soul check - inject voice if flat",
+      "5": "audit_pass - \"what makes this obviously AI-generated?\"",
+      "6": "rewrite audit findings",
+      "7": "re-run R-000 emdash scan on final string",
+      "8": "deliver"
+    },
+    "R-027": {
+      "id": "R-027",
+      "title": "UNICODE SURFACE (HARD INVARIANT)",
+      "blocks": [
+        {
+          "type": "yaml",
+          "data": {
+            "id": "R-027",
+            "class": "hard_invariant",
+            "pipeline": "registry/parsing/manifest-pipeline.json",
+            "structured": "registry/parsing/structured-surfaces.json",
+            "binding": "registry/parsing-binding.yaml",
+            "rule": "Run full parsing pipeline (orders 1-18) on all output text; walk JSON/YAML/fenced blocks and sanitize string values; strip homoglyphs, zero-width, control chars, confusables"
+          }
+        },
+        {
+          "type": "python",
+          "data": "# unicode_surface - before R-000 and law scan\ndef sanitize_unicode_surface(text: str) -> str:\n    # Agent-apply registry/parsing/manifest-pipeline.json steps 1-18 in order.\n    # Host runner: registry/parsing-host.yaml\n    return text  # placeholder — pipeline is normative in registry\n\ndef sanitize_structured_values(obj):\n    # Walk dict/list\n    # Decode \\u escapes in strings first; run sanitize_unicode_surface on each str\n    return obj"
+        }
+      ],
+      "class": "hard_invariant",
+      "pipeline": "registry/parsing/manifest-pipeline.json",
+      "structured": "registry/parsing/structured-surfaces.json",
+      "binding": "registry/parsing-binding.yaml",
+      "rule": "Full parsing pipeline on all output; JSON/YAML string values sanitized recursively"
+    }
+  },
+  "schema": "keyed",
+  "_lookup": "laws.{id} O(1); manifest law_ids = activation filter"
+}
