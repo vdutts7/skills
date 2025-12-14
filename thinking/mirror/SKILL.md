@@ -41,4 +41,3 @@ verify:       tests/smoke.sh
 ## Invariant
 
 PRIME and MIRROR are locked roles. No blending. Persona bleed → `registry/errors.yaml`.
-
