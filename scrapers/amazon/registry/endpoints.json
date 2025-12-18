@@ -1,0 +1,247 @@
+{
+  "_meta": {
+    "endpoint_count": 18,
+    "note": "Regenerate: amazon endpoints refresh --root <har-dir>. Samples are from HAR captures; replay may need fresh PDP query strings.",
+    "latest_capture_id": "05-17-26_10.14.07Z"
+  },
+  "templates": {
+    "twister_dimension_slots": "https://www.amazon.com/gp/product/ajax/twisterDimensionSlotsDefault?isDimensionSlotsAjax=1&asinList=B0F5538MJX,B0FB5L7NV4,B0F55N88FQ,B0F55MJ5XN,B0F5S9NWLX&vs=1&asin=B0F5538MJX&productTypeDefinition=NOTEBOOK_COMPUTER&productGroupId=pc_display_on_website&parentAsin=B0F5597KPV&isPrime=0&deviceOs=unrecognized&landingAsin=B0F5538MJX&deviceType=web&showFancyPrice=false&twisterFlavor=twisterPlusDesktopConfigurator"
+  },
+  "endpoints": [
+    {
+      "id": "get_images_g_01_msa_vowels_metrics__stid543490_1779012774486__jpg",
+      "category": "xhr",
+      "method": "GET",
+      "host": "m.media-amazon.com",
+      "path": "/images/G/01/msa/vowels/metrics._STID543490-1779012774486_.jpg",
+      "sample_url": "https://m.media-amazon.com/images/G/01/msa/vowels/metrics._STID543490-1779012774486_.jpg",
+      "sample_count": 1,
+      "sources": [
+        "report:05-17-26_10.12.44Z"
+      ]
+    },
+    {
+      "id": "get_images_g_01_msa_vowels_metrics_jpg",
+      "category": "xhr",
+      "method": "GET",
+      "host": "m.media-amazon.com",
+      "path": "/images/G/01/msa/vowels/metrics.jpg",
+      "sample_url": "https://m.media-amazon.com/images/G/01/msa/vowels/metrics.jpg?time=1779012774455&rand=930538",
+      "sample_count": 1,
+      "sources": [
+        "report:05-17-26_10.12.44Z"
+      ]
+    },
+    {
+      "id": "post_1_events_com_amazon_botcxpolicy_na_prod_bd",
+      "category": "xhr",
+      "method": "POST",
+      "host": "unagi-na.amazon.com",
+      "path": "/1/events/com.amazon.BotCXPolicy.na.prod.bd",
+      "sample_url": "https://unagi-na.amazon.com/1/events/com.amazon.BotCXPolicy.na.prod.bd",
+      "sample_count": 1,
+      "sources": [
+        "har:05-17-26_10.12.44Z",
+        "har:05-17-26_10.14.07Z"
+      ]
+    },
+    {
+      "id": "post_1_events_com_amazon_vowels_clientmetrics",
+      "category": "xhr",
+      "method": "POST",
+      "host": "unagi-na.amazon.com",
+      "path": "/1/events/com.amazon.Vowels.ClientMetrics",
+      "sample_url": "https://unagi-na.amazon.com/1/events/com.amazon.Vowels.ClientMetrics",
+      "sample_count": 1,
+      "sources": [
+        "har:05-17-26_10.12.44Z"
+      ]
+    },
+    {
+      "id": "post_1_events_com_amazon_vowels_pageweightmetrics",
+      "category": "xhr",
+      "method": "POST",
+      "host": "unagi-na.amazon.com",
+      "path": "/1/events/com.amazon.Vowels.PageWeightMetrics",
+      "sample_url": "https://unagi-na.amazon.com/1/events/com.amazon.Vowels.PageWeightMetrics",
+      "sample_count": 1,
+      "sources": [
+        "har:05-17-26_10.12.44Z"
+      ]
+    },
+    {
+      "id": "post_1_events_com_amazon_eel_sponsoredproductseventtracking_prod",
+      "category": "xhr",
+      "method": "POST",
+      "host": "unagi-na.amazon.com",
+      "path": "/1/events/com.amazon.eel.SponsoredProductsEventTracking.prod",
+      "sample_url": "https://unagi-na.amazon.com/1/events/com.amazon.eel.SponsoredProductsEventTracking.prod",
+      "sample_count": 1,
+      "sources": [
+        "har:05-17-26_10.14.07Z",
+        "report:05-17-26_10.14.07Z"
+      ]
+    },
+    {
+      "id": "post_1_events_com_amazon_cbb_prod",
+      "category": "xhr",
+      "method": "POST",
+      "host": "unagi.amazon.com",
+      "path": "/1/events/com.amazon.cbb.prod",
+      "sample_url": "https://unagi.amazon.com/1/events/com.amazon.cbb.prod",
+      "sample_count": 1,
+      "sources": [
+        "har:05-17-26_10.14.07Z"
+      ]
+    },
+    {
+      "id": "post_1_events_com_amazon_csm_csa_prod",
+      "category": "xhr",
+      "method": "POST",
+      "host": "unagi.amazon.com",
+      "path": "/1/events/com.amazon.csm.csa.prod",
+      "sample_url": "https://unagi.amazon.com/1/events/com.amazon.csm.csa.prod",
+      "sample_count": 1,
+      "sources": [
+        "har:05-17-26_10.12.44Z",
+        "har:05-17-26_10.14.07Z",
+        "report:05-17-26_10.12.44Z",
+        "report:05-17-26_10.14.07Z"
+      ]
+    },
+    {
+      "id": "post_1_events_com_amazon_csm_customsg_prod",
+      "category": "xhr",
+      "method": "POST",
+      "host": "unagi.amazon.com",
+      "path": "/1/events/com.amazon.csm.customsg.prod",
+      "sample_url": "https://unagi.amazon.com/1/events/com.amazon.csm.customsg.prod",
+      "sample_count": 1,
+      "sources": [
+        "har:05-17-26_10.12.44Z",
+        "har:05-17-26_10.14.07Z"
+      ]
+    },
+    {
+      "id": "post_1_events_com_amazon_csm_nexusclient_prod",
+      "category": "xhr",
+      "method": "POST",
+      "host": "unagi.amazon.com",
+      "path": "/1/events/com.amazon.csm.nexusclient.prod",
+      "sample_url": "https://unagi.amazon.com/1/events/com.amazon.csm.nexusclient.prod",
+      "sample_count": 1,
+      "sources": [
+        "har:05-17-26_10.12.44Z",
+        "har:05-17-26_10.14.07Z"
+      ]
+    },
+    {
+      "id": "post_acp_cr_media_carousel_cr_media_carousel_10b2c141_56a1_4950_8122_996376136677_1778949798164_",
+      "category": "experiments",
+      "method": "POST",
+      "host": "www.amazon.com",
+      "path": "/acp/cr-media-carousel/cr-media-carousel-10b2c141-56a1-4950-8122-996376136677-1778949798164/getTreatmentNoTrigger",
+      "sample_url": "https://www.amazon.com/acp/cr-media-carousel/cr-media-carousel-10b2c141-56a1-4950-8122-996376136677-1778949798164/getTreatmentNoTrigger?page-type=Detail&stamp=1779012849435",
+      "sample_count": 1,
+      "sources": [
+        "har:05-17-26_10.14.07Z",
+        "report:05-17-26_10.14.07Z"
+      ]
+    },
+    {
+      "id": "get_cart_add_to_cart_get_cart_items",
+      "category": "cart",
+      "method": "GET",
+      "host": "www.amazon.com",
+      "path": "/cart/add-to-cart/get-cart-items",
+      "sample_url": "https://www.amazon.com/cart/add-to-cart/get-cart-items?clientName=SiteWideActionExecutor&_=1779012851030",
+      "sample_count": 1,
+      "sources": [
+        "har:05-17-26_10.14.07Z",
+        "report:05-17-26_10.14.07Z"
+      ]
+    },
+    {
+      "id": "get_cart_add_to_cart_patc_template",
+      "category": "cart",
+      "method": "GET",
+      "host": "www.amazon.com",
+      "path": "/cart/add-to-cart/patc-template",
+      "sample_url": "https://www.amazon.com/cart/add-to-cart/patc-template?clientName=SiteWideActionExecutor&isSnappyWithAnimation=true",
+      "sample_count": 1,
+      "sources": [
+        "har:05-17-26_10.14.07Z",
+        "report:05-17-26_10.14.07Z"
+      ]
+    },
+    {
+      "id": "post_cross_border_interstitial_sp_render",
+      "category": "interstitial",
+      "method": "POST",
+      "host": "www.amazon.com",
+      "path": "/cross_border_interstitial_sp/render",
+      "sample_url": "https://www.amazon.com/cross_border_interstitial_sp/render",
+      "sample_count": 1,
+      "sources": [
+        "har:05-17-26_10.14.07Z",
+        "report:05-17-26_10.14.07Z"
+      ]
+    },
+    {
+      "id": "post_dram_renderlazyloaded",
+      "category": "lazy_fragment",
+      "method": "POST",
+      "host": "www.amazon.com",
+      "path": "/dram/renderLazyLoaded",
+      "sample_url": "https://www.amazon.com/dram/renderLazyLoaded",
+      "sample_count": 1,
+      "sources": [
+        "har:05-17-26_10.14.07Z",
+        "report:05-17-26_10.14.07Z"
+      ]
+    },
+    {
+      "id": "twister_dimension_slots",
+      "category": "twister",
+      "method": "GET",
+      "host": "www.amazon.com",
+      "path": "/gp/product/ajax/twisterDimensionSlotsDefault",
+      "sample_url": "https://www.amazon.com/gp/product/ajax/twisterDimensionSlotsDefault?isDimensionSlotsAjax=1&asinList=B0F5538MJX,B0FB5L7NV4,B0F55N88FQ,B0F55MJ5XN,B0F5S9NWLX&vs=1&asin=B0F5538MJX&productTypeDefinition=NOTEBOOK_COMPUTER&productGroupId=pc_display_on_website&parentAsin=B0F5597KPV&isPrime=0&deviceOs=unrecognized&landingAsin=B0F5538MJX&deviceType=web&showFancyPrice=false&twisterFlavor=twisterPlusDesktopConfigurator",
+      "sample_count": 1,
+      "sources": [
+        "har:05-17-26_10.14.07Z",
+        "report:05-17-26_10.14.07Z"
+      ]
+    },
+    {
+      "id": "get_hz_rhf",
+      "category": "xhr",
+      "method": "GET",
+      "host": "www.amazon.com",
+      "path": "/hz/rhf",
+      "sample_url": "https://www.amazon.com/hz/rhf?currentPageType=Detail&currentSubPageType=Glance&excludeAsin=B0F5538MJX&fieldKeywords=&k=&keywords=&search=&auditEnabled=&previewCampaigns=&forceWidgets=&searchAlias=&cardJSPresent=true",
+      "sample_count": 2,
+      "sources": [
+        "har:05-17-26_10.12.44Z",
+        "har:05-17-26_10.14.07Z",
+        "report:05-17-26_10.12.44Z",
+        "report:05-17-26_10.14.07Z"
+      ]
+    },
+    {
+      "id": "get_portal_migration_hz_glow_get_rendered_toaster",
+      "category": "localization",
+      "method": "GET",
+      "host": "www.amazon.com",
+      "path": "/portal-migration/hz/glow/get-rendered-toaster",
+      "sample_url": "https://www.amazon.com/portal-migration/hz/glow/get-rendered-toaster?storeName=pc&pageType=Detail&aisTransitionState=null&rancorLocationSource=IP_GEOLOCATION&isB2B=false&_=1779012850808",
+      "sample_count": 2,
+      "sources": [
+        "har:05-17-26_10.12.44Z",
+        "har:05-17-26_10.14.07Z",
+        "report:05-17-26_10.12.44Z",
+        "report:05-17-26_10.14.07Z"
+      ]
+    }
+  ]
+}
