@@ -1,0 +1,63 @@
+{
+  "result_block": {
+    "pattern": "<div[^>]*data-asin=\"([A-Z0-9]{10})\"[^>]*data-component-type=\"s-search-result\""
+  },
+  "sponsored": {
+    "markers": ["puis-sponsored-label", ">Sponsored<"]
+  },
+  "title": {
+    "pattern": "<h2[^>]*>(.*?)</h2>",
+    "dotall": true,
+    "min_length": 20,
+    "max_length": 200
+  },
+  "price_offscreen": {
+    "pattern": "class=\"a-offscreen\"[^>]*>([^<]+)",
+    "find_all": true
+  },
+  "price_fallback": {
+    "pattern": ">\\s*(\\$\\d[\\d,]*\\.?\\d{0,2})\\s*<"
+  },
+  "rating": {
+    "pattern": "class=\"a-icon-alt\"[^>]*>(\\d+\\.?\\d*)\\s+out of\\s+5"
+  },
+  "review_count": {
+    "patterns": [
+      "aria-label=\"([\\d,]+)\"",
+      "<span[^>]*class=\"a-size-base[^\"]*\"[^>]*>([\\d,]+)</span>"
+    ]
+  },
+  "image": {
+    "pattern": "class=\"s-image\"[^>]*src=\"([^\"]+)\""
+  },
+  "prime": {
+    "marker": "a-icon-prime"
+  },
+  "next_page": {
+    "patterns": [
+      "class=\"s-pagination-next\"[^>]*href=\"([^\"]+)\"",
+      "<li class=\"a-last\">\\s*<a[^>]*href=\"([^\"]+)\""
+    ]
+  },
+  "category_sort_map": {
+    "price-asc": "price-asc-rank",
+    "price-desc": "price-desc-rank",
+    "rating": "review-rank",
+    "newest": "date-desc-rank",
+    "bestselling": "exact-aware-popularity-rank"
+  },
+  "category_filter_params": {
+    "min_price": "low-price",
+    "max_price": "high-price",
+    "prime_only": "p_85=2470955011",
+    "min_rating": "p_72",
+    "brand": "p_89",
+    "rating_map": {
+      "4": "2661618011",
+      "3": "2661617011",
+      "2": "2661616011",
+      "1": "2661615011"
+    }
+  }
+}
+

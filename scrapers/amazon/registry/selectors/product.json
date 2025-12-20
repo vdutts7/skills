@@ -1,0 +1,148 @@
+{
+  "title": {
+    "section_start": "id=\"productTitle\"",
+    "section_max_len": 2000,
+    "pattern": "id=\"productTitle\"[^>]*>(.*?)</span>",
+    "fallback_pattern": "<title>(.*?)</title>",
+    "fallback_max_offset": 10000,
+    "strip_suffix": "\\s*:?\\s*Amazon\\.com.*$",
+    "dotall": true
+  },
+  "asin": {
+    "pattern_url": "/dp/([A-Z0-9]{10})",
+    "pattern_url_alt": "/gp/product/([A-Z0-9]{10})",
+    "pattern_html": "\"ASIN\"\\s*:\\s*\"([A-Z0-9]{10})\""
+  },
+  "parent_asin": {
+    "pattern": "\"parentAsin\"\\s*:\\s*\"([A-Z0-9]{10})\""
+  },
+  "brand": {
+    "section_start": "id=\"bylineInfo\"",
+    "section_max_len": 2000,
+    "pattern": "id=\"bylineInfo\"[^>]*>(.*?)</a>",
+    "strip_prefix": "^(Visit the |Brand:\\s*)",
+    "strip_suffix": "\\s*Store$",
+    "dotall": true
+  },
+  "brand_store_url": {
+    "pattern": "href=\"(/stores/[^\"]+)\"",
+    "prefix": "https://www.amazon.com",
+    "split_on": "&"
+  },
+  "price": {
+    "section_start": "id=\"corePrice|id=\"corePriceDisplay|id=\"apex_desktop|class=\"a-price\"",
+    "section_max_len": 10000,
+    "pattern": "class=\"a-price-whole\"[^>]*>(\\d+)<.*?class=\"a-price-fraction\"[^>]*>(\\d+)<",
+    "format": "${1}.${2}",
+    "fallback_pattern": "\"priceAmount\":\\s*([\\d.]+)",
+    "dotall": true
+  },
+  "list_price": {
+    "pattern": "class=\"a-text-price\"[^>]*>.*?class=\"a-offscreen\"[^>]*>\\s*\\$?([\\d,]+\\.?\\d*)",
+    "dotall": true
+  },
+  "savings_percent": {
+    "pattern": "savingsPercentage.*?(\\d+)%"
+  },
+  "savings_amount": {
+    "pattern": "savingsAmount.*?\\$?([\\d,.]+)"
+  },
+  "coupon": {
+    "section_start": "Save.*?with\\s+coupon",
+    "section_max_len": 1000,
+    "pattern": "Save.*?(\\d+%?)\\s+with\\s+coupon"
+  },
+  "rating": {
+    "section_start": "out of\\s+5\\s+stars",
+    "section_max_len": 1000,
+    "pattern": "(\\d+\\.?\\d*)\\s+out of\\s+5\\s+stars"
+  },
+  "review_count": {
+    "section_start": "id=\"acrCustomerReviewText\"",
+    "section_max_len": 1000,
+    "pattern": "id=\"acrCustomerReviewText\"[^>]*>\\s*\\(?([\\d,]+)\\)?\\s*(?:ratings|reviews)?"
+  },
+  "answered_questions": {
+    "pattern": "([\\d,]+)\\s+answered\\s+question"
+  },
+  "availability": {
+    "section_start": "id=\"availability\"",
+    "section_max_len": 2000,
+    "pattern": "id=\"availability\"[^>]*>(.*?)</div>",
+    "dotall": true
+  },
+  "delivery_prime": {
+    "section_start": "delivery",
+    "section_max_len": 5000,
+    "pattern": "Prime.*?delivery.*?(\\w+day,\\s+\\w+\\s+\\d+)",
+    "dotall": true
+  },
+  "delivery_free": {
+    "pattern": "FREE delivery\\s+(\\w+day,\\s+\\w+\\s+\\d+)"
+  },
+  "merchant_spans": {
+    "section_start": "tabular-buybox|Ships from|Sold by",
+    "section_max_len": 5000,
+    "pattern": "tabular-buybox-text[^>]*>\\s*(?:<[^>]*>\\s*)*(.*?)\\s*</(?:span|a)",
+    "dotall": true,
+    "find_all": true
+  },
+  "features": {
+    "section_start": "id=\"feature-bullets\"",
+    "section_max_len": 20000,
+    "pattern": "<span class=\"a-list-item\"[^>]*>(.*?)</span>",
+    "find_all": true,
+    "dotall": true,
+    "min_length": 4,
+    "exclude_lower": "see more"
+  },
+  "categories": {
+    "section_start": "id=\"wayfinding-breadcrumbs",
+    "section_max_len": 5000,
+    "pattern": "<a[^>]*>(.*?)</a>",
+    "find_all": true,
+    "dotall": true
+  },
+  "images": {
+    "pattern": "\"hiRes\"\\s*:\\s*\"(https://[^\"]+)\"",
+    "fallback_pattern": "\"large\"\\s*:\\s*\"(https://[^\"]+)\"",
+    "find_all": true,
+    "dedupe": true
+  },
+  "tech_details": {
+    "section_start": "id=\"productDetails|id=\"detailBullets|class=\"a-keyvalue\"",
+    "section_max_len": 30000,
+    "pattern": "<th[^>]*class=\"a-color-secondary[^\"]*\"[^>]*>(.*?)</th>\\s*<td[^>]*>(.*?)</td>",
+    "find_all": true,
+    "dotall": true,
+    "key_value": true,
+    "max_key_len": 80,
+    "max_val_len": 500,
+    "strip_js": "\\s*(var |P\\.when|function).*"
+  },
+  "bestseller_rank_primary": {
+    "section_start": "Best\\s*Sellers?\\s*Rank",
+    "section_max_len": 5000,
+    "pattern": "Best\\s*Sellers?\\s*Rank.*?#([\\d,]+)\\s+in\\s+([^<\\(]{3,60})",
+    "dotall": true
+  },
+  "bestseller_rank_subs": {
+    "pattern": "#([\\d,]+)\\s+in\\s+<a[^>]*>([^<]+)</a>",
+    "find_all": true
+  },
+  "variation_labels": {
+    "pattern": "\"variationDisplayLabels\"\\s*:\\s*\\{([^}]+)\\}"
+  },
+  "variation_values": {
+    "pattern": "\"variationValues\"\\s*:\\s*\\{([^}]+)\\}"
+  },
+  "variation_asin_map": {
+    "pattern": "\"dimensionValuesDisplayData\"\\s*:\\s*\\{(.*?)\\}\\s*[,}]",
+    "dotall": true
+  },
+  "variation_asin_to_asin": {
+    "pattern": "\"asin_to_asin_map\"\\s*:\\s*\\{(.*?)\\}",
+    "dotall": true
+  }
+}
+
