@@ -1,0 +1,44 @@
+{
+  "version": "1.0",
+  "api": {
+    "base_url": "https://hacker-news.firebaseio.com/v0",
+    "auth": "none",
+    "rate_limit": "none_documented",
+    "format": "json",
+    "transport": "https_get"
+  },
+  "endpoints": {
+    "lists": {
+      "topstories":  { "path": "/topstories.json",  "returns": "array_of_ids", "max_items": 500, "subcommand": "top" },
+      "newstories":  { "path": "/newstories.json",  "returns": "array_of_ids", "max_items": 500, "subcommand": "new" },
+      "beststories": { "path": "/beststories.json", "returns": "array_of_ids", "max_items": 200, "subcommand": "best" },
+      "askstories":  { "path": "/askstories.json",  "returns": "array_of_ids", "max_items": 200, "subcommand": "ask" },
+      "showstories": { "path": "/showstories.json", "returns": "array_of_ids", "max_items": 200, "subcommand": "show" },
+      "jobstories":  { "path": "/jobstories.json",  "returns": "array_of_ids", "max_items": 200, "subcommand": "jobs" }
+    },
+    "entities": {
+      "item": { "path": "/item/{id}.json", "returns": "object", "fields": ["id", "type", "by", "time", "text", "url", "score", "title", "descendants", "kids", "parent", "parts", "poll"] },
+      "user": { "path": "/user/{id}.json", "returns": "object", "fields": ["id", "created", "karma", "about", "submitted"] }
+    },
+    "meta": {
+      "maxitem":  { "path": "/maxitem.json",  "returns": "integer" },
+      "updates":  { "path": "/updates.json",  "returns": "object", "fields": ["items", "profiles"] }
+    }
+  },
+  "item_types": ["story", "comment", "job", "poll", "pollopt"],
+  "defaults": {
+    "quick_limit": 30,
+    "max_workers": 8,
+    "rate_limit_ms": 50,
+    "max_retries": 8,
+    "initial_delay_ms": 500,
+    "max_delay_ms": 30000,
+    "circuit_breaker_threshold": 20,
+    "checkpoint_interval": 25
+  },
+  "output": {
+    "exhaust_dir": "$HOME/.cursor/data/hn",
+    "state_file": ".state.json",
+    "exhaust_files": ["hn_exhaust.json", "items_only.json", "users_only.json", "domains.json", "analysis.json"]
+  }
+}
