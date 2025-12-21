@@ -1,0 +1,58 @@
+{
+  "review_block_split": "data-hook=\"review\"",
+  "stars": {
+    "pattern": "(\\d+\\.?\\d*) out of 5 stars",
+    "max_offset": 2000
+  },
+  "title": {
+    "pattern": "data-hook=\"review(?:Title|title)\"[^>]*>.*?<span[^>]*>(.*?)</span>",
+    "max_offset": 3000,
+    "dotall": true
+  },
+  "date": {
+    "pattern": "data-hook=\"review-date\"[^>]*>(.*?)</span>",
+    "max_offset": 3000,
+    "dotall": true
+  },
+  "verified_marker": "Verified Purchase",
+  "author": {
+    "pattern": "class=\"a-profile-name\"[^>]*>(.*?)</span>",
+    "max_offset": 3000,
+    "dotall": true
+  },
+  "body": {
+    "patterns": [
+      "data-hook=\"reviewText\"[^>]*>.*?<span[^>]*>(.*?)</span>",
+      "data-hook=\"review-body\"[^>]*>.*?<span[^>]*>(.*?)</span>"
+    ],
+    "max_offset": 10000,
+    "dotall": true
+  },
+  "helpful": {
+    "pattern": "(\\d+)\\s+(?:people|person)\\s+found\\s+this\\s+helpful",
+    "max_offset": 5000
+  },
+  "pagination_next": {
+    "pattern": "class=\"a-last\"[^>]*>\\s*<a[^>]*href=\"([^\"]+)\""
+  },
+  "total_reviews": {
+    "pattern": "([\\d,]+)\\s+(?:global )?(?:ratings|reviews)"
+  },
+  "star_filter_map": {
+    "five_star": "five_star",
+    "four_star": "four_star",
+    "three_star": "three_star",
+    "two_star": "two_star",
+    "one_star": "one_star",
+    "positive": "positive",
+    "critical": "critical"
+  },
+  "sort_map": {
+    "recent": "recent",
+    "helpful": "helpful"
+  },
+  "reviewer_type_map": {
+    "verified": "avp_only_reviews",
+    "all": "all_reviews"
+  }
+}
