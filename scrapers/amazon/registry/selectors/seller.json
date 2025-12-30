@@ -1,0 +1,30 @@
+{
+  "seller_name": {
+    "pattern": "id=\"seller-name\"[^>]*>([^<]+)",
+    "alt_pattern": "id=\"sellerName\"[^>]*>([^<]+)"
+  },
+  "seller_rating": {
+    "pattern": "(\\d+)%\\s+positive"
+  },
+  "feedback_count": {
+    "pattern": "([\\d,]+)\\s+(?:total )?ratings"
+  },
+  "business_name": {
+    "pattern": "Business Name.*?<span[^>]*>(.*?)</span>",
+    "dotall": true
+  },
+  "business_address": {
+    "pattern": "Business Address.*?<span[^>]*>(.*?)</span>",
+    "dotall": true
+  },
+  "seller_id_from_url": {
+    "patterns": [
+      "seller=([A-Z0-9]+)",
+      "me=([A-Z0-9]+)"
+    ]
+  },
+  "product_count": {
+    "pattern": "([\\d,]+)\\s+results"
+  }
+}
+
