@@ -1,0 +1,10 @@
+{
+  "_meta": { "domain": "npmjs.com", "apis": ["registry.npmjs.org", "api.npmjs.org"] },
+  "entrypoints": {
+    "npm_py": {
+      "path": "scripts/npmcli.py",
+      "subcommands": ["search", "info", "versions", "downloads", "deps", "exhaust"]
+    }
+  },
+  "intel_files": ["registry/endpoints.json", "registry/schemas.json"]
+}

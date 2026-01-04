@@ -1,0 +1,31 @@
+{
+  "version": "1.0",
+  "package_full": {
+    "keys": ["_id", "_rev", "name", "dist-tags", "versions", "time", "bugs", "license", "homepage", "keywords", "repository", "description", "maintainers", "readme", "readmeFilename"],
+    "dist_tags": {"latest": "string", "next": "string (optional)", "canary": "string (optional)"},
+    "versions": "object keyed by semver -> version metadata",
+    "time": "object keyed by semver -> ISO8601 publish timestamp",
+    "maintainers": [{"name": "string", "email": "string"}]
+  },
+  "version_metadata": {
+    "keys": ["name", "version", "keywords", "license", "_id", "maintainers", "homepage", "bugs", "dist", "main", "engines", "exports", "gitHead", "_npmUser", "repository", "dependencies", "devDependencies", "peerDependencies"],
+    "dist": {"tarball": "URL to .tgz", "shasum": "SHA1", "integrity": "SHA512 SRI hash", "fileCount": "int", "unpackedSize": "int bytes"}
+  },
+  "search_result": {
+    "objects": [{"package": {"name": "string", "version": "string", "description": "string", "keywords": ["string"], "date": "ISO8601", "links": {"npm": "URL", "homepage": "URL", "repository": "URL"}, "publisher": {"username": "string", "email": "string"}, "maintainers": [{"username": "string", "email": "string"}]}, "score": {"final": "float", "detail": {"quality": "float", "popularity": "float", "maintenance": "float"}}, "searchScore": "float"}],
+    "total": "int",
+    "time": "string"
+  },
+  "downloads_point": {
+    "downloads": "int total",
+    "start": "YYYY-MM-DD",
+    "end": "YYYY-MM-DD",
+    "package": "string"
+  },
+  "downloads_range": {
+    "downloads": [{"downloads": "int", "day": "YYYY-MM-DD"}],
+    "start": "YYYY-MM-DD",
+    "end": "YYYY-MM-DD",
+    "package": "string"
+  }
+}
