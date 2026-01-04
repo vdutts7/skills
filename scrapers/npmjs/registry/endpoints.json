@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "hosts": {
+    "registry": {"base": "https://registry.npmjs.org", "purpose": "package metadata, search"},
+    "downloads": {"base": "https://api.npmjs.org", "purpose": "download statistics"}
+  },
+  "endpoints": {
+    "package_full": {"method": "GET", "path": "/{package}", "host": "registry", "returns": "full package metadata with all versions", "accept": "application/json"},
+    "package_abbreviated": {"method": "GET", "path": "/{package}", "host": "registry", "returns": "abbreviated metadata (install-relevant only)", "accept": "application/vnd.npm.install-v1+json"},
+    "version": {"method": "GET", "path": "/{package}/{version}", "host": "registry", "returns": "single version metadata"},
+    "search": {"method": "GET", "path": "/-/v1/search", "host": "registry", "params": {"text": "query string", "size": "results per page (max 250)", "from": "offset for pagination", "quality": "weight 0-1", "popularity": "weight 0-1", "maintenance": "weight 0-1"}, "returns": "search results with total count"},
+    "downloads_point": {"method": "GET", "path": "/downloads/point/{period}/{package}", "host": "downloads", "periods": ["last-day", "last-week", "last-month", "YYYY-MM-DD:YYYY-MM-DD"], "returns": "total downloads for period"},
+    "downloads_range": {"method": "GET", "path": "/downloads/range/{period}/{package}", "host": "downloads", "returns": "daily download counts for period"}
+  },
+  "auth": "none",
+  "rate_limits": "undocumented but generous",
+  "notes": {
+    "any_path_is_package": "registry.npmjs.org treats every path as a package name lookup",
+    "scoped_packages": "scoped packages use /@scope%2fpackage (URL-encoded slash)",
+    "full_vs_abbreviated": "full metadata can be 7MB+ for large packages; abbreviated is 40-60% smaller"
+  }
+}
