@@ -1,0 +1,46 @@
+{
+  "item_block": {
+    "pattern": "id=\"gridItemRoot\"[^>]*>",
+    "alt_pattern": "class=\"zg-grid-general-faceout\"[^>]*>",
+    "alt2_pattern": "data-asin=\"([A-Z0-9]{10})\""
+  },
+  "rank": {
+    "pattern": "class=\"zg-bdg-text\"[^>]*>#?(\\d+)",
+    "alt_pattern": "class=\"a-badge-text\"[^>]*>#?(\\d+)"
+  },
+  "title": {
+    "pattern": "class=\"_cDEzb_p13n-sc-css-line-clamp-[^\"]*\"[^>]*>(.*?)</",
+    "alt_pattern": "class=\"p13n-sc-truncate[^\"]*\"[^>]*>(.*?)</",
+    "dotall": true
+  },
+  "price": {
+    "pattern": "class=\"_cDEzb_p13n-sc-price[^\"]*\"[^>]*>([^<]+)",
+    "alt_pattern": "class=\"a-color-price\"[^>]*>\\s*<span[^>]*>([^<]+)"
+  },
+  "rating": {
+    "pattern": "class=\"a-icon-alt\"[^>]*>(\\d+\\.?\\d*)\\s+out of"
+  },
+  "review_count": {
+    "pattern": "class=\"a-size-small\"[^>]*>([\\d,]+)"
+  },
+  "image": {
+    "pattern": "src=\"(https://[^\"]*images-amazon[^\"]+)\""
+  },
+  "asin_from_link": {
+    "pattern": "/dp/([A-Z0-9]{10})"
+  },
+  "category_links": {
+    "pattern": "<li[^>]*>\\s*<a[^>]*href=\"(/gp/bestsellers/[^\"]+)\"[^>]*>([^<]+)</a>",
+    "find_all": true
+  },
+  "next_page": {
+    "pattern": "class=\"a-last\"[^>]*>\\s*<a[^>]*href=\"([^\"]+)\""
+  },
+  "feed_paths": {
+    "best": "bestsellers",
+    "new": "new-releases",
+    "movers": "movers-and-shakers",
+    "wished": "most-wished-for",
+    "gifted": "most-gifted"
+  }
+}

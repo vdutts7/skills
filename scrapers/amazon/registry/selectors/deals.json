@@ -1,0 +1,33 @@
+{
+  "deal_card": {
+    "pattern": "class=\"a-cardui dcl-product\"",
+    "_note": "goldbox uses dcl-product cards, not DealCard-module"
+  },
+  "title": {
+    "pattern": "class=\"dcl-truncate dcl-product-label\"[^>]*>\\s*<span>([^<]+)</span>",
+    "alt_pattern": "alt=\"([^\"]{10,})\"",
+    "dotall": true
+  },
+  "price_current": {
+    "pattern": "class=\"a-offscreen\">([^<]+)</span>",
+    "_note": "first a-offscreen in the card is the current price"
+  },
+  "price_original": {
+    "pattern": "dcl-product-price-old[^>]*>.*?class=\"a-offscreen\">([^<]+)",
+    "dotall": true
+  },
+  "discount": {
+    "pattern": "(\\d+)%\\s*off"
+  },
+  "deal_badge": {
+    "pattern": "_badgeMessage[^>]*>.*?<span[^>]*>([^<]+)</span>",
+    "dotall": true
+  },
+  "image": {
+    "pattern": "class=\"[^\"]*dcl-dynamic-image\"[^>]*src=\"([^\"]+)\""
+  },
+  "asin_from_link": {
+    "pattern": "/dp/([A-Z0-9]{10})"
+  }
+}
+
