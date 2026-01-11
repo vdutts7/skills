@@ -1,0 +1,274 @@
+{
+  "_about": "Redfin stingray API registry. Recon: 2026-05-09.",
+  "_cross_ref": {
+    "skill": "SKILL.md",
+    "script": "scripts/redfin-stingray.py"
+  },
+  "base_url": "https://www.redfin.com/stingray/api",
+  "endpoints": {
+    "gis": {
+      "path": "/gis",
+      "method": "GET",
+      "auth": "none",
+      "returns": "JSON (prefixed with {}&&)",
+      "fields_per_listing": 122,
+      "params": {
+        "al": {
+          "type": "int",
+          "default": 1
+        },
+        "market": {
+          "type": "string",
+          "required": true,
+          "ref": "#markets"
+        },
+        "num_homes": {
+          "type": "int",
+          "default": 350,
+          "max_tested": 350
+        },
+        "page_number": {
+          "type": "int",
+          "default": 1
+        },
+        "region_id": {
+          "type": "int",
+          "required": true,
+          "ref": "#markets"
+        },
+        "region_type": {
+          "type": "int",
+          "required": true,
+          "ref": "#region_types"
+        },
+        "sf": {
+          "type": "string",
+          "default": "1,2,3,5,6,7"
+        },
+        "status": {
+          "type": "int",
+          "default": 1,
+          "ref": "#status_codes"
+        },
+        "uipt": {
+          "type": "string",
+          "default": "1,2,3,4,5,6,7,8",
+          "ref": "#property_types"
+        },
+        "v": {
+          "type": "int",
+          "default": 8
+        },
+        "ord": {
+          "type": "string",
+          "default": "redfin-recommended-asc"
+        }
+      },
+      "response": {
+        "prefix": "{}&&",
+        "strip": "raw[4:] if raw.startswith('{}&&') else raw",
+        "shape": "{ version, errorMessage, resultCode, payload: { homes[], dataSources[], searchMedian } }"
+      }
+    },
+    "gis_csv": {
+      "path": "/gis-csv",
+      "method": "GET",
+      "auth": "none",
+      "returns": "text/csv",
+      "params": "same as #endpoints.gis",
+      "columns": [
+        "SALE TYPE",
+        "SOLD DATE",
+        "PROPERTY TYPE",
+        "ADDRESS",
+        "CITY",
+        "STATE OR PROVINCE",
+        "ZIP OR POSTAL CODE",
+        "PRICE",
+        "BEDS",
+        "BATHS",
+        "LOCATION",
+        "SQUARE FEET",
+        "LOT SIZE",
+        "YEAR BUILT",
+        "DAYS ON MARKET",
+        "$/SQUARE FEET",
+        "HOA/MONTH",
+        "STATUS",
+        "NEXT OPEN HOUSE START TIME",
+        "NEXT OPEN HOUSE END TIME",
+        "URL",
+        "SOURCE",
+        "MLS#",
+        "FAVORITE",
+        "INTERESTED",
+        "LATITUDE",
+        "LONGITUDE"
+      ]
+    }
+  },
+  "home_fields": {
+    "identifiers": [
+      "mlsId",
+      "propertyId",
+      "listingId",
+      "dataSourceId",
+      "marketId"
+    ],
+    "price": [
+      "price.value",
+      "hoa.value"
+    ],
+    "property": [
+      "sqFt.value",
+      "pricePerSqFt.value",
+      "lotSize.value",
+      "beds",
+      "baths",
+      "fullBaths",
+      "partialBaths",
+      "yearBuilt.value"
+    ],
+    "location": [
+      "streetLine.value",
+      "unitNumber.value",
+      "city",
+      "state",
+      "zip",
+      "postalCode.value",
+      "countryCode",
+      "location.value",
+      "latLong.value.latitude",
+      "latLong.value.longitude"
+    ],
+    "status": [
+      "mlsStatus",
+      "searchStatus",
+      "dom.value",
+      "timeOnRedfin.value",
+      "soldDate"
+    ],
+    "agents": [
+      "listingAgent.name",
+      "listingAgent.redfinAgentId",
+      "listingBroker.name",
+      "listingBroker.isRedfin",
+      "coAgent"
+    ],
+    "content": [
+      "listingRemarks",
+      "keyFacts",
+      "listingTags",
+      "sashes"
+    ],
+    "media": [
+      "photos",
+      "alternatePhotosInfo",
+      "additionalPhotosInfo",
+      "photoFormat",
+      "hasVirtualTour",
+      "hasVideoTour",
+      "has3DTour"
+    ],
+    "meta": [
+      "url",
+      "isRedfin",
+      "isNewConstruction",
+      "isHot",
+      "propertyType",
+      "uiPropertyType",
+      "listingType",
+      "timeZone"
+    ],
+    "provenance": "payload.dataSources[0].name"
+  },
+  "markets": {
+    "nyc": {
+      "region_id": 30749,
+      "region_type": 6,
+      "city": "New York"
+    },
+    "sfar": {
+      "region_id": 17534,
+      "region_type": 6,
+      "city": "San Francisco"
+    },
+    "socal": {
+      "region_id": 11203,
+      "region_type": 6,
+      "city": "Los Angeles"
+    },
+    "chi": {
+      "region_id": 29470,
+      "region_type": 6,
+      "city": "Chicago"
+    },
+    "bos": {
+      "region_id": 1826,
+      "region_type": 6,
+      "city": "Boston"
+    },
+    "mia": {
+      "region_id": 11458,
+      "region_type": 6,
+      "city": "Miami"
+    },
+    "sea": {
+      "region_id": 16163,
+      "region_type": 6,
+      "city": "Seattle"
+    },
+    "atl": {
+      "region_id": 10313,
+      "region_type": 6,
+      "city": "Atlanta"
+    },
+    "dal": {
+      "region_id": 30794,
+      "region_type": 6,
+      "city": "Dallas"
+    },
+    "den": {
+      "region_id": 11093,
+      "region_type": 6,
+      "city": "Denver"
+    },
+    "aus": {
+      "region_id": 30818,
+      "region_type": 6,
+      "city": "Austin"
+    }
+  },
+  "discover_market": "redfin.com/city/NNNNN/STATE/City -> NNNNN=region_id, region_type=6",
+  "region_types": {
+    "1": "neighborhood",
+    "2": "zip",
+    "5": "county",
+    "6": "city",
+    "8": "state"
+  },
+  "status_codes": {
+    "1": "active",
+    "9": "sold"
+  },
+  "property_types": {
+    "1": "house",
+    "2": "condo",
+    "3": "townhouse",
+    "4": "multi-family",
+    "5": "land",
+    "6": "other",
+    "7": "mobile",
+    "8": "co-op"
+  },
+  "anti_scrape": {
+    "waf": "none",
+    "auth": "none",
+    "rate_limit": "none observed",
+    "captcha": "none",
+    "json_prefix": "{}&&",
+    "required_headers": {
+      "User-Agent": "any browser UA"
+    }
+  }
+}
