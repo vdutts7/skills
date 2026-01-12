@@ -1,0 +1,17 @@
+{
+  "product": "https://www.amazon.com/dp/{asin}",
+  "search": "https://www.amazon.com/s?k={query}",
+  "category_browse": "https://www.amazon.com/s?rh=n%3A{node_id}",
+  "category_nav": "https://www.amazon.com/gp/site-directory",
+  "bestsellers": "https://www.amazon.com/gp/bestsellers/{dept}/",
+  "new_releases": "https://www.amazon.com/gp/new-releases/{dept}/",
+  "movers": "https://www.amazon.com/gp/movers-and-shakers/{dept}/",
+  "most_wished": "https://www.amazon.com/gp/most-wished-for/{dept}/",
+  "most_gifted": "https://www.amazon.com/gp/most-gifted/{dept}/",
+  "reviews_page": "https://www.amazon.com/dp/{asin}/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews",
+  "reviews_filtered": "https://www.amazon.com/dp/{asin}/ref=cm_cr_arp_d_paging_btm_next_{page}?ie=UTF8&reviewerType={reviewer_type}&pageNumber={page}&sortBy={sort}&filterByStar={star}",
+  "seller_products": "https://www.amazon.com/s?me={seller_id}",
+  "seller_profile": "https://www.amazon.com/sp?seller={seller_id}",
+  "deals": "https://www.amazon.com/deals",
+  "deals_filtered": "https://www.amazon.com/deals?ref=nav_cs_gb&deals-widget=%257B%2522version%2522%253A1%252C%2522viewIndex%2522%253A0%252C%2522presetId%2522%253A%2522deals-collection-all-702955F2-DD0F-4D3C-88CD-D48B5B84F856%2522%257D"
+}
