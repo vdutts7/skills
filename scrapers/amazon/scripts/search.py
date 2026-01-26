@@ -266,4 +266,3 @@ def cmd_category(args):
         log("+", f"written to {args.output}")
     else:
         print(out)
-
