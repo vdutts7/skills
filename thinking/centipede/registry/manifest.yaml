@@ -1,0 +1,16 @@
+ns: centipede
+mode: sequential_digestion
+direction: cross_domain_synthesis
+stop_condition: novel_substrate_crystallizes
+not: refinement_of_existing_findings
+
+purpose: "Sequential digestion chain. Each persona eats the previous one's output and excretes a deeper substrate. The product is something none of the inputs could produce alone."
+
+entry_points:
+  - read registry/metaphor.yaml - what the chain IS (and isn't)
+  - read registry/triggers.yaml - when it fires + asymptote signals
+  - read registry/phases.yaml - 4-phase execution (inventory → form → digest → crystallize)
+  - read registry/chain-dynamics.yaml - momentum, phase transitions, subspace, termination
+  - read registry/errors.yaml - 5 failure modes and forced fixes
+  - read registry/composability.yaml - pairs_with mirror/deep-research/subspace/yaml-workflow
+  - read registry/example.yaml - origin case

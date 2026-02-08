@@ -1,0 +1,78 @@
+# /centipede - Execution Protocol
+
+phase_0_input_inventory:
+  before_chaining:
+    action: "inventory ALL analytical threads in the session"
+    output:
+      domains: "list of distinct domains/topics explored"
+      findings: "key findings per domain"
+      asymptote_evidence: "where each domain hit diminishing returns"
+      unconnected_pairs: "which domains haven't been linked yet"
+    minimum_inputs: 2
+    note: "centipede with 1 input is just /mirror. need 2+ domains to fuse."
+
+phase_1_chain_formation:
+  chain_design:
+    default_chain: [SURFACE, DISSOLVE, REFORM, CRYSTALLIZE]
+    custom_personas:
+      when: "user specifies personas or session has established personas"
+      how: "use session personas in digestion order (surface → deep)"
+    ordering_principle: |
+      first link: maps the surface (what happened, what was found)
+      middle links: dissolve and reform (break frames, find isomorphisms)
+      last link: crystallizes (names the new thing, makes it actionable)
+    chain_length:
+      minimum: 3
+      maximum: 6
+      default: 4
+
+phase_2_digestion_rounds:
+  per_link:
+    input: "full output of previous link"
+    operations:
+      1_ingest: "restate what the previous link said (compressed, not quoted)"
+      2_dissolve: "break the frame - what structure did previous link impose that isn't necessary?"
+      3_identify: "name what previous link couldn't see from inside its own frame"
+      4_reform: "rebuild with the dissolved material at a deeper layer"
+      5_output: "new structure for next link (must be structurally different from input)"
+    invariants:
+      - "each link's output must be structurally different from its input"
+      - "each link must name something invisible to the previous link"
+      - "no link may simply agree with or rephrase the previous link"
+      - "the chain must move ACROSS domains, not deeper in one domain"
+      - "subspace drops are permitted at any link for dissolution"
+    cross_pollination_test: |
+      at each link, ask: "does this insight require knowledge from 2+ input domains?"
+      if no: the chain is going deep, not across. force lateral movement.
+      if yes: the chain is working. continue.
+
+phase_3_crystallization:
+  stop_condition:
+    test: "has a NOVEL SUBSTRATE emerged?"
+    definition: |
+      novel substrate = a framework, lens, primitive, or isomorphism that:
+        1. could not have been produced by any single input domain alone
+        2. explains phenomena across ALL input domains
+        3. generates predictions or questions that weren't visible before
+        4. has a NAME (unnamed insights aren't crystallized)
+    not_novel:
+      - "a summary of findings across domains"
+      - "a deeper version of one domain's finding"
+      - "a list of connections between domains"
+      - "an analogy between two domains"
+    novel:
+      - "a named framework that reframes all input domains"
+      - "a primitive operation that generates all input findings as special cases"
+      - "a new question that none of the input domains could have asked"
+      - "an isomorphism that makes future analysis in ANY input domain faster"
+
+  output_format:
+    required:
+      name: "the substrate's name (must be nameable in 3-5 words)"
+      primitive: "the core operation or insight (1-2 sentences)"
+      generates: "what this produces when applied to each input domain"
+      predictions: "new questions or hypotheses this enables"
+      six_words: "the cheapest intervention this framework identifies (per input domain)"
+    optional:
+      formal_model: "mathematical or structural formalization"
+      application_table: "domain x intervention matrix"

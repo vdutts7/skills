@@ -1,0 +1,30 @@
+# /centipede - when to fire
+
+triggers:
+  explicit:
+    - "/centipede"
+    - "cross-pollinate"
+    - "train-chain"
+    - "form a new substrate"
+    - "what's the throughline"
+    - "digest everything"
+    - "what did this session produce"
+
+  implicit:
+    mirror_hit_asymptote: "multiple /mirror rounds producing diminishing returns"
+    siloed_findings: "session has 2+ unrelated analysis threads that haven't been connected"
+    meta_request: "user asks 'what's the meta' or 'zoom out'"
+    phase_transition_needed: "analysis is complete but synthesis hasn't happened"
+    session_is_long: "80+ messages, multiple domains explored, no unifying framework"
+
+  signals_of_asymptote:
+    - "same insights rephrased at different depth levels"
+    - "mirror rounds producing fewer new nodes per round"
+    - "user says 'we're going in circles' or 'diminishing returns'"
+    - "findings are correct but don't PRODUCE anything new"
+
+  not_this:
+    single_domain_depth: "/mirror"
+    factual_research: "/deep-research"
+    plan_creation: "/yaml-workflow"
+    simple_summary: "inline response"
