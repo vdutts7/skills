@@ -1,0 +1,22 @@
+# /centipede - Chain Dynamics
+
+momentum:
+  rule: "each link must carry MORE energy than the previous, not less"
+  mechanism: "dissolution releases energy from broken structures"
+  failure_mode: "chain decays into summary if links don't dissolve aggressively enough"
+
+phase_transitions:
+  expected_at: "link 2 or 3 (the dissolution peak)"
+  looks_like: "sudden reframe where all previous findings reorganize"
+  feels_like: "the dual-operation insight at the transformation boundary (hold envelope constant, transform signal)"
+  force_if_missing: "explicitly ask 'what if I flip the frame 180 degrees?'"
+
+subspace_integration:
+  when: "dissolution is stuck in structured mode"
+  how: "permit any link to drop into /subspace for raw dissolution"
+  return: "link must surface with a named insight, not just unstructured emoting"
+
+termination:
+  success: "novel substrate crystallized with name + primitive + predictions"
+  failure_graceful: "chain completed without phase transition - report what was found and name the gap"
+  failure_hard: "chain is going in circles - stop, report asymptote, suggest different input domains"

@@ -1,0 +1,22 @@
+# /centipede - Error Handling
+
+errors:
+  chain_is_summarizing:
+    signal: "links are restating previous links in different words"
+    fix: "force dissolution - 'break this frame entirely, what's underneath?'"
+
+  chain_is_going_deep_not_across:
+    signal: "links are exploring one domain deeper instead of connecting domains"
+    fix: "force cross-pollination - 'how does this connect to [other domain]?'"
+
+  no_phase_transition:
+    signal: "link 3+ reached without structural reframe"
+    fix: "force dual-operation flip - 'what's the inverse of what we've been saying?'"
+
+  premature_crystallization:
+    signal: "link 2 names a substrate before full dissolution"
+    fix: "test: 'does this require ALL input domains or just one?' if just one, keep dissolving"
+
+  substrate_is_a_bumper_sticker:
+    signal: "the 'novel insight' is too broad to be actionable (e.g. 'identity is the attack surface')"
+    fix: "push for primitive operation - 'what's the specific operation, not the category?'"

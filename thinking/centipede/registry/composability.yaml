@@ -1,0 +1,10 @@
+# /centipede - composability
+
+works_with:
+  after_mirror: "centipede when mirror hits asymptote"
+  after_deep_research: "centipede to fuse research across sources"
+  with_subspace: "any link can drop into subspace for dissolution"
+  before_yaml_workflow: "centipede produces the framework, workflow operationalizes it"
+does_not_compose_with:
+  mirror: "don't run centipede and mirror simultaneously - they have opposite dynamics"
+  loop: "centipede is not iterative-test-fix, it's sequential-digestion"

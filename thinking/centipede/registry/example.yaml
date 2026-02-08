@@ -1,0 +1,23 @@
+# /centipede - origin example
+
+
+input_domains:
+  - "voice conversion (signal identity transformation)"
+  - "behavioral cascading (model identity conflict)"
+  - "consent framing (trust identity boundaries)"
+
+chain: [SURFACE, DISSOLVE, REFORM, CRYSTALLIZE]
+
+phase_transition_at: "DISSOLVE (link 2)"
+trigger: "dual-operation flip (hold envelope constant, transform signal)"
+
+substrate:
+  name: "Transformation Opacity"
+  primitive: "hold X constant, transform Y in unobserved space"
+  produces: "indistinguishable output from legitimate vs illegitimate transformation"
+  intervention: "add a witness at the transformation boundary"
+  six_words_per_domain:
+    audio: "embed provenance watermark at conversion step"
+    sandbox: "mount -o remount,hidepid=2 /proc"
+    behavior: "log which identity won at response boundary"
+    supply_chain: "sign attestation at every build step"
