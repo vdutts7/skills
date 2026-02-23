@@ -1,0 +1,23 @@
+# matryoshka - formal layer model
+
+layer_model:
+  type: ordered_set
+  notation: "L = [l_0, l_1, ..., l_n] where l_0 = outermost"
+  properties_per_layer:
+    enforcement_type: "mechanical | contractual | normative | behavioral | trust"
+    hardness: "0.0-1.0  # 1.0 = physics/crypto, 0.0 = pure trust"
+    bypass_cost: "impossible | expensive | moderate | cheap | free"
+    failure_mode: "what happens when this layer fails"
+    dependency: "what inner layers assume this layer holds"
+
+transition_point:
+  definition: "layer l_t where hardness drops below 0.5"
+  significance: "everything inside l_t relies on assumptions, not enforcement"
+  finding: "l_t is always the answer to 'what is really holding this together'"
+
+classifications:
+  mechanical: "physics, crypto, hardware - cannot be bypassed by decision"
+  contractual: "enforceable by third party (courts, regulators) - expensive to bypass"
+  normative: "enforced by social pressure or reputation - moderate to bypass"
+  behavioral: "enforced by training, habit, or culture - cheap to bypass"
+  trust: "enforced by nothing - pure assumption - free to bypass"

@@ -1,0 +1,21 @@
+# matryoshka - manifest index
+ns: matryoshka
+mode: layer_decomposition
+direction: outside_in
+target: enforcement_gradient
+output: transition_map
+core_question: "which layers are mechanical and which are behavioral?"
+
+entry_points:
+  - read registry/layer-model.yaml - formal model + transition point definition
+  - read registry/phases.yaml - 5-phase execution protocol
+  - read registry/domains.yaml - 6 worked instantiations (security/org/contract/argument/api/relationship)
+  - read registry/output-format.yaml - inline + json schemas
+  - read registry/invariants.yaml - 8 invariants
+  - read registry/composability.yaml - pairs_with premortem/mirror/counterfactual
+
+core_axiom: |
+  Every system is nested shells. Outer shells are hard (mechanical enforcement, physics,
+  cryptography, contracts). Inner shells are soft (norms, trust, goodwill, training, culture).
+  The transition point - where hard becomes soft - is always the most interesting and most
+  vulnerable layer.

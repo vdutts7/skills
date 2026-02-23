@@ -1,0 +1,35 @@
+# matryoshka - 5-phase execution protocol
+
+phase_1_identify:
+  name: shell_enumeration
+  action: "list every containment/enforcement layer from outside in"
+  output: "ordered list L with properties per layer"
+  rule: "enumerate exhaustively before analyzing - miss nothing"
+
+phase_2_classify:
+  name: hardness_gradient
+  action: "score each layer's enforcement type and bypass cost"
+  output: "gradient map showing hardness dropoff"
+  key_question: "is this layer enforced mechanically or by assumption?"
+
+phase_3_transition:
+  name: find_the_seam
+  action: "identify the layer where hardness drops below 0.5"
+  output: "the transition point and what depends on it"
+  key_finding: "everything inside this layer is assumption-dependent"
+  secondary_finding: "the failure mode of this layer cascades to all inner layers"
+
+phase_4_stress:
+  name: stress_the_seam
+  action: "ask what happens if the transition layer fails"
+  output: "cascade analysis - which inner layers collapse"
+  questions:
+    - "if this layer's assumption is wrong, what breaks?"
+    - "who/what is trusted at this layer, and have they been tested?"
+    - "is the trust calibrated (evidence-based) or default (never questioned)?"
+    - "what would it cost to harden this layer one notch?"
+
+phase_5_map:
+  name: deliver_the_nesting
+  output: "visual or structured representation of the full gradient"
+  format: "outermost → innermost with hardness scores and transition marked"
