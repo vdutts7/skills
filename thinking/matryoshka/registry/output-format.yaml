@@ -1,0 +1,20 @@
+# matryoshka - output formats
+
+inline:
+  format: |
+    SHELL [hardness] enforcement_type - description
+    ...
+    >>> TRANSITION POINT <<<
+    ...
+    CORE [hardness] enforcement_type - description
+  annotate: "mark transition with >>>"
+  stress: "what breaks if transition layer fails"
+
+if_user_asks_to_save:
+  format: JSON
+  schema:
+    _meta: "{target_system, layer_count, transition_depth, date}"
+    layers: "[{depth, name, hardness, enforcement_type, bypass_cost, depends_on}]"
+    transition: "{layer, hardness, what_it_assumes, cascade_if_fails}"
+    stress_test: "{scenario, layers_that_collapse, blast_radius}"
+    hardening_options: "[{layer, current_hardness, achievable_hardness, cost}]"

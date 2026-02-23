@@ -1,0 +1,58 @@
+# matryoshka - domain instantiations (worked examples of layer enumeration)
+
+security_architecture:
+  layers:
+    - hypervisor/hardware isolation
+    - network segmentation
+    - "OS-level controls (seccomp, caps, MAC)"
+    - application-level auth
+    - input validation
+    - model/agent behavioral constraints
+  typical_transition: "OS → application (most systems trust app code)"
+
+organizational:
+  layers:
+    - "legal/regulatory (law, licenses, contracts)"
+    - "financial (budgets, approval chains)"
+    - "structural (reporting lines, access controls)"
+    - "process (SOPs, checklists, reviews)"
+    - "cultural (norms, expectations, values)"
+    - "individual (judgment, goodwill, competence)"
+  typical_transition: "process → cultural (most orgs trust culture beyond SOPs)"
+
+contractual:
+  layers:
+    - "jurisdiction (which courts, which law)"
+    - "contract terms (enforceable clauses)"
+    - "dispute resolution (arbitration, mediation)"
+    - "relationship norms (implicit expectations)"
+    - "goodwill (trust the other party means well)"
+  typical_transition: "dispute resolution → norms (most contracts rely on never being tested)"
+
+argument_belief:
+  layers:
+    - "formal logic (provable, mathematical)"
+    - "empirical evidence (measurable, repeatable)"
+    - "expert consensus (authoritative but revisable)"
+    - "intuition/heuristic (useful but unfalsifiable)"
+    - "assumption (unexamined, taken as given)"
+  typical_transition: "consensus → intuition"
+
+api_integration:
+  layers:
+    - "TLS/encryption (transport security)"
+    - "authentication (identity verification)"
+    - "authorization (permission model)"
+    - "rate limiting (abuse prevention)"
+    - "input validation (data integrity)"
+    - "semantic trust (trusting the caller intent)"
+  typical_transition: "rate limiting → input validation"
+
+relationship:
+  layers:
+    - "legal (marriage, custody, restraining orders)"
+    - "financial (shared accounts, prenups)"
+    - "social (reputation, mutual friends)"
+    - "emotional (attachment, history, loyalty)"
+    - "assumption (they would not do that)"
+  typical_transition: "social → emotional"

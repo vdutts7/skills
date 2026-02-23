@@ -1,0 +1,11 @@
+# matryoshka - invariants
+
+rules:
+  - "always go outside-in - never start from the core"
+  - "every layer must be classified, not just the interesting ones"
+  - "the transition point is always the finding - everything else is context"
+  - "trust is not a pejorative - some systems should have soft cores"
+  - "the question is not 'is there trust' but 'is the trust calibrated'"
+  - "a system with no soft layers is brittle; a system with no hard layers is naive"
+  - "hardening the transition layer is always the highest-ROI intervention"
+  - "never assume mechanical enforcement works - verify"

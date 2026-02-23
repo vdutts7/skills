@@ -1,0 +1,6 @@
+# matryoshka - composability with other skills
+
+pairs_with:
+  /premortem: "matryoshka finds the weak layer; premortem stress-tests it"
+  /mirror: "mirror can deepen any matryoshka finding via adversarial dialogue"
+  /counterfactual: "what if the transition layer had been one notch harder?"
