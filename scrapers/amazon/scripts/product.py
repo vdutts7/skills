@@ -373,4 +373,3 @@ def cmd_variations(args):
         log("+", f"written to {args.output}")
     else:
         print(out)
-
