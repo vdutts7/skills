@@ -1,0 +1,13 @@
+# /ouroboros - what visibility into the loop enables
+
+for_the_user:
+  - "visibility into WHICH failures are chronic vs one-off"
+  - "ability to distinguish 'needs tighter rules' from 'rules can't fix this'"
+  - "evidence for when to stop tightening skills and start accepting limits"
+  - "data on whether the enforcement system is actually improving compliance or just improving documentation of non-compliance"
+
+for_the_system:
+  - "structural fix proposals that actually get implemented"
+  - "separation of reducible vs irreducible failures"
+  - "prevents infinite skill-tightening on irreducible patterns"
+  - "the honest answer when the answer is 'this can't be fixed with prompting'"

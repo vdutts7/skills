@@ -1,0 +1,8 @@
+# /ouroboros - invariants
+
+rules:
+  - "never use ouroboros to excuse a failure ('it's irreducible so whatever')"
+  - "irreducible means 'can't fix with prompting' not 'don't bother trying'"
+  - "the structural fix proposal is MANDATORY, even if the answer is 'none exists'"
+  - "the loop is real. naming it doesn't break it. structural changes might."
+  - "if Claude catches itself in the loop: that's self-catch, not ouroboros. ouroboros is the PATTERN of self-catching and still failing."

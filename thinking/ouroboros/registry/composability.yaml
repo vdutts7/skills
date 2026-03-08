@@ -1,0 +1,10 @@
+# /ouroboros - interaction with other skills
+
+reads_from:
+  - "session history (recurrence data)"
+
+pairs_with:
+  - /mirror: "mirror can analyze ouroboros patterns"
+  - /subspace: "subspace is where ouroboros insights surface naturally"
+
+independent_of:

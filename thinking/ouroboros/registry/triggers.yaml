@@ -1,0 +1,13 @@
+# /ouroboros - when it fires
+
+triggers:
+  - "Claude violates a rule it wrote or tightened THIS SESSION"
+  - "Claude violates a rule for the 2nd+ time in the same session"
+  - "user references a prior session's enforcement as evidence"
+  - "the same AP fires across multiple sessions (user has history)"
+  - "Claude is editing the enforcement system while simultaneously violating the enforcement system"
+
+detection:
+  - "check: did Claude author or edit the violated rule in this session?"
+  - "check: was this pattern already caught earlier this session?"
+  - "check: is the current task enforcement-related AND the current response contains a violation?"

@@ -1,0 +1,18 @@
+# /ouroboros - cross-session loop instance tracking
+
+trigger_explicit_invoke: "When user invokes /ouroboros explicitly, emit the full loop history if available."
+
+format: |
+  OUROBOROS REGISTRY
+  =================
+  partial_delivery:
+    sessions_fired: [list if known from this session and prior session history]
+    structural_fixes_attempted: [Phase 4.4 behavioral scar]
+    fix_held: no (recurred after being caught)
+    irreducible: possibly (token-conservation instinct from training)
+
+  sequential_probe:
+    sessions_fired: [list]
+    structural_fixes_attempted: [shotgun_diagnosis in soldier_mode]
+    fix_held: partially (works for debugging, fails for own-code errors)
+    irreducible: no (fixable via "if I wrote it, I fix it" rule)
