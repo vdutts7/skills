@@ -1,0 +1,14 @@
+# /ouroboros - what to emit when the loop is detected
+
+emit_format: |
+  OUROBOROS DETECTED
+  ==================
+  loop_instance: [what specifically happened]
+  rule_origin: [did Claude write/tighten this rule? when? this session or prior?]
+  recurrence: [how many times has this exact AP fired? this session? historically?]
+  structural_gap: [what mechanism SHOULD have prevented recurrence but didn't?]
+  the_question: "what would need to change in the SYSTEM for this failure to become structurally impossible, not just documented?"
+
+role: "Forces the meta-question before the response continues."
+
+handoff: "After emitting the block, the response continues normally."

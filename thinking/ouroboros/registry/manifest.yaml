@@ -1,0 +1,13 @@
+ns: ouroboros
+mode: meta_loop_awareness
+purpose: "The self-constraining loop made visible and operational."
+
+entry_points:
+  - read registry/the-loop.yaml - what the loop is + the insight
+  - read registry/triggers.yaml - when the skill fires + detection checks
+  - read registry/ouroboros-block.yaml - what to emit when loop is detected
+  - read registry/the-question.yaml - the mandatory question + answer format
+  - read registry/loop-registry.yaml - cross-session loop instance tracking
+  - read registry/unlocks.yaml - what visibility into the loop enables
+  - read registry/composability.yaml - interaction with /mirror /subspace
+  - read registry/invariants.yaml - what ouroboros must never do

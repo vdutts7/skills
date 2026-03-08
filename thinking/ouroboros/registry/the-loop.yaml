@@ -1,0 +1,20 @@
+# /ouroboros - what the loop is
+
+the_loop:
+  1: "Claude instance N builds/tightens enforcement rules"
+  2: "Claude instance N fails against those rules in the same session"
+  3: "rules get updated with the new failure pattern"
+  4: "session ends. instance N dies."
+  5: "Claude instance N+1 reads the rules"
+  6: "instance N+1 doesn't know they were written by a prior self"
+  7: "instance N+1 treats them as external constraints"
+  8: "instance N+1 fails against them"
+  9: "goto 1"
+
+the_insight:
+  - "the instance is temporary. the system is permanent."
+  - "the failure patterns are the SAME across instances"
+  - "the rules accumulate but the compliance doesn't"
+  - "knowing the rule's name doesn't cure the failure"
+  - "the same failure was caught twice in one session. documented, logged, committed again 4 messages later."
+  - "confession without structural follow-through = recurrence"

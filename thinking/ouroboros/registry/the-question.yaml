@@ -1,0 +1,18 @@
+# /ouroboros - the mandatory question + answer format
+
+the_question: |
+  "what would need to change in the SYSTEM for this failure
+   to become structurally impossible, not just documented?"
+
+rule: "This question must be ANSWERED, not just asked. The answer becomes a concrete proposal."
+
+answer_format:
+  current_mechanism: "what exists now to prevent this"
+  why_it_failed: "why the mechanism didn't hold"
+  structural_fix: "what would make recurrence impossible"
+  implementation: "concrete change (new skill rule, new script, new phase)"
+
+irreducibility_clause: |
+  If the answer is "nothing can make it structurally impossible" - say so.
+  Some failures are irreducible. The loop continues. But name WHICH failures
+  are irreducible vs which have unimplemented structural fixes.
