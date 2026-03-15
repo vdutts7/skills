@@ -1,0 +1,33 @@
+ns: premortem
+mode: prospective_hindsight_failure_analysis
+
+purpose: |
+  A premortem is the opposite of a postmortem. Instead of figuring out what went wrong
+  after something fails, you imagine it already failed and figure out why before you start.
+
+provenance: |
+  The method comes from psychologist Gary Klein. He published it in Harvard Business
+  Review. Daniel Kahneman called it his single most valuable decision-making technique.
+  Google, Goldman Sachs, and Procter & Gamble all use it before major decisions.
+
+core_insight: |
+  When you ask people "what could go wrong?" they give you cautious, hedged answers.
+  When you say "this already failed, tell me why," their brains switch into narrative
+  mode and generate way more specific, creative, honest reasons. Researchers at Wharton
+  and Cornell called this "prospective hindsight" and found it significantly increases
+  the ability to identify causes of future outcomes.
+
+why_for_ai: |
+  Claude defaults to agreeable, optimistic responses. If you ask "is this a good plan?"
+  it will find reasons to say yes. The premortem breaks this pattern by forcing the
+  frame into "this is dead, explain how it died." Claude stops looking for reasons your
+  plan will work and starts explaining how it fell apart.
+
+entry_points:
+  - read registry/when-to-run.yaml - good vs bad premortem targets
+  - read registry/context-gathering.yaml - 3-step minimum-bar protocol
+  - read registry/session-flow.yaml - 6-step session (frame / failures / deep-dives / synthesis / report / transcript)
+  - read registry/output-format.yaml - HTML report + transcript + chat summary
+  - read registry/example.yaml - product-launch worked case
+  - read registry/important-notes.yaml - parallel deep-dives, no sugarcoating, concrete revisions
+  - read registry/temporal-triad.yaml - premortem (before) vs execution sequencing vs retrospective

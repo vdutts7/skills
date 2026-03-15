@@ -1,0 +1,83 @@
+# /premortem - how a premortem session works
+
+step_1_set_the_frame:
+  rule: "After gathering sufficient context, set the premortem frame explicitly."
+  example_phrasing: |
+    "OK, I have enough context. Let's run the premortem. Here's the premise: it's 6 months
+    from now. [The plan/launch/decision] has failed. It's done. We're looking back and trying
+    to understand what went wrong."
+  why: |
+    This framing matters. It shifts the mode from "evaluate this plan" (which triggers
+    agreeable responses) to "explain why this died" (which triggers honest, specific
+    failure identification).
+
+step_2_generate_failure_reasons:
+  rule: "Run the raw premortem as a single comprehensive analysis. No prescribed categories, no lenses, no constraints. Just the core Klein method:"
+  prompt: |
+    "This plan has failed 6 months from now. Generate every genuine reason it could
+    have died. Be comprehensive. Be specific. Ground every reason in the actual details
+    of the plan. Don't pad with weak reasons and don't stop early if there are more."
+  output: |
+    A comprehensive list of failure reasons, each stated in 1-2 sentences. Be honest
+    and thorough. Some plans might have 4 genuine failure modes. Others might have 9.
+    The number should be whatever is real for this specific plan.
+  each_reason_must_be:
+    - "Specific to this plan (not generic advice that applies to anything)"
+    - "Grounded in actual details the user provided"
+    - "A genuine threat (not a minor inconvenience or an extremely unlikely edge case)"
+
+step_3_deep_dive_agents:
+  rule: "Take every failure reason from step 2 and spawn one sub-agent per reason, all in parallel."
+
+  sub_agent_prompt_template: |
+    You are an investigator in a premortem analysis. You've been assigned one specific
+    failure reason to analyze in depth.
+
+    The plan:
+    ---
+    [full context: what it is, who it's for, what success looks like, plus relevant workspace context]
+    ---
+
+    [followed by the per-agent failure-reason assignment + the deliverable shape:
+     failure story, underlying assumption, early warning signs]
+
+    3. EARLY WARNING SIGNS: 1-2 concrete, observable signals the user could watch for that
+       would indicate this failure mode is starting to play out. These should be things you
+       can actually see or measure, not vague feelings.
+
+    Keep the total response under 300 words. Be direct. Don't hedge. Don't sugarcoat.
+
+  claude_ai_adaptation: |
+    Since Claude.ai doesn't have subagents, run each deep-dive sequentially yourself.
+    Use the same prompt template mentally for each failure reason - adopt the
+    investigator frame, go deep on each one independently, and produce the same
+    structured output (failure story, underlying assumption, early warning signs)
+    for every failure reason.
+
+step_4_synthesis:
+  rule: "After all agents complete (or all sequential deep-dives are done), read every deep-dive and produce the synthesis:"
+  report_sections:
+    most_likely_failure: "Which failure scenario is most probable given what you know about the plan? Why? This is the one the user should focus on first."
+    most_dangerous_failure: "Which failure scenario would cause the most damage if it happened, even if it's less likely? This is the one worth insuring against."
+    hidden_assumption: "Across all the failure analyses, what's the single biggest assumption the user is making that they probably haven't questioned? This is often where the real value of the premortem lives: the thing that's so obvious to the user that they forgot it was an assumption."
+    revised_plan: 'Based on the failure scenarios, what specific changes would make the plan more resilient? Be concrete. Don''t say "consider your pricing." Say "test pricing at $X with 20 people before committing to it publicly." Each revision should map directly to a specific failure scenario.'
+    pre_launch_checklist: "3-5 specific things the user should verify, test, or put in place before executing. Each one should prevent or detect one of the failure modes identified."
+
+step_5_generate_report:
+  file_template: "premortem-report-[timestamp].html"
+  design_principles:
+    - "Dark background (#0a0e1a or similar), clean typography, easy to scan"
+    - "The synthesis section (most likely failure, most dangerous failure, hidden assumption, revised plan, checklist) should be prominently displayed at the top since that's what most people will read first"
+    - "One visual card per failure reason showing the deep-dive analysis. Each card should display the failure reason as a header, the failure story, the underlying assumption, and the early warning signs. Use distinct accent colors for each card so they're visually scannable."
+    - "A clear visual indicator of severity/likelihood for each failure mode"
+    - "The round-robin visual: show the number of agents that ran and their findings as a grid or card layout, so the user can see the full scope of the premortem at a glance"
+    - "Footer with timestamp and what was premortemed"
+  open: "Open the HTML file after generating it."
+
+step_6_save_transcript:
+  file_template: "premortem-transcript-[timestamp].md"
+  contents:
+    - "The context that was gathered (what, who, success criteria)"
+    - "The raw premortem failure reasons"
+    - "All agent deep-dives"
+    - "The full synthesis"

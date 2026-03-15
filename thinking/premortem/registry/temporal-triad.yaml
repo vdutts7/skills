@@ -1,0 +1,15 @@
+# /premortem - temporal position
+
+position:
+  now: "YOU ARE HERE: assume the plan already failed. Reconstruct why."
+  later: "sequencing how to execute the revised plan is a different frame. Do it after, not during."
+  after_the_fact: "what we learned once it shipped is a retrospective. Not this skill."
+
+do_not_blend:
+  - "premortem assumes future failure"
+  - "execution sequencing assumes the plan is live"
+  - "retrospective assumes the plan already ran"
+  - "mixing frames produces hedged, useless output"
+
+after_synthesis:
+  offer: "if they want an execution order for the revised plan, sequence it as a separate pass. Do not blend it into the premortem."
