@@ -1,0 +1,13 @@
+# /premortem - output format
+# Every premortem session produces two files.
+
+files:
+  - "premortem-report-[timestamp].html   # visual report for scanning"
+  - "premortem-transcript-[timestamp].md # full transcript for reference"
+
+user_sees: "The HTML report first. The transcript is there if they want to dig deeper into the reasoning behind each failure scenario."
+
+chat_summary: |
+  Also provide a concise summary in the chat: the most likely failure, the hidden
+  assumption, and the single most important revision to the plan. Three sentences max.
+  The report has the full details.

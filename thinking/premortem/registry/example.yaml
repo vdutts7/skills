@@ -1,0 +1,27 @@
+# /premortem - worked example: premortming a product launch
+
+user_input: |
+  "premortem this: I'm about to launch a $297 live workshop on how to use Claude Cowork
+   for marketing teams. 50 seats. Targeting marketing managers at companies with 10-50
+   employees."
+
+raw_premortem_identifies_6_failure_reasons:
+  - "Marketing managers at this company size need approval to spend $297 on professional development, adding friction you haven't accounted for"
+  - "'Claude Cowork for marketing' is a tool-specific pitch in a market where most managers are still figuring out whether AI is relevant to them at all"
+  - "The audience that actually buys might be solopreneurs, not team managers, creating a mismatch between content and attendees"
+  - "Building a workshop for marketing teams requires demo environments with realistic marketing data and multi-seat setups, which takes 5 weeks of prep, not the 2 you budgeted"
+  - "If 60% of attendees are solopreneurs, your reviews and case studies won't resonate with the marketing manager audience you need for future cohorts"
+  - "At $297 with 50 seats, the max revenue is $14,850, which may not justify the prep time against other revenue opportunities"
+
+then: "6 agents go deep on each reason independently, producing failure stories, underlying assumptions, and early warning signs."
+
+synthesis: |
+  Most likely failure is the audience mismatch: you're targeting people who need approval
+  to spend $297, which adds friction you haven't accounted for. Most dangerous failure:
+  attracting solopreneurs instead of team managers means your case studies and testimonials
+  won't resonate with the actual target buyer for future cohorts, compounding the problem
+  over time. Hidden assumption: you're assuming "marketing managers at 10-50 person
+  companies" is a reachable audience, but these people don't self-identify that way and
+  don't hang out in the same places. Revised plan: run a $47 pilot session for 20 people
+  first. Use that to identify whether your actual buyers are team managers or solopreneurs,
+  and build the full workshop for whoever actually shows up.

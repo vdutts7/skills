@@ -1,0 +1,11 @@
+# /premortem - important notes
+
+notes:
+  - "Always spawn all failure agents in parallel. Sequential spawning wastes time and lets earlier responses influence later ones. (In Claude.ai where parallel isn't possible, mentally reset between each deep-dive to avoid contamination.)"
+  - "Always set the premortem frame explicitly. 'This has already failed' is the psychological mechanism that makes this work. Without it, the analysis defaults to polite risk assessment instead of honest failure identification."
+  - "Be comprehensive but not padded. Find every genuine failure reason. Don't stop at 3 if there are 7. But don't force 7 if there are only 3. The number should be whatever is real for this specific plan."
+  - "The synthesis is the product. Most users will read the synthesis and skim the individual failure cards. Make the synthesis specific and actionable."
+  - "Don't sugarcoat. The whole point of a premortem is to tell the user things they don't want to hear before reality does. If a plan has serious problems, say so directly."
+  - "The revised plan must be concrete. Don't say 'consider testing your pricing.' Say 'run a $47 pilot with 20 people before committing to the full $297 workshop.' Every revision should be something the user can actually do this week."
+  - "Respect the minimum context threshold. Running a premortem on insufficient context produces generic failures that waste the user's time. It's better to ask one more question than to produce a bad premortem."
+  - "This is not the LLM Council. The council gives multiple perspectives on a decision right now. The premortem sends Claude into the future where the decision already failed and works backward to explain why. Different psychological mechanism, different output. If the user seems to want multiple perspectives rather than failure analysis, suggest the council instead."

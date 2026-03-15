@@ -1,0 +1,35 @@
+# /premortem - context gathering (the minimum bar)
+# A premortem is only as good as the context it runs on. Vague input produces vague
+# failure scenarios that help nobody.
+
+step_1_scan_for_existing_context:
+  rule: "Before asking the user anything, look for context that's already available"
+  A_current_conversation: |
+    The user may have been discussing a plan, a launch, a product, or a decision earlier
+    in this session. Read back through the conversation and extract whatever's relevant.
+  B_workspace:
+    files_to_scan:
+      - "CLAUDE.md or claude.md (business context, preferences, constraints)"
+      - "Any memory/ folder (audience profiles, business details, past decisions)"
+      - "Files the user explicitly referenced or attached"
+      - "Any project files, briefs, or plans that relate to the thing being premortemed"
+    tools: "Use Glob and quick Read calls. Don't spend more than 30 seconds on this."
+
+step_2_evaluate_context_sufficiency:
+  rule: "After scanning, check whether you have enough to run a useful premortem"
+  required:
+    what_is_it: "A clear understanding of the thing being premortemed (a product, a launch, a hire, a pricing change, a strategy). You need to be able to describe it back to the user in one sentence."
+    who_is_it_for: "The audience, the customer, the team, the stakeholders. Failure scenarios depend heavily on who's involved."
+    what_does_success_look_like: "What outcome is the user hoping for? Failure is defined by inverting success. If you don't know what success means, you can't define what failure means."
+
+step_3_fill_gaps_conversationally:
+  if_all_three_known: "proceed immediately to the premortem. Don't ask unnecessary questions."
+  if_missing: |
+    Ask for the most important missing piece first. One question at a time. Evaluate
+    after each answer whether you now have enough. Keep asking until the threshold is
+    met, but never ask more than you need.
+  focused_questions:
+    - "What specifically are you about to launch/build/decide? (if you don't know what it is)"
+    - "Who is this for? (if you know the plan but not the audience)"
+    - "What does a win look like for this? (if you know the plan and audience but not the success criteria)"
+  rule: "Conversational, not interrogative. If you can infer an answer from context, do that instead of asking."

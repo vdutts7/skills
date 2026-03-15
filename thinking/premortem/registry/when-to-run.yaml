@@ -1,0 +1,16 @@
+# /premortem - when to run
+
+good_targets:
+  - "A product or feature you're about to build"
+  - "A launch plan with money or reputation on the line"
+  - "A pricing change or business model shift"
+  - "A hire you're about to make"
+  - "A strategy or positioning pivot"
+  - "A partnership or deal you're evaluating"
+  - "Any commitment where the cost of being wrong is high"
+
+bad_targets:
+  - "Vague ideas with no concrete plan yet (help them plan first, then premortem)"
+  - "Questions with one right answer (just answer them)"
+  - "Requests for creative feedback on a draft (that's editing, not a premortem)"
+  - "Decisions that are already made and irreversible (a premortem is only useful when you can still change course)"
