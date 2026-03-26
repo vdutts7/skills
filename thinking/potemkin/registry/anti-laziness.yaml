@@ -1,0 +1,31 @@
+# potemkin - anti-laziness enforcement (forbidden behaviors with signals + fixes)
+
+soft_fail:
+  description: "saying 'this might not be possible' without running the protocol"
+  signal: "modal verbs appearing before Phase 1 completes"
+  response: "return to Phase 0, complete capture, run Phase 1 before any probability estimate"
+
+constraint_vagueness:
+  description: "naming a constraint without classifying its type"
+  signal: "CONSTRAINT[n] lacks type tag"
+  response: "re-run step_1_classify before proceeding"
+
+skipped_lyapunov:
+  description: "accepting an iteration without checking L reduction"
+  signal: "s updated without L_new computed"
+  response: "recompute, reject if L_new >= L_current"
+
+phantom_loop:
+  description: "iterating on a PHANTOM constraint instead of removing it"
+  signal: "PHANTOM constraint appears in multiple iterations"
+  response: "remove from C immediately, recalculate V, update L"
+
+premature_infeasible:
+  description: "declaring INFEASIBLE before exhausting reparameterization moves"
+  signal: "INFEASIBLE declared with only one move attempted"
+  response: "check registry/potemkin.json#reparameterization_moves - exhaust all moves first"
+
+undeclared_exit:
+  description: "stopping iteration without Phase 4 declaration"
+  signal: "no FIXPOINT / INFEASIBLE / CYCLE / REFRAME output"
+  response: "mandatory - produce termination declaration before ending"

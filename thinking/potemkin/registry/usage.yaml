@@ -1,0 +1,14 @@
+# potemkin - invocation flags
+
+invocation:
+  - "/potemkin                              # potemkin the current blocking problem"
+  - "/potemkin --max-iter 5                 # cap at 5 iterations (default: 3)"
+  - "/potemkin --constraint 'named thing'   # seed Phase 1 with a known constraint"
+  - "/potemkin --state 'current attempt'    # seed Phase 0 with explicit current state"
+
+on_invoke_execution:
+  1_read: "registry/potemkin.json#math_foundations then registry/potemkin.json#constraint_types"
+  2_run: "python3 scripts/potemkin.py --state '<attempt>' [--constraint '<seed>'] [--max-iter N]"
+  3_validate: "python3 scripts/potemkin.py --validate '<agent output>'"
+  4_verify: "bash tests/smoke.sh"
+local_ship: "skill.sh ship potemkin"
