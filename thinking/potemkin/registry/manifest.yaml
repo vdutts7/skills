@@ -1,0 +1,22 @@
+# potemkin - manifest index
+ns: potemkin
+mode: constraint_reparameterization
+structure: deterministic
+deliverable: resolved_state | infeasible_declaration
+termination: fixpoint | collapse
+anti_laziness: structural  # skipping a phase = protocol violation, not a judgment call
+
+entry_points:
+  - read registry/phases.yaml - non-skippable Phase 0 → 4 protocol
+  - read registry/potemkin.json#math_foundations - CSP, Kleene fixed point, Lyapunov
+  - read registry/anti-laziness.yaml - forbidden shortcuts (soft_fail, vague constraints, etc.)
+  - read registry/decision-tree.yaml - invocation dispatch
+  - execute: bash scripts/potemkin.sh "$@"
+
+invariants:
+  - "every accepted iteration must reduce L (Lyapunov)"
+  - "iteration counter visible at all times"
+  - "no silent exits - Phase 4 declaration mandatory"
+  - "constraint must be classified with type before reparameterization"
+
+control_plane_contract: "SKILL.md routes; data plane (registry) holds definitions; do not duplicate."

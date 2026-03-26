@@ -1,0 +1,241 @@
+{
+  "_about": "Potemkin skill data plane. Math foundations, constraint taxonomy, state machine schema, termination limits, reparameterization move catalog.",
+  "_version": "1.0.0",
+  "_plane": "data",
+
+  "math_foundations": {
+    "_about": "Named mathematical frameworks this skill operationalizes. Agent reads these on Phase 0 load.",
+
+    "CSP": {
+      "full_name": "Constraint Satisfaction Problem",
+      "origin": "Artificial Intelligence - Montanari 1974, Mackworth 1977",
+      "definition": "Triple (X, D, C): X = variables, D = domains (possible values per variable), C = constraints (relations that must hold between variable assignments)",
+      "solution": "Assignment a: X → D such that every c ∈ C evaluates true under a",
+      "violation_function": "V(a, C) = { c ∈ C | c(a) = false } - the set of currently violated constraints",
+      "goal": "Find a* where V(a*, C) = ∅",
+      "how_potemkin_uses_it": "The blocked problem is modeled as a CSP. The solver's current attempt is an assignment a. Potemkin extracts V(a, C), names the violated constraints, and searches for a new assignment."
+    },
+
+    "Kleene_fixed_point": {
+      "full_name": "Kleene's Fixed-Point Theorem",
+      "origin": "Stephen Cole Kleene - Introduction to Metamathematics, 1952",
+      "definition": "For a monotone function F on a complete lattice (L, ≤), the least fixed point exists and equals the limit of iterating F from bottom: ⊥, F(⊥), F(F(⊥)), ...",
+      "fixed_point_condition": "F(x) = x - output equals input, no further change",
+      "convergence": "If F is monotone and the lattice is complete, iteration terminates at the least fixed point",
+      "how_potemkin_uses_it": "F = reparameterize(s, extract_violated(s, C)). Each iteration produces a tighter solution candidate. Iteration stops when F(s) = s (fixpoint, all constraints satisfied) or the domain collapses to ∅ (infeasible). Kleene guarantees this terminates if the constraint set is finite."
+    },
+
+    "Lyapunov_stability": {
+      "full_name": "Lyapunov Stability / Lyapunov Function",
+      "origin": "Aleksandr Lyapunov - The General Problem of the Stability of Motion, 1892",
+      "definition": "A scalar function L(s) defined on the state space such that L(s) > 0 for all non-equilibrium states and L decreases strictly along every trajectory: L(s_{n+1}) < L(s_n)",
+      "convergence_guarantee": "If such a function exists, the system must converge - it cannot cycle indefinitely",
+      "how_potemkin_uses_it": "L(s) = |V(s, C)| = count of violated constraints. Every accepted potemkin iteration must reduce this count. If an iteration produces L_new >= L_current, it is rejected - the solver cannot accept a move that doesn't reduce violations. This is the anti-loop enforcement mechanism.",
+      "why_it_matters": "Without a Lyapunov condition the agent can appear to be working while actually cycling. The strict decrease requirement makes looping structurally impossible - not a behavioral guideline."
+    }
+  },
+
+  "constraint_types": {
+    "BLOCKER": {
+      "definition": "Restricts the operation space - prevents a class of moves",
+      "identifies_as": [
+        "solver says 'I can't do X because of Y'",
+        "constraint prevents reaching goal via current approach",
+        "constraint is phrased as a prohibition"
+      ],
+      "reparameterization_moves": ["dual_route", "decompose", "relax"],
+      "common_trap": "assuming BLOCKER when constraint is actually RULER - check if constraint fixes a quantity before classifying"
+    },
+    "RULER": {
+      "definition": "Fixes a quantity or invariant - use as a tool, not an obstacle",
+      "identifies_as": [
+        "constraint specifies an exact value, total, or conserved quantity",
+        "constraint says 'X must equal Y' or 'total is Z'",
+        "constraint defines a boundary the solution must be within, not excluded from"
+      ],
+      "reparameterization_moves": ["use_invariant", "invert_goal", "interval_arithmetic"],
+      "common_trap": "ALT calls this same pattern - if potemkin cycles on a RULER, escalate to /ALT"
+    },
+    "HIDDEN": {
+      "definition": "Not stated explicitly - inferred from failure pattern",
+      "identifies_as": [
+        "solver fails without being able to identify why",
+        "every attempt hits the same wall with no stated reason",
+        "assumption embedded in problem framing that was never surfaced"
+      ],
+      "extraction_method": "inversion: what would have to be true for the current approach to be impossible?",
+      "reparameterization_moves": ["make_explicit", "check_consistency", "re_approach"],
+      "common_trap": "mistaking HIDDEN for PHANTOM - if removing the constraint resolves the block, it was PHANTOM not HIDDEN"
+    },
+    "PHANTOM": {
+      "definition": "Apparent constraint that dissolves on examination",
+      "identifies_as": [
+        "solver refuses to attempt something based on assumed impossibility",
+        "constraint was never stated but solver is behaving as if it exists",
+        "stated constraint doesn't actually apply to the current problem"
+      ],
+      "reparameterization_moves": ["remove_from_C", "verify_dissolution", "recalculate_L"],
+      "action": "remove immediately from C - do not reparameterize around a phantom"
+    }
+  },
+
+  "state_machine": {
+    "states": {
+      "ENTRY": {
+        "description": "Initial state. Problem and current solution attempt loaded.",
+        "transitions": ["PHASE_0_CAPTURE"]
+      },
+      "PHASE_0_CAPTURE": {
+        "description": "State locked down. Failure point identified. L_initial computed.",
+        "required_outputs": ["current_state", "failure_point", "L_initial", "iteration_count=0"],
+        "transitions": ["PHASE_1_EXTRACT"]
+      },
+      "PHASE_1_EXTRACT": {
+        "description": "Constraint classified and named.",
+        "required_outputs": ["CONSTRAINT_n_with_type"],
+        "transitions": {
+          "PHANTOM": "REMOVE_PHANTOM",
+          "BLOCKER|RULER|HIDDEN": "PHASE_2_REPARAMETERIZE"
+        }
+      },
+      "REMOVE_PHANTOM": {
+        "description": "Phantom removed from C. L recalculated.",
+        "transitions": {
+          "L == 0": "PHASE_4_FIXPOINT",
+          "L > 0": "PHASE_1_EXTRACT"
+        }
+      },
+      "PHASE_2_REPARAMETERIZE": {
+        "description": "New solution candidate s_prime generated.",
+        "required_outputs": ["s_prime_fully_specified"],
+        "transitions": {
+          "s_prime valid": "PHASE_3_ITERATE",
+          "all moves exhausted": "PHASE_4_INFEASIBLE"
+        }
+      },
+      "PHASE_3_ITERATE": {
+        "description": "F(s_prime) applied. Lyapunov checked.",
+        "required_outputs": ["L_new", "lyapunov_check"],
+        "transitions": {
+          "L_new < L_current": "LYAPUNOV_PASS",
+          "L_new >= L_current": "LYAPUNOV_FAIL"
+        }
+      },
+      "LYAPUNOV_PASS": {
+        "description": "Valid iteration. s and L updated.",
+        "transitions": {
+          "L == 0": "PHASE_4_FIXPOINT",
+          "domain empty": "PHASE_4_INFEASIBLE",
+          "iteration_count >= MAX_ITER": "PHASE_4_REFRAME",
+          "CONSTRAINT[n] == CONSTRAINT[n-2]": "PHASE_4_CYCLE",
+          "else": "PHASE_1_EXTRACT"
+        }
+      },
+      "LYAPUNOV_FAIL": {
+        "description": "Invalid iteration rejected. Return to Phase 2 with next move.",
+        "transitions": ["PHASE_2_REPARAMETERIZE"]
+      },
+      "PHASE_4_FIXPOINT": {
+        "description": "Terminal. All constraints satisfied.",
+        "required_outputs": ["s_star", "constraints_resolved", "iteration_count"]
+      },
+      "PHASE_4_INFEASIBLE": {
+        "description": "Terminal. Solution space empty or moves exhausted.",
+        "required_outputs": ["blocking_constraints", "what_attempted", "what_must_change"]
+      },
+      "PHASE_4_CYCLE": {
+        "description": "Terminal. Same constraint appearing without L reduction.",
+        "required_outputs": ["cycling_constraint", "why_cycling", "recommend: /ALT"]
+      },
+      "PHASE_4_REFRAME": {
+        "description": "Terminal. Max iterations reached with partial progress.",
+        "required_outputs": ["s_n_current", "remaining_violations", "convergence_assessment"]
+      }
+    },
+
+    "initial_state": "ENTRY",
+    "terminal_states": ["PHASE_4_FIXPOINT", "PHASE_4_INFEASIBLE", "PHASE_4_CYCLE", "PHASE_4_REFRAME"]
+  },
+
+  "reparameterization_moves": {
+    "dual_route": {
+      "applies_to": "BLOCKER",
+      "description": "Find operation sequence achieving same goal without triggering constraint",
+      "procedure": "enumerate goal-preserving operations, filter out those blocked by C, select first valid"
+    },
+    "decompose": {
+      "applies_to": "BLOCKER",
+      "description": "Break goal into sub-goals where constraint applies to only one sub-goal",
+      "procedure": "identify which component of goal triggers constraint, isolate it, satisfy other components independently"
+    },
+    "relax": {
+      "applies_to": "BLOCKER",
+      "description": "Identify which part of the goal can be relaxed while preserving core intent",
+      "procedure": "distinguish essential vs incidental properties of goal, attempt solution on essential properties only"
+    },
+    "use_invariant": {
+      "applies_to": "RULER",
+      "description": "Treat the fixed quantity as a computational tool",
+      "procedure": "extract the fixed quantity Q, express goal in terms of Q, derive solution directly"
+    },
+    "invert_goal": {
+      "applies_to": "RULER",
+      "description": "Restate goal in terms of the fixed quantity",
+      "procedure": "ask 'what assignment of variables, given Q is fixed, achieves the goal?'"
+    },
+    "interval_arithmetic": {
+      "applies_to": "RULER",
+      "description": "Compute what the fixed quantity implies for each variable's domain",
+      "procedure": "propagate constraint through variable domains, reduce domains to consistent intervals"
+    },
+    "make_explicit": {
+      "applies_to": "HIDDEN",
+      "description": "Add surfaced constraint to C, recompute domain",
+      "procedure": "state CONSTRAINT[n] formally, add to C, recalculate D given new C, verify satisfiability"
+    },
+    "check_consistency": {
+      "applies_to": "HIDDEN",
+      "description": "Verify new C is satisfiable after adding hidden constraint",
+      "procedure": "check for contradictions between CONSTRAINT[n] and existing C, if contradiction found escalate to INFEASIBLE"
+    },
+    "re_approach": {
+      "applies_to": "HIDDEN",
+      "description": "Generate new solution attempt under explicit C",
+      "procedure": "with all constraints now explicit, restart search in constrained space"
+    },
+    "remove_from_C": {
+      "applies_to": "PHANTOM",
+      "description": "Remove phantom constraint from C",
+      "procedure": "delete from C, recalculate V(s, C), update L"
+    },
+    "verify_dissolution": {
+      "applies_to": "PHANTOM",
+      "description": "Confirm constraint was phantom and not misclassified",
+      "procedure": "after removal, check if original failure signal persists - if yes, re-examine classification"
+    },
+    "recalculate_L": {
+      "applies_to": "PHANTOM",
+      "description": "Update Lyapunov count after phantom removal",
+      "procedure": "L_new = |V(s, C_minus_phantom)|"
+    }
+  },
+
+  "limits": {
+    "MAX_ITER": 3,
+    "MAX_REPARAMETERIZATION_ATTEMPTS": 3,
+    "override_flag": "--max-iter N",
+    "on_max_iter_exceeded": "PHASE_4_REFRAME - not INFEASIBLE unless domain is empty",
+    "cycle_detection_window": 2
+  },
+
+  "lyapunov": {
+    "function": "L(s) = |V(s, C)| = count of violated constraints",
+    "requirement": "L(s_{n+1}) < L(s_n) for every accepted iteration",
+    "on_violation": "reject s_{n+1}, return to PHASE_2_REPARAMETERIZE with next move",
+    "terminal_conditions": {
+      "L == 0": "FIXPOINT",
+      "domain_empty": "INFEASIBLE",
+      "cycle_detected": "CYCLE"
+    }
+  }
+}

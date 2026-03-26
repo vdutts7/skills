@@ -1,0 +1,133 @@
+# potemkin - execution phases (non-skippable, in order)
+
+phase_0_state_capture:
+  name: state_capture
+  before_touching_problem:
+    capture:
+      current_state: "what is the current solution attempt?"
+      stated_constraints: "what constraints were given explicitly?"
+      failure_signal: "what specifically failed or blocked? (not 'it didn't work' - exact point)"
+      iteration_count: 0
+      L_initial: "count of known violated constraints at entry"
+  mandatory_output:
+    - named current state
+    - named failure point
+    - initial L value
+    - iteration counter initialized
+  forbidden:
+    - skipping to Phase 2 without completing capture
+    - vague failure description ("it's not working")
+    - treating the block as final before running Phase 1
+
+phase_1_constraint_extraction:
+  name: constraint_extraction
+  warning: "The hardest phase. Do not proceed to Phase 2 without a named constraint."
+  protocol:
+    step_1_classify:
+      question: "is the blocking constraint BLOCKER, RULER, HIDDEN, or PHANTOM?"
+      method: "read registry/potemkin.json#constraint_types for classification rules"
+      output: "constraint_type: [type]"
+    step_2_surface:
+      for_HIDDEN:
+        - "what assumption is the solver making that's not in the stated constraints?"
+        - "what would have to be true for the current approach to work?"
+        - "invert: what would have to be false to make the current approach impossible?"
+      for_BLOCKER:
+        - "what operation does this constraint prevent?"
+        - "is there a dual operation that achieves the same goal without triggering it?"
+      for_RULER:
+        - "what quantity does this constraint fix?"
+        - "how does the fixed quantity constrain the solution space?"
+        - "is the fixed quantity an invariant we can compute from?"
+      for_PHANTOM:
+        - "state why it dissolves - what examination reveals it's not a real constraint"
+        - "remove it from C and re-check V(s, C)"
+    step_3_name:
+      output_format: "CONSTRAINT[n]: [type] - [precise statement of what the constraint is]"
+      mandatory: true
+      forbidden: "proceeding to Phase 2 without a named constraint"
+  mandatory_output:
+    - CONSTRAINT[n] named with type
+    - L_current recalculated after constraint identification
+    - "decision: proceed to Phase 2 | declare PHANTOM and remove | declare INFEASIBLE"
+
+phase_2_reparameterization:
+  name: reparameterization
+  rule: "Given the named constraint, find a new solution space that satisfies it."
+  protocol:
+    for_BLOCKER:
+      moves:
+        - dual_route: "find operation sequence achieving same goal without triggering constraint"
+        - decompose: "break goal into sub-goals where constraint applies to only one"
+        - relax: "find which part of the goal can be relaxed while preserving core intent"
+    for_RULER:
+      moves:
+        - use_invariant: "treat fixed quantity as a tool - build solution from it directly"
+        - invert_goal: "restate goal in terms of the fixed quantity"
+        - interval_arithmetic: "compute what the fixed quantity implies for each variable"
+    for_HIDDEN:
+      moves:
+        - make_explicit: "add surfaced constraint to C, recompute domain D"
+        - check_consistency: "verify new C is satisfiable - if not, early INFEASIBLE"
+        - re_approach: "generate new solution attempt under explicit C"
+  mandatory_checks:
+    - "new solution candidate s' must be fully specified, not gestured at"
+    - "s' must satisfy CONSTRAINT[n] - verify before proceeding to Phase 3"
+    - "if s' cannot be specified, declare STUCK and attempt second reparameterization move"
+  second_reparameterization:
+    trigger: "first move fails to produce valid s'"
+    protocol: "try next move in the list for this constraint type"
+    max_attempts: 3
+    on_exhaustion: "declare INFEASIBLE with explicit reason"
+
+phase_3_iteration:
+  name: iteration
+  rule: "Run the F operator. Track L. Enforce Lyapunov."
+  per_iteration:
+    1_apply: "apply F(s') - attempt to satisfy remaining violated constraints"
+    2_compute: "L_new = |V(F(s'), C)|"
+    3_check_lyapunov:
+      if_L_new_lt_L_current: "valid iteration - update s, L, increment counter"
+      if_L_new_gte_L_current: "INVALID ITERATION - do not accept s'; this move is rejected"
+    4_check_termination:
+      if_L_new_eq_0: "FIXPOINT - all constraints satisfied - proceed to Phase 4"
+      if_dom_empty: "INFEASIBLE - solution space collapsed"
+      if_iteration_count_gte_MAX_ITER: "read registry/potemkin.json#limits"
+      else: "return to Phase 1 with updated s"
+  invariants:
+    - "every accepted iteration must reduce L - no exceptions"
+    - "iteration counter must be visible at all times"
+    - "if the same constraint appears in two consecutive CONSTRAINT[n], that is a cycle - flag it"
+    - "cycle detection: if CONSTRAINT[n] == CONSTRAINT[n-2], abort to Phase 4 with CYCLE_DETECTED"
+
+phase_4_termination_declaration:
+  name: termination_declaration
+  rule: "No silent exits. Termination must be declared with full state."
+  termination_types:
+    FIXPOINT:
+      signal: "L == 0 and s is fully specified"
+      output:
+        - "solution s* stated explicitly"
+        - "all constraints in C verified as satisfied"
+        - "iteration count"
+        - "constraints encountered + how each was resolved"
+    INFEASIBLE:
+      signal: "solution space empty or second reparameterization exhausted"
+      output:
+        - "which constraint(s) caused collapse"
+        - "what was attempted"
+        - "what would need to change in C or D for a solution to exist"
+        - "do NOT say 'I can't do this' - say which constraint, exactly, is irreconcilable"
+    CYCLE_DETECTED:
+      signal: "same constraint appearing repeatedly without L reduction"
+      output:
+        - "the cycling constraint"
+        - "why reparameterization keeps returning to it"
+        - "recommended: escalate to /ALT (abstraction-level problem, not constraint-level)"
+    REFRAME_REQUIRED:
+      signal: "after MAX_ITER, L > 0 but progress is real"
+      output:
+        - "current best state s_n"
+        - "remaining violated constraints"
+        - "assessment: is continued iteration likely to converge?"
+        - "if not: declare and hand off - do not keep grinding"

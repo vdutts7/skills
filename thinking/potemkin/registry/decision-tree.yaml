@@ -1,0 +1,43 @@
+# potemkin - decision tree on invocation
+
+on_invoke:
+  1_run_phase_0: "capture state, failure point, L_initial"
+  2_run_phase_1: "extract and name constraint with type"
+
+constraint_is_PHANTOM:
+  action: "remove from C, recalculate L, return to Phase 1"
+
+constraint_is_HIDDEN_BLOCKER_RULER:
+  action: "run Phase 2 reparameterization"
+
+reparameterization_produces_s_prime:
+  action: "run Phase 3 iteration"
+
+lyapunov_violated:
+  action: "reject iteration, return to Phase 2 with new move"
+
+L_reaches_0:
+  action: "Phase 4 FIXPOINT declaration"
+
+L_not_0_moves_exhausted:
+  action: "Phase 4 INFEASIBLE declaration"
+
+same_constraint_twice:
+  action: "Phase 4 CYCLE_DETECTED - recommend /ALT"
+
+max_iter_reached_with_progress:
+  action: "Phase 4 REFRAME_REQUIRED"
+
+adjacent_skills:
+  ALT:
+    when: "CYCLE_DETECTED - solver is stuck at wrong abstraction level, not wrong constraint"
+    handoff: "declare cycle, surface constraint, recommend /ALT with constraint as input"
+  mirror:
+    when: "FIXPOINT reached - use /mirror to analyze what the discovered constraint set reveals"
+    handoff: "optional, user-invoked - potemkin does not auto-trigger mirror"
+
+wrong_tool:
+  depth: "/mirror"
+  abstraction: "/ALT"
+  exploration: "/drift"
+  unstructured: "/subspace"
