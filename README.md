@@ -15,6 +15,11 @@ Scripts > prose.
 
 **Thinking**
 - [mirror](thinking/mirror/) - N-round adversarial self-dialogue
+- [centipede](thinking/centipede/) - sequential cross-domain digestion
+- [matryoshka](thinking/matryoshka/) - nested trust-layer peeling
+- [ouroboros](thinking/ouroboros/) - strange-loop audit
+- [premortem](thinking/premortem/) - prospective hindsight
+- [potemkin](thinking/potemkin/) - constraint extraction
 
 **Voice**
 - [humanize](voice/humanize/) - anti-AI-tell output pass
