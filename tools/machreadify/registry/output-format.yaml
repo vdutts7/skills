@@ -1,0 +1,7 @@
+# /machreadify - output format
+
+rules:
+  - "Lead with the structured block(s), not explanatory prose."
+  - "If multiple formats produced, group by type with a minimal label."
+  - "If a separate file is warranted, state the filename and content."
+  - "Do not re-explain what was converted - the structured output is self-evident."

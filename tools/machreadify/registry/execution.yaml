@@ -1,0 +1,14 @@
+# /machreadify - Execution steps
+
+steps:
+  1_identify_targets: |
+    Identify all conversion targets in the input - scan for tables, lists,
+    instructions, configs, CLI steps, decision logic, metadata.
+  2_select_format: "Per target using format-selection.yaml table."
+  3_select_scope: "inline if <20 lines and one-off; separate file otherwise."
+  4_convert: |
+    Apply the appropriate conversion target rule. Strip filler words, collapse
+    redundant prose, use placeholders for variable values.
+  5_output: |
+    Return converted blocks with a brief human note only where genuinely needed
+    (gotchas, non-obvious constraints). No preamble, no postamble.

@@ -1,0 +1,11 @@
+# /machreadify - conversion targets
+
+mapping:
+  prose_table:        "json_array | yaml_list"
+  instruction_list:   yaml_workflow
+  config_example:     "json | yaml"
+  decision_logic:     "yaml_matrix | bash_cascade  # see structured_skill when agent-executable"
+  metadata:           frontmatter
+  cli_steps:          bash_script
+  policy_lists:       json
+  http_client_order:  json
