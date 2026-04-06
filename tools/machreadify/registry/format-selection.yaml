@@ -1,0 +1,6 @@
+# /machreadify - format selection
+
+table:
+  configs_manifests_state_schemas: JSON
+  workflows_processes_pipelines_instructions: YAML
+  one_liners_cli_sequences_scripts: bash

@@ -1,0 +1,11 @@
+ns: machreadify
+mode: prose_to_structured_data
+purpose: "prose → structured data, maximize machine-parseable %"
+
+entry_points:
+  - read registry/format-selection.yaml - content type → target format table
+  - read registry/scope-selection.yaml - inline vs separate-file rule
+  - read registry/conversion-targets.yaml - prose_table → json_array, instruction_list → yaml_workflow, etc.
+  - read registry/principles.yaml - bash primitives over prose; yaml/json over NL
+  - read registry/execution.yaml - 6-step conversion procedure
+  - read registry/output-format.yaml - lead with structured block, no preamble

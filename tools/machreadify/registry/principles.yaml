@@ -1,0 +1,10 @@
+# /machreadify - principles
+
+rules:
+  - "bash primitives over prose (grep, jq, cut, awk)"
+  - "yaml/json over natural language"
+  - "templates with placeholders over descriptions"
+  - "explicit over inferred"
+
+preserve_as_prose: |
+  Only keep prose for: context, gotchas, human-only notes. Everything else converts.

@@ -1,0 +1,4 @@
+# /machreadify - scope selection
+
+inline: "<20 lines, one-off"
+separate_file: ">20 lines, reusable"
