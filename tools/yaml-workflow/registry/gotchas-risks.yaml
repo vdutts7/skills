@@ -1,0 +1,11 @@
+# /yaml-workflow - Gotchas and Risks
+# Do NOT bury warnings in step prose. Surface them explicitly:
+
+template: |
+  gotchas:
+    - id: gc-1
+      note: "describe the footgun"
+  risks:
+    - id: risk-1
+      note: "describe the risk"
+      mitigation: "what to do"

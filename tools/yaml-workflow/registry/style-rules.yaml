@@ -1,0 +1,9 @@
+# /yaml-workflow - Style Rules
+
+rules:
+  - "Keys from the skeleton key inventory; no ad-hoc top-level keys"
+  - "YAML over prose everywhere; templates over descriptions"
+  - "Dense and explicit: no stub sections, no 'TBD', no vague action prose"
+  - "Same density as reference examples (not an outline)"
+  - "Nest deeply when it reduces ambiguity; keep flat when steps are truly linear"
+  - "id fields on every step, phase, stage node"

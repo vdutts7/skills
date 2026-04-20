@@ -1,0 +1,12 @@
+# /yaml-workflow - Config Isolation
+# When the workflow has placeholders, secrets, or machine-varying paths:
+
+rules:
+  - "Put ALL placeholders in a separate config file (e.g. migration-config.yaml)"
+  - "Reference from workflow via _ref, _prime, or _source keys"
+  - "Never inline secrets or machine paths in the workflow itself"
+  - "Document env vars ($ACTIVE_CAMPAIGN, workspace root, etc.) in the config file"
+
+trigger_for_separate_config: |
+  user says "isolate config", "no inline secrets", or the content contains
+  paths/tokens/env-specific values.
