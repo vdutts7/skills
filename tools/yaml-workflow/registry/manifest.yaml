@@ -1,0 +1,19 @@
+ns: yaml-workflow
+mode: prose_to_terse_yaml_workflow
+purpose: |
+  Convert prose, bullets, or described tasks into a terse, nested, granularly-detailed,
+  densely-packed YAML workflow. Analogue to *.config.json but for plans - sloppy prose
+  → terse, focused, actionable, machine-readable YAML.
+
+entry_points:
+  - read registry/skeleton-selection.yaml - 5 shapes (flow/phases/pipeline/meta_phases/leaf_phase)
+  - read registry/required-structure.yaml - id/version/shape/goal + phases|steps|pipeline + gotchas/risks
+  - read registry/step-schema.yaml - id + cmd OR action + verification
+  - read registry/config-isolation.yaml - when to split config file out
+  - read registry/gotchas-risks.yaml - surface at top level not buried
+  - read registry/handoff-execution.yaml - handoff_instructions + execution_order
+  - read registry/plans-of-plans.yaml - skeleton_meta_phases nesting
+  - read registry/output-and-plans-copy.yaml - plans/<id>.yaml + provenance
+  - read registry/style-rules.yaml - density, explicitness, key discipline
+  - read registry/meta-patterns.yaml - common triggers → shape mapping
+  - read registry/execution-checklist.yaml - pre-output gate

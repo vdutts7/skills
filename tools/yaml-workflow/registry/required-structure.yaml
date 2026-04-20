@@ -1,0 +1,16 @@
+# /yaml-workflow - Required Structure (all shapes)
+
+template: |
+  id: <kebab-case-id>
+  version: "1.0"
+  shape: <chosen_skeleton_shape>
+  goal: <one-line goal statement>
+
+  # Then one of:
+  phases: [...]      # skeleton_phases / skeleton_meta_phases
+  steps: [...]       # skeleton_flow / skeleton_leaf_phase
+  pipeline: [...]    # skeleton_pipeline
+
+  # Always include when relevant:
+  gotchas: [...]
+  risks: [...]

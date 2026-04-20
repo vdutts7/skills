@@ -1,0 +1,11 @@
+# /yaml-workflow - Skeleton Selection
+# Pick ONE skeleton shape that best fits user intent.
+
+shapes:
+  skeleton_flow:        "Linear steps, simple task, minimal nesting"
+  skeleton_phases:      "Multi-phase project, each phase has steps"
+  skeleton_pipeline:    "Input→transform→output chain; stages are sequential"
+  skeleton_meta_phases: "Plans-of-plans; each phase owns a nested workflow"
+  skeleton_leaf_phase:  "Single phase within a larger workflow tree"
+
+default_when_unsure: skeleton_phases

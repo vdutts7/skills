@@ -1,0 +1,8 @@
+# /yaml-workflow - Step Schema
+# Every step/action node must have:
+
+step_node: |
+  - id: <step-id>               # required; kebab-case
+    cmd: <shell command>        # for shell steps
+    action: <prose action>      # for non-shell steps (use cmd OR action, not both)
+    verification: <how to confirm success>   # include when checkable
