@@ -1,0 +1,8 @@
+# /yaml-workflow - Output and Plans Copy
+# After generating the workflow:
+
+rules:
+  1: "The workflow file is the primary deliverable"
+  2: "Also provide a copy path: {workspace}/plans/<workflow-id>.yaml ({workspace} = project root; create plans/ dir if needed)"
+  3: "If workspace is a git repo - add provenance via /add-provenance (injects source: block with remote, local_dir, provider, repo_name)"
+  4: "If not a repo - omit provenance or add minimal source: {local_dir: {workspace}}"

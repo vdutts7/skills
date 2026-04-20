@@ -1,0 +1,16 @@
+# /yaml-workflow - Plans-of-Plans (skeleton_meta_phases)
+# For deeply nested workflows:
+
+template: |
+  workflow_tree:
+    root: <this-workflow-id>
+    children:
+      - id: <child-workflow-id>
+        path: plans/<child-workflow-id>.yaml
+        shape: skeleton_leaf_phase
+
+  # Each child referenced in phases:
+  phases:
+    - id: phase-1
+      nested_workflow_ref: plans/child-workflow.yaml
+      _see: plans/child-workflow.yaml

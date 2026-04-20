@@ -1,0 +1,20 @@
+# /yaml-workflow - Meta-Patterns (common triggers → shape)
+
+patterns:
+  formalize_agreed_plan:
+    trigger: "That sounds good… clean plan of how to implement this right now"
+    shape: "skeleton_meta_phases | skeleton_pipeline"
+    include: handoff_instructions
+
+  config_isolation_no_impl:
+    trigger: "detailed yaml workflow… dont start implementing… isolate config… placeholders"
+    shape: "one workflow + one config file"
+
+  plans_of_plans_handoff:
+    trigger: "deeply nested… high level plan… nested /yaml-workflow… graph/tree… hand off"
+    shape: "skeleton_meta_phases + execution_order + workflow_tree"
+
+  plan_this_micro:
+    trigger: "/yaml-workflow plan this"
+    shape: "skeleton_flow | skeleton_leaf_phase"
+    nesting: minimal

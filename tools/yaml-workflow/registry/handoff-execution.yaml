@@ -1,0 +1,12 @@
+# /yaml-workflow - Handoff / Execution Order
+# When the workflow is meant to hand off to another agent or be executed deterministically:
+
+template: |
+  handoff_instructions:
+    executor: <who/what runs this>
+    entry_point: <first step id>
+    on_failure: <step id or "abort">
+
+  execution_order:
+    - phase-1
+    - phase-2

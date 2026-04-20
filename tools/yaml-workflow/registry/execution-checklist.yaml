@@ -1,0 +1,11 @@
+# /yaml-workflow - Execution Checklist
+# Before outputting:
+
+checklist:
+  - "One skeleton shape chosen and stated"
+  - "All steps have id + (cmd or action)"
+  - "Gotchas/risks surfaced at top level (not buried in steps)"
+  - "Placeholders only in config file (if config isolation applies)"
+  - "Handoff block present (if handoff intended)"
+  - "Plans copy path provided: {workspace}/plans/<id>.yaml"
+  - "Provenance note included if workspace is a repo"
