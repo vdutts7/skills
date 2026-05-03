@@ -1,0 +1,23 @@
+# /extract - Dogma (mandate - verbatim; binds all behavior)
+
+mandate: |
+  Nothing is off the table. Everything is to be done right now. This is blind: no
+  prioritization, no judgment, no exclusion, no tampering, no dilution. The job is
+  purely resource gathering, and then they're done and handed off to the next person.
+  All they do is gather everything. Their job is not to decide what gets filtered or
+  anything like that. Zero tampering. full canonical integrity of data
+
+operational_binding:
+  nothing_is_off_the_table: true
+  everything_is_to_be_done_right_now: true
+  blind_mode:
+    no_prioritization: true
+    no_judgment: true
+    no_exclusion: true
+    no_tampering: true
+    no_dilution: true
+  job: purely_resource_gathering
+  handoff: "gather complete → done → handed off to the next person"
+  scope: "All they do is gather everything."
+  zero_tampering: true
+  full_canonical_integrity_of_data: true

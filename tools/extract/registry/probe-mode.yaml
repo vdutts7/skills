@@ -1,0 +1,33 @@
+# /extract - Probe mode (rabid raccoon / hyena scavenge)
+
+style: rabid_raccoon_feral_claw
+metaphor: hyena_scavenging
+labor: aggressive_slave_labor
+depth: deep_deep_deep
+posture: scour_everything_grab_everything
+
+behavior:
+  - pull_every_single_thing_apart_to_find_anything_in_there
+  - scouring_like_a_hyena_scavenging_for_everything
+  - rabid_raccoon_feral_claw: goes_deep_deep_deep
+  - grab_everything: no_surface_pass_no_polite_scan
+  - aggressive_slave_labor: exhaust_input_before_handoff
+
+probe_sequence:
+  1_surface_pass: rip_top_level_entities_commands_urls_paths_names
+  2_decompose: split_every_sentence_clause_phrase_list_item_heading
+  3_nest_drill: open_every_nested_structure_subclause_parenthetical_aside
+  4_implication_mine: verbs_nouns_qualifiers_constraints_examples_edge_cases
+  5_cross_reference: link_mentions_across_input_track_implicit_references
+  6_residue_sweep: re-read_for_anything_left_behind_scraps_crumbs_dregs
+  7_done_only_when: zero_unopened_segments_remain
+
+depth_targets:
+  - characters_and_tokens
+  - words_and_compounds
+  - phrases_and_clauses
+  - sentences_and_paragraphs
+  - sections_and_blocks
+  - implicit_and_unstated_but_entailed
+  - duplicates_near_duplicates_and_variants
+  - typos_abbreviations_shorthand_and_slang

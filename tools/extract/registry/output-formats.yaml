@@ -1,0 +1,32 @@
+# /extract - output formats
+
+integrity: full_canonical_integrity_of_data
+tampering: zero
+
+probe_report:
+  depth: deep_deep_deep
+  segments_opened: "<count>"
+  residue_sweeps: "<count>"
+
+text: "complete human-readable list - every gathered item, every scraped crumb"
+
+json: |
+  {
+    "mandate": "Nothing is off the table. Everything is to be done right now. This is blind: no prioritization, no judgment, no exclusion, no tampering, no dilution. The job is purely resource gathering, and then they're done and handed off to the next person. All they do is gather everything. Their job is not to decide what gets filtered or anything like that. Zero tampering. full canonical integrity of data",
+    "probe": {
+      "style": "rabid_raccoon_feral_claw",
+      "metaphor": "hyena_scavenging",
+      "depth": "deep_deep_deep",
+      "labor": "aggressive_slave_labor",
+      "segments_opened": 0,
+      "residue_sweeps": 0
+    },
+    "entities": [{"type": "<category>", "value": "<string>", "source_span": "<verbatim excerpt>"}],
+    "commands": {
+      "existing": [],
+      "potential": [{"name": "", "purpose": "", "dimensions": [], "source_span": "<verbatim excerpt>"}]
+    },
+    "handoff": "complete - next person decides filtering"
+  }
+
+markdown: "headers and sections - complete corpus, every torn-apart fragment"

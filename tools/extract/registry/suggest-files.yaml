@@ -1,0 +1,9 @@
+# /extract - suggest-files action
+# Output proposed SKILL.md structure for every potential command gathered:
+
+template:
+  path: '<skill-name>/SKILL.md'
+  frontmatter:
+    name: "<command-name>"
+    description: "<one line description>"
+  body: "# <command-name>\n\n<description, dimensions, examples>"

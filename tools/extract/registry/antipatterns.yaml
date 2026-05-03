@@ -1,0 +1,105 @@
+# /extract - Antipatterns
+
+# dogma violations - see mandate
+
+prioritization:
+  what: "ranking or ordering by importance"
+  dogma: "no prioritization"
+
+judgment:
+  what: "labeling good/bad, viable/non-viable"
+  dogma: "no judgment"
+
+exclusion:
+  what: "dropping candidates as irrelevant"
+  dogma: "no exclusion; Nothing is off the table"
+
+tampering:
+  what: "rewriting, paraphrasing, normalizing away source"
+  dogma: "Zero tampering"
+
+dilution:
+  what: "summarizing away detail"
+  dogma: "no dilution"
+
+filtering:
+  what: "deciding what gets filtered or anything like that"
+  dogma: "Their job is not to decide what gets filtered or anything like that."
+
+partial_gather:
+  what: "stopping before everything is captured"
+  dogma: "gather everything; All they do is gather everything."
+
+deferred_work:
+  what: "deferring items for later"
+  dogma: "Everything is to be done right now"
+
+integrity_loss:
+  what: "omitting source spans or altering values"
+  dogma: "full canonical integrity of data"
+
+drop_duplicates:
+  what: "hiding commands that match existing skills"
+  fix: "report under commands.existing"
+
+drop_low_quality:
+  what: "skipping weak or speculative candidates"
+  fix: "report under commands.potential"
+
+collapse_dimensions:
+  what: "stripping observed dimensions to fit a template"
+  fix: "report every dimension observed"
+
+invent_dimensions:
+  what: "adding dimensions not present in source"
+  fix: "report only observed dimensions"
+
+role_creep:
+  what: "extract prioritizes, judges, excludes, filters, or tamper-handoffs incomplete corpus"
+  fix: "purely resource gathering → done → hand off to next person"
+
+# probe violations - shallow is failure
+
+surface_scan:
+  what: "single-pass read without decomposition"
+  dogma: "pull_every_single_thing_apart_to_find_anything_in_there"
+  fix: "run full probe_sequence 1-7"
+
+shallow_probe:
+  what: "stopping at headlines or first obvious entities"
+  dogma: "goes_deep_deep_deep"
+  fix: "nest_drill + implication_mine + residue_sweep"
+
+polite_pass:
+  what: "gentle skim, clean summary, tidy shortlist"
+  dogma: "rabid_raccoon_feral_claw; aggressive_slave_labor"
+  fix: "scour_like_a_hyena_scavenging_for_everything"
+
+unopened_segment:
+  what: "nested clause, list item, parenthetical, or block left untouched"
+  dogma: "grab_everything"
+  fix: "reopen segment; decompose until empty"
+
+premature_handoff:
+  what: "handing off before residue_sweep confirms zero leftovers"
+  dogma: "scouring_like_a_hyena_scavenging_for_everything"
+  fix: "residue_sweep until done_only_when satisfied"
+
+lazy_stop:
+  what: '"good enough" stop before input is fully gutted'
+  dogma: "aggressive_slave_labor; Everything is to be done right now"
+  fix: "keep probing until probe_report shows all segments opened"
+
+# routing (still gather all)
+
+too_specific:
+  what: "/extract-json-from-api-response as a standalone command"
+  fix: "use /extract --format json; still capture the pattern"
+
+no_dimensions:
+  what: "single-purpose command with no observed options"
+  fix: "report as-is; add dimensions only when present in source"
+
+domain_locked:
+  what: "/analyze-react-components flagged as domain-only"
+  fix: "capture it; note domain lock in output"

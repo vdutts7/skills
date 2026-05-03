@@ -1,0 +1,8 @@
+# /extract - usage
+
+invocations:
+  - '/extract "analyze this codebase for security issues"'
+  - "/extract [input] --target commands"
+  - "/extract [input] --target entities --output json"
+  - "/extract [input] --mode detailed --action suggest-files"
+  - "/extract [input] --mode exhaustive --probe raccoon"

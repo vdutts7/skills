@@ -1,0 +1,15 @@
+# /extract - handoff
+
+sequence:
+  1: probe_deep_deep_deep          # rabid raccoon / hyena scavenge until input is gutted
+  2: gather_everything             # All they do is gather everything.
+  3: residue_sweep                 # scour for anything left behind
+  4: done                          # purely resource gathering complete
+  5: hand_off_to_next_person       # they're done and handed off to the next person
+
+next_person_not_you:
+  - prioritizes
+  - judges
+  - excludes
+  - dedupes
+  - filters
