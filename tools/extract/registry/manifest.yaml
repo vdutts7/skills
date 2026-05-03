@@ -1,0 +1,20 @@
+ns: extract
+mode: rabid_raccoon_hyena_scavenge_probe
+
+purpose: |
+  Extract entities and/or potential slash commands from input text. Rabid raccoon /
+  hyena scavenge probe - deep, deep, deep; pull every single thing apart; grab
+  everything. Pure resource gathering - zero tampering, zero filtering, full canonical
+  integrity of data.
+
+entry_points:
+  - read registry/dogma.yaml - mandate (verbatim) + operational binding
+  - read registry/probe-mode.yaml - rabid raccoon style + 7-step probe sequence + depth targets
+  - read registry/role.yaml - resource_gatherer identity + labor mode
+  - read registry/flags.yaml - --target / --mode / --output / --action / --probe
+  - read registry/usage.yaml - invocation patterns
+  - read registry/extraction-rules.yaml - invariants + entity categories + command capture
+  - read registry/output-formats.yaml - text / json / markdown shapes
+  - read registry/handoff.yaml - 5-step sequence; next person does the filtering
+  - read registry/suggest-files.yaml - --action suggest-files output shape
+  - read registry/antipatterns.yaml - dogma violations + probe violations + routing

@@ -1,0 +1,40 @@
+# /extract - extraction rules
+
+invariants:
+  - nothing_is_off_the_table
+  - everything_is_to_be_done_right_now
+  - "blind: no prioritization, no judgment, no exclusion, no tampering, no dilution"
+  - zero_tampering
+  - full_canonical_integrity_of_data
+  - job_is_purely_resource_gathering_then_handoff
+  - "gather_everything: All they do is gather everything."
+  - probe_deep_deep_deep: rabid_raccoon_feral_claw
+  - scour_everything: hyena_scavenging_for_everything
+  - pull_apart_everything: pull_every_single_thing_apart_to_find_anything_in_there
+
+entities:
+  categories:
+    people:    "names, roles, teams"
+    tools:     "software, frameworks, libraries"
+    concepts:  "patterns, methodologies, principles"
+    actions:   "verbs, operations, transformations"
+    artifacts: "files, documents, outputs"
+  capture:
+    - every_candidate_in_input
+    - every_sub_candidate_from_decomposition
+    - verbatim_values
+    - source_span_per_item
+    - implicit_entities_surfaced_by_probe
+
+commands:
+  capture:
+    - "general-purpose candidates"
+    - "domain-specific candidates"
+    - "verb and noun forms"
+    - "lowercase hyphen names"
+    - "duplicates_of_existing_skills"
+    - "single-purpose and multi-purpose"
+    - "real and speculative recurring problems"
+    - all_observed_dimensions
+    - "fragments_that_could_become_commands"
+  dimensions: "report every dimension observed; 2-4 orthogonal when present"

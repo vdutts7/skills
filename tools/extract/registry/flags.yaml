@@ -1,0 +1,17 @@
+# /extract - Flags
+
+"--target":
+  values: [entities, commands, both]
+  default: both
+"--mode":
+  values: [simple, detailed, exhaustive]
+  default: exhaustive
+"--output":
+  values: [text, json, markdown]
+  default: text
+"--action":
+  values: [report, suggest-files]
+  default: report
+"--probe":
+  values: [raccoon]
+  default: raccoon  # rabid raccoon feral-claw dig
