@@ -1,0 +1,14 @@
+# loop - dual mode dispatcher
+
+test_fix:
+  trigger: "multiple defined test cases or assertions"
+  behavior: "full protocol - phase_0 scope table through phase_4 report"
+
+generic:
+  trigger: "/loop or loop until success with goal + verify criterion"
+  behavior: "minimal_loop try/verify/base_case; inspect rendered output when the verify step is visual; audit each iteration"
+
+implicit:
+  trigger: "any debugging session with multiple test cases"
+  behavior: "same discipline, lighter ceremony - audit lines inline, no scope table"
+  note: "baked-in debugging behavior when cases are implicit"

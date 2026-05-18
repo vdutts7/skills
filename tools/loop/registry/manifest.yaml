@@ -1,0 +1,22 @@
+# loop - manifest index
+ns: loop
+purpose: "Two complementary modes share one discipline: audit every attempt, verify before advancing, default no silent stop until success (unless capped)."
+
+entry_points:
+  - read registry/modes.yaml - dual mode dispatcher (test_fix | generic | implicit)
+  - read registry/triggers.yaml - when this fires
+  - if test cases enumerated → read registry/test-fix-protocol.yaml (phase_0 through phase_4)
+  - if goal + verify only → read registry/generic-loop.yaml (try / verify / base_case)
+  - always read registry/rules.yaml - minimal_delta, regression_guard, audit_trail, scope_lock, no_nuke
+  - always check registry/antipatterns.yaml - forbidden behaviors with fixes
+
+modes:
+  test_fix: "multiple defined test cases or assertions"
+  generic: "goal + verify criterion without a fixed test table"
+  implicit: "any debugging session with multiple test cases (lighter ceremony, same discipline)"
+
+defaults:
+  max_iterations: null  # loop until success unless capped
+  audit: true
+  iteration_cap_per_case: 3  # test_fix mode
+  use_vision_when: "output is image or visual result"

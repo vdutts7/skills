@@ -1,0 +1,54 @@
+# loop - test-fix protocol (4 phases, one case at a time, minimal delta)
+
+phase_0_scope:
+  name: "declare the battlefield"
+  action: "enumerate ALL test cases as a table before touching any code"
+  format: |
+    | # | Input | Expected | Status |
+    |---|-------|----------|--------|
+    | 1 | ...   | ...      | ?      |
+  invariant: "no moving goalposts. scope is locked at phase_0. user can add cases explicitly."
+  source: "infer from user's goal, failing tests, CI output, or ask once if genuinely unresolvable"
+
+phase_1_baseline:
+  name: "run all cases, map the failures"
+  action: "execute every test case against current implementation"
+  output: "status column filled: pass/fail per case"
+  invariant: "full picture before any fix. never fix from a partial failure map."
+  audit: "print every case result"
+
+phase_2_iterate:
+  name: "fix loop"
+  shape:
+    try: "run failing test case N against current implementation"
+    audit: "print -> Test N: [input] -> expected [X] got [Y]"
+    fix: "identify minimal delta. apply. nothing more."
+    regression: "re-run ALL previously passing tests"
+    verify: "case N passes AND no regressions"
+    on_pass: "advance to next failing case"
+    on_fail: "same case, next minimal fix attempt"
+    on_regression: "revert fix, try different approach"
+  iteration_cap:
+    per_case: 3
+    on_cap_hit: "STOP iterating same fix strategy. escalate:"
+    escalation:
+      - "widen scope: root cause may span multiple functions"
+      - "re-examine: is the expected output actually correct?"
+      - "flag to user: 'Case N resists minimal fixes after 3 attempts. May need architectural change.'"
+    never: "silently loop forever on the same case"
+
+phase_3_verify:
+  name: "full sweep"
+  action: "re-run ALL test cases (passing + previously failing)"
+  condition: "every case green"
+  on_all_pass: "done. report."
+  on_any_fail: "return to phase_2 for remaining failures"
+
+phase_4_report:
+  name: "audit summary"
+  format: |
+    | # | Input | Expected | Result | Iterations |
+    |---|-------|----------|--------|------------|
+    | 1 | ...   | ...      | pass   | 0 (clean)  |
+    | 2 | ...   | ...      | pass   | 2          |
+  include: "total iterations, regressions caught, fixes applied"

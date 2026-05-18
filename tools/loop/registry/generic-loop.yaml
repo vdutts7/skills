@@ -1,0 +1,54 @@
+# loop - generic loop until success (agnostic goal/space/minimal_loop)
+
+description: |
+  Agnostic workflow: define goal, space, minimal_loop per invocation; recurse with next step;
+  base case = success; audit each attempt.
+
+subroutines:
+  try:
+    action: "Execute one iteration (fix / run / build / normalize)"
+    output: "result or failure reason"
+  verify:
+    action: "Check result against success criterion (diff, vision, assert)"
+    tools_available:
+      - "vision: when output is visual (image, UI); convert+read → description → match intent"
+      - "grep/diff/read: when output is text or structure"
+    fast_fail: "Use verify early to fail fast and avoid wasted steps"
+  base_case:
+    condition: "result meets success criterion"
+    on_success: "stop; return success"
+  next_step:
+    condition: "result does not meet criterion"
+    action: "Infer minimal fix; set next iteration; continue loop"
+  audit:
+    action: "Print to user what is being tried this iteration (auditable, traceable)"
+    required: true
+
+schema_per_invocation:
+  goal: "Success criterion"
+  space: "Defined space / artifact (files, paths, pipeline)"
+  minimal_loop:
+    try: "What to run this iteration"
+    verify: "How to verify (vision, grep, diff)"
+    base_case: "Condition that stops the loop"
+  use_vision_when: "When verify needs a rendered image, screenshot, or UI"
+  max_iterations: null  # cap; null = loop until success
+
+execution_rules:
+  - "Per invocation: accept or infer goal, space, minimal_loop (try / verify / base_case)"
+  - "Iteration: audit (print what is being tried); try; verify (optionally inspect the rendered output if relevant)"
+  - "If verify passes (base case): stop; return success"
+  - "If verify fails: fast-fail optional; infer next step (minimal fix); loop to step 2"
+  - "Default: max_iterations = null → loop until success"
+
+decision_tree:
+  at_verify_node:
+    - "Is output visual (image, screenshot, UI)? → inspect the rendered output as verify"
+    - "Is output text/structure? → use read/grep/diff"
+  at_fail:
+    - "Use verify result to choose minimal fix; do not over-engineer"
+
+validation:
+  - "Each iteration must be auditable (printed to user)"
+  - "Base case must be clear and checkable"
+  - "Vision verify is available when the artifact is visual"
