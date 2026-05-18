@@ -1,0 +1,24 @@
+# loop - core rules (enforced every iteration)
+
+minimal_delta:
+  rule: "each fix changes the least code possible to pass the failing case"
+  why: "large fixes introduce regressions. small fixes are traceable."
+  enforcement: "if a fix touches >1 function, justify why single-function fix was insufficient"
+
+regression_guard:
+  rule: "after EVERY fix, re-run ALL passing tests"
+  why: "the whole point. fixing case 4 must not break case 1."
+  enforcement: "skip this → violation. no exceptions."
+
+audit_trail:
+  rule: "print test case index, input, expected, actual BEFORE every attempt"
+  format: "Test N: [input] -> expected [X] got [Y]"
+  enforcement: "no silent iterations. every try is logged."
+
+scope_lock:
+  rule: "test cases declared in phase_0 don't change mid-loop"
+  exception: "user explicitly adds/removes cases"
+
+no_nuke:
+  rule: "never rewrite the entire implementation on first failure"
+  enforcement: "if tempted to rewrite >50% of implementation, STOP and ask which SPECIFIC case requires this"

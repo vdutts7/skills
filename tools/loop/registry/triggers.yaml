@@ -1,0 +1,25 @@
+# loop - when this skill fires (and when it does not)
+
+explicit: ["/loop", "/loop {goal}"]
+
+phrases:
+  - "loop until passing"
+  - "fix each test case"
+  - "iterate until green"
+  - "run the loop"
+  - "keep fixing until all pass"
+  - "loop until success"
+  - "keep trying until it works"
+
+implicit:
+  - "any debugging with 2+ test cases or assertions"
+  - "user provides input/output pairs and says 'make this work'"
+  - "user says 'these tests are failing' with multiple failures"
+  - "CI output shows multiple failures across test suite"
+  - "goal + verify criterion without a fixed test table (generic mode)"
+
+never:
+  - "single-fix bugs with obvious root cause (just fix it)"
+  - "build/compile errors only (fix the error, no loop ceremony)"
+  - "exploratory debugging without defined expected outputs"
+  - "performance optimization (different protocol)"

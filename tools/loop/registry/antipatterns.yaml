@@ -1,0 +1,29 @@
+# loop - forbidden behaviors and their corrections
+
+nuke_and_rewrite:
+  what: "rewriting entire implementation after seeing first failure"
+  instead: "minimal delta fix for the specific failing case"
+
+silent_iteration:
+  what: "fixing without printing audit line"
+  instead: "always print Test N: [input] -> expected [X] got [Y]"
+
+skip_regression:
+  what: "only re-running the case you just fixed"
+  instead: "re-run ALL passing tests after every fix"
+
+infinite_loop:
+  what: "5th attempt at same fix strategy on same case"
+  instead: "cap at 3, escalate"
+
+scope_drift:
+  what: "adding new test cases mid-loop without user consent"
+  instead: "declare scope upfront, lock it"
+
+premature_victory:
+  what: "declaring done after fixing last failing case without full sweep"
+  instead: "phase_3 full sweep is mandatory"
+
+over_engineering:
+  what: "refactoring working code while fixing a different case"
+  instead: "only touch code relevant to the current failing case"

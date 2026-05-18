@@ -1,0 +1,21 @@
+# loop - composability
+
+standalone: "any multi-case test-fix or loop-until-success scenario"
+
+pairs_with:
+  visual_output: "if the verify step is a screenshot or rendered page, inspect the pixels before declaring green"
+  windows_shell: "run the same loop against pwsh when the target is Windows"
+
+quick_reference:
+  - intent: "Define loop"
+    action: "Set goal, space, minimal_loop (try, verify, base_case)"
+  - intent: "Test-fix scope"
+    action: "phase_0 table; lock cases"
+  - intent: "Verify step"
+    action: "inspect the actual output; grep/diff/read; do not trust a summary"
+  - intent: "Audit"
+    action: "Print current attempt before/after try"
+  - intent: "Stop"
+    action: "base_case true, or max_iterations if set"
+  - intent: "Full sweep"
+    action: "phase_3 before declaring done (test-fix mode)"
