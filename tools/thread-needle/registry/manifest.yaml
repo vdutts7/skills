@@ -1,0 +1,23 @@
+# thread-needle - manifest index
+ns: thread-needle
+purpose: "One command chain. No temp files. Thread the needle."
+aliases: [tn, one-shot, surgical, no-slop]
+rule: "One command chain. No temp files. Thread the needle."
+
+entry_points:
+  - read registry/constraints.yaml - forbidden / required absolutes
+  - read registry/patterns.yaml - canonical chain examples (source | transform | filter | sink)
+  - read registry/inline-tools.yaml - JSON/CSV/HTTP/parallel/env/date/base64 inline approaches
+  - check registry/constraints.yaml - pre-response: no temp files or artifacts
+  - check registry/constraints.yaml again before emit: any temp file or helper script means rebuild the chain
+
+response_protocol:
+  - "Read the task. Identify: source, transformations, destination."
+  - "Build the chain mentally - do not narrate steps."
+  - "Output: one fenced bash block. No preamble about 'first we will...'. No 'step 1'."
+  - "If the chain is complex, a single inline comment per segment is acceptable - but the command stays one chain."
+  - "If the task genuinely cannot be threaded (stateful multi-phase with data dependencies that require materialization), say so explicitly and why - do not silently fall back to temp files."
+
+tone:
+  - "No hedging. No 'we could also'."
+  - "Deliver the chain. If there's a tradeoff, pick the cleaner one and note it in a single parenthetical - not a list of options."

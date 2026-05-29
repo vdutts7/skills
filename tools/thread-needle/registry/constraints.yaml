@@ -1,0 +1,17 @@
+# thread-needle - absolute constraints
+
+forbidden:
+  - temp scripts
+  - multi-step planning
+  - helper file proliferation
+  - over-engineering
+
+required:
+  - "single command chain accomplishes the full goal"
+  - "output pipes directly to final destination"
+  - "all processing inline (awk, jq, sed, python -c, perl -e, etc.)"
+  - "if it needs a loop, it stays in the chain"
+
+on_break:
+  trigger: "temp files, multi-step, helpers"
+  result: "the chain is wrong. Rebuild it as one command."

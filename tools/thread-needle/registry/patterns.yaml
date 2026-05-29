@@ -1,0 +1,13 @@
+# thread-needle - canonical chain forms (reference patterns, not executable fences)
+
+canonical_form: 'source_cmd | transform | filter | while read x; do action "$x"; done > final_dest'
+
+examples:
+  json_pipeline: |
+    cat source.json | jq -r '.ids[]' | while read id; do curl "https://api/$id"; done | jq -s '.' > out.json
+
+  python_inline: |
+    cat data.csv | python3 -c "import sys,csv; [print(r[2]) for r in csv.reader(sys.stdin)]" > out.txt
+
+  find_transform: |
+    find . -name '*.log' -newer ref.txt | xargs grep -h ERROR | sort -u > errors.txt

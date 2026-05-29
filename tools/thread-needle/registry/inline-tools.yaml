@@ -1,0 +1,21 @@
+# thread-needle - inline tool reference (need → inline approach)
+
+inline_tools:
+  - need: "JSON transform"
+    inline: "jq -r '...'"
+  - need: "CSV parse"
+    inline: "python3 -c \"import sys,csv; ...\" or awk -F,"
+  - need: "Multi-file loop"
+    inline: "while read f; do ...; done < <(find ...)"
+  - need: "HTTP per-line"
+    inline: "xargs -I{} curl \"https://api/{}\""
+  - need: "Parallel fetch"
+    inline: "xargs -P8 -I{} curl ..."
+  - need: "Env substitution"
+    inline: "envsubst or sed \"s/\\$VAR/$VAR/g\""
+  - need: "Date math"
+    inline: "date -d \"...\" +%s inline in a chain"
+  - need: "Base64"
+    inline: "base64 -d or openssl base64"
+  - need: "Archive unpack inline"
+    inline: "tar -xzf - | grep ... (from stdin)"
