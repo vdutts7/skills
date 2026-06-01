@@ -21,5 +21,13 @@ Scripts > prose.
 - [premortem](thinking/premortem/) - prospective hindsight
 - [potemkin](thinking/potemkin/) - constraint extraction
 
+**Tools**
+- [machreadify](tools/machreadify/) - prose to JSON/YAML
+- [yaml-workflow](tools/yaml-workflow/) - prose plans to YAML workflows
+- [extract](tools/extract/) - deep entity extractor
+- [loop](tools/loop/) - iterative test-fix loop
+- [thread-needle](tools/thread-needle/) - single-command-chain execution
+- [spoonfeed](tools/spoonfeed/) - step-by-step guided mode
+
 **Voice**
 - [humanize](voice/humanize/) - anti-AI-tell output pass
