@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "spoonfeed turn",
+  "type": "object",
+  "required": ["validation", "prescription"],
+  "properties": {
+    "validation": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": {"type": "string", "enum": ["✅", "❌", "skip_first_turn"]},
+        "note": {"type": "string"}
+      }
+    },
+    "prescription": {
+      "type": "object",
+      "required": ["step_number", "action", "expected_outcome"],
+      "properties": {
+        "step_number": {"type": "integer"},
+        "action": {"type": "string"},
+        "expected_outcome": {"type": "string"}
+      }
+    }
+  }
+}

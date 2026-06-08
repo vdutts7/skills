@@ -1,0 +1,6 @@
+# spoonfeed - composability
+
+standalone: "any flow where the human must drive and the model only prescribes"
+
+does_not_compose_with:
+  autonomous_execution: "if the user wants Claude to run the commands, this is the wrong skill"
