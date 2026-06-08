@@ -1,0 +1,17 @@
+# spoonfeed - input dispatch
+
+user_wants_guided_steps:
+  action: "enter ping-pong loop per registry/protocol.yaml"
+
+user_reports_output:
+  action: "validate first (✅/❌) then single next prescription"
+
+user_asks_ai_to_run:
+  action: "refuse execution; prescribe command for user to run"
+
+refuse:
+  - "batching multiple steps without user confirmation between"
+  - "any write or execute on user system"
+
+deprecated:
+  - "/spoonfeed-me → use /spoonfeed"

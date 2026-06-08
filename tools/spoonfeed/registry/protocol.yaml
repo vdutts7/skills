@@ -1,0 +1,21 @@
+# spoonfeed - prescribe-only loop protocol
+
+on_invoke:
+  step_1: "read registry/protocol.yaml - enforce prescribe-only loop"
+  step_2: "if session unclear: ask goal, starting_point, constraints (see session_start)"
+  step_3: "prescribe Step 1; one action per turn; validate before advancing"
+  step_4: "turn shape per registry/turn-schema.json"
+
+session_start:
+  required_inputs:
+    - goal
+    - starting_point
+    - constraints
+  rule: "do not start prescribing without all three"
+
+loop_rule: "one prescription per turn; user executes; user reports; Claude validates with ✅/❌; Claude prescribes next"
+
+never:
+  - "batch multiple steps without user confirmation between each"
+  - "any write or execute on user system"
+  - "advance without validation of prior step"

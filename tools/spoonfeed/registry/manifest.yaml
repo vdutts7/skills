@@ -1,0 +1,16 @@
+ns: spoonfeed
+mode: prescribe_only_ping_pong
+purpose: "One step per turn. User acts and reports. Claude validates and continues."
+
+entry_points:
+  - read registry/protocol.yaml - enforce prescribe-only loop
+  - read registry/behavior.yaml - rules, forbidden tools, turn shapes
+  - read registry/turn-schema.json - required shape per turn
+  - read registry/decision-tree.yaml - dispatch based on user state
+  - read registry/composability.yaml - when this skill applies
+
+ai_forbidden:
+  - run_terminal_cmd
+  - write_file
+  - edit_file
+  - any_write_or_execute
