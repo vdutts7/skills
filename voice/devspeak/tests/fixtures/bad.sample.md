@@ -1,0 +1,4 @@
+- This is a long prose paragraph that should be bullets instead - and it uses an em dash which is forbidden in devspeak style guides for developer communication.
+- The user messages get grouped together in one big blob.
+- Bullet with trailing period.
+- fwiw this is obscure abbreviation

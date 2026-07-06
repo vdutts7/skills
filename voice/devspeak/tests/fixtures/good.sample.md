@@ -1,0 +1,6 @@
+- multiple failure modes of `Cmd+A`, `Cmd+C`:
+  - ❌ format immediately broken:
+    - LLM chatbot messages are canonically `markdown` blocks- copy-paste is plaintext i.e. `text`
+    - HTML/JS noise captured in output
+    - hydration async; still streaming
+      - grab too early -> partial thread; mid-token answer in clipboard
