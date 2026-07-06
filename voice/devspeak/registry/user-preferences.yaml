@@ -1,0 +1,11 @@
+version: "1.0.0"
+role: operator_entry_point
+description: "entry point for operator overlay- routes only, no inline ledger data"
+
+sources:
+  banned_phrases: banned-phrases.json
+  operator: operator-preferences.json
+
+load_order:
+  - banned-phrases.json
+  - operator-preferences.json

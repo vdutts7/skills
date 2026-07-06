@@ -1,0 +1,35 @@
+{
+  "version": "1.0.0",
+  "description": "operator speak prefs- acronyms, replacements, inline style",
+  "bullet_capitalization": {
+    "rule": "lowercase first word after `-` unless genuinely proper noun or acronym in context",
+    "no_static_allowlist": true
+  },
+  "heading_capitalization": {
+    "markdown_hashes": true,
+    "bold_section_labels": true,
+    "rule": "capitalize first word on # ## ### headings and bold section openers; proper nouns/acronyms preserved; bullets keep lowercase-first rule"
+  },
+  "term_replacements": [
+    { "id": "TP-001", "from": "through", "to": "thru", "except": ["fenced_code", "inline_code", "quoted_literal"] },
+    { "id": "TP-002", "from": "allow-list", "to": "allowlist" },
+    { "id": "TP-003", "from": "block-list", "to": "blocklist" },
+    { "id": "TP-004", "from": "deny-list", "to": "denylist" },
+    { "id": "TP-005", "from": " when it lands", "to": " when it ships" },
+    { "id": "TP-006", "from": " when that lands", "to": " when that merges" }
+  ],
+  "inline_style": {
+    "and_as_plus": "prefer X + Y over X and Y inline",
+    "arrow_causal": "->",
+    "hyphen_attach": "word- next clause",
+    "status_line": "[label]: [thing]"
+  },
+  "abbreviations": {
+    "spell_out": ["fwiw", "wfm", "ymmv", "wdyt", "iirc", "tbh", "imo"],
+    "ok_short": ["btw", "fyi", "lmk", "ok", "pls"]
+  },
+  "code_tokens": {
+    "rule": "single backticks on paths, files, classes, vars, branches, error codes, env vars, CLI",
+    "triple_fence": "multi-line code only"
+  }
+}

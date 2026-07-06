@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "description": "append-only banned phrase ledger- add rows, do not edit devspeak core",
+  "phrases": [
+    { "id": "BP-001", "match": "fwiw", "action": "delete_or_spell_out" },
+    { "id": "BP-002", "regex": "\\bhappy to\\s+\\w+", "action": "delete" },
+    { "id": "BP-003", "match": "Let me", "action": "delete" },
+    { "id": "BP-004", "match": "I'll go ahead and", "action": "delete" },
+    { "id": "BP-005", "match": "Great question", "action": "delete" },
+    { "id": "BP-006", "match": "Hope this finds you well", "action": "delete" },
+    { "id": "BP-007", "regex": "[\u2014\u2013]", "action": "replace_with_hyphen_attach" }
+  ]
+}

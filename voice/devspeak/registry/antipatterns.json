@@ -1,0 +1,109 @@
+{
+  "version": "1.0.0",
+  "description": "devspeak anti-patterns for gate + agent enforcement",
+  "forbidden": [
+    {
+      "id": "DS-001",
+      "name": "em_dash",
+      "regex": "[\u2014\u2013]",
+      "message": "em/en dash forbidden- use hyphen attach (word- next)"
+    },
+    {
+      "id": "DS-002",
+      "name": "spaced_hyphen",
+      "regex": "(?<=\\S)\\s-\\s(?=\\S)",
+      "message": "spaced hyphen forbidden- use attach hyphen (word- next)"
+    },
+    {
+      "id": "DS-003",
+      "name": "bullet_trailing_period",
+      "regex": "^\\s*-\\s+.+\\.[\\s]*$",
+      "flags": "m",
+      "message": "no trailing period on bullets"
+    },
+    {
+      "id": "DS-004",
+      "name": "bullet_asterisk",
+      "regex": "^\\s*\\*\\s+",
+      "flags": "m",
+      "message": "use - bullets not *"
+    }
+  ],
+  "warn": [
+    {
+      "id": "DS-010",
+      "name": "emoji_flood",
+      "max_emojis_per_100_lines": 8,
+      "exclude_markers": ["❌", "✅", "🟢", "🔴", "🟡"],
+      "message": "emojis sparse only- visual markers not decoration"
+    },
+    {
+      "id": "DS-011",
+      "name": "semicolon_wall",
+      "regex": "^\\s*-\\s+[^\\n]{120,}$",
+      "flags": "m",
+      "message": "bullet too long- cluster then nest sub-bullets"
+    },
+    {
+      "id": "DS-012",
+      "name": "semicolon_cram",
+      "regex": "^\\s*-\\s+[^\\n]*;[^\\n]*;[^\\n]*;[^\\n]*",
+      "flags": "m",
+      "message": "too many semicolons- split or nest"
+    },
+    {
+      "id": "DS-013",
+      "name": "missing_backtick_cmd",
+      "regex": "(?<![`\\w])Cmd\\+[A-Z][A-Za-z]*(?![`\\w])",
+      "message": "keyboard shortcuts need backticks e.g. `Cmd+A`"
+    },
+    {
+      "id": "DS-014",
+      "name": "missing_backtick_cli",
+      "regex": "(?<![`/\\w])\\b[a-z][a-z0-9-]*\\.(sh|js|py|md|json|yaml|yml)\\b(?![`\\w])",
+      "message": "tool/file refs should use backticks"
+    },
+    {
+      "id": "DS-015",
+      "name": "long_paragraph",
+      "regex": "^(?!\\s*[-#>`]).{180,}$",
+      "flags": "m",
+      "message": "prose wall- break into bullets"
+    },
+    {
+      "id": "DS-016",
+      "name": "bold_flood",
+      "regex": "(\\*\\*[^*]+\\*\\*.*){4,}",
+      "message": "bold sparingly- keywords and demos only"
+    },
+    {
+      "id": "DS-017",
+      "name": "bullet_essay_opener",
+      "regex": "^\\s*-\\s+(The|This|It|When|If|Because|However|Therefore|Additionally|Furthermore|Moreover)\\b",
+      "flags": "m",
+      "message": "lowercase bullet start- cap only genuine proper noun/acronym in context"
+    },
+    {
+      "id": "DS-018",
+      "name": "essay_transition",
+      "regex": "\\b(it is important to note|this means that|in conclusion|furthermore|additionally)\\b",
+      "flags": "i",
+      "message": "not essay- use if/then logic flow"
+    },
+    {
+      "id": "DS-019",
+      "name": "lowercase_markdown_heading",
+      "regex": "^#{1,6}\\s+[a-z]",
+      "flags": "m",
+      "message": "markdown headings (# ## ###) capitalize first word"
+    },
+    {
+      "id": "DS-020",
+      "name": "lowercase_bold_section_heading",
+      "regex": "^\\*\\*[\"']?[a-z]",
+      "flags": "m",
+      "message": "bold section labels (heading role) capitalize first word"
+    }
+  ],
+  "skip_in": ["fenced_code_blocks", "inline_code", "yaml_json_blocks_in_command_files"]
+}
