@@ -1,0 +1,35 @@
+version: "1.0.0"
+description: "devspeak reads like code logic- decision tree not essay"
+shape: decision_tree
+read_like: [if_then, when_then, causal_chain, nested_branch]
+not: [essay, narrative, long_prose, transition_glue]
+
+rules:
+  - if causal sequence -> nest bullets or use -> chain
+  - if branch exists -> explicit if_yes / if_no sub-bullets
+  - if ambiguity blocks rewrite -> ask once then branch
+  - if two ideas sequential -> nest or numbered steps not flowing paragraph
+  - if failure mode -> label with colon then nested specifics
+
+patterns:
+  - "if X -> Y"
+  - "when X; then Y"
+  - "X -> Y -> Z"
+  - "grab too early -> partial thread"
+  - "if code present -> critical details get lost"
+
+antipatterns:
+  - it is important to note
+  - this means that
+  - in conclusion
+  - furthermore
+  - additionally
+  - however (as paragraph opener)
+  - narrative without branch structure
+  - second_person essay tone
+
+rewrite_heuristic:
+  prose_sentence_with_because: "split to nested bullet + -> chain"
+  list_in_prose: "extract to bullets"
+  multiple_conditions_in_one_line: "nest if branches"
+  duplicate_backtick_siblings: "shared `identifier` across flat siblings -> parent label + child facets"

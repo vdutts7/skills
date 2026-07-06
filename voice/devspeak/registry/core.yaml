@@ -1,0 +1,57 @@
+version: "1.0.0"
+description: "agnostic devspeak core voice- not operator-specific"
+
+scope:
+  in: [docs, slack, teams, email, google_docs, markdown, comments, commit_messages, coworker_notes]
+  out: [legal_prose, marketing_copy, academic_formal]
+
+voice:
+  terse: true
+  grammar_optional: true
+  spelling_relaxed: true
+  read_like: code_logic
+  bullets_no_leading_cap_unless_proper_noun: true
+  bullet_cap_rule: infer proper noun from context- no static allowlist
+  bullets_no_trailing_period: true
+  fragments_ok: true
+  complete_sentences_required: false
+
+headings:
+  markdown_levels: ["#", "##", "###", "####", "#####", "######"]
+  capitalize: true
+  rule: "first word capitalized; proper nouns/acronyms in context; short headings title-case ok"
+  bold_section_labels: treat_as_heading
+  bold_heading_role: "standalone **...** or **...**: at line start opens a section- not inline mid-bullet emphasis"
+  bullets_unaffected: true
+
+delimiters:
+  allowed:
+    hyphen_attach: { char: "-", use: "attach clause- no space before" }
+    arrow: { token: "->", use: "cause/effect" }
+    semicolon: { char: ";", use: "tight peer pair on scannable line" }
+    comma: { char: ",", use: "inline list inside one idea" }
+    colon: { char: ":", use: "failure-mode header or label" }
+    slash: { char: "/", use: "alternatives or paired examples" }
+    i.e.: { use: "compact restate" }
+  forbidden:
+    em_dash: { chars: ["\u2014", "\u2013"], replace_with: "hyphen attach" }
+
+emphasis:
+  backtick_single: [paths, commands, flags, identifiers, keyboard shortcuts, tech terms]
+  backtick_triple: [code blocks, multi-line commands, fenced examples]
+  bold: keywords, failure headers, demo tokens only
+  italic: inline demo only
+  emoji: sparse visual markers only e.g. ❌ on failure headers
+
+nesting_rules:
+  parent: one cluster concept per top bullet
+  child: specifics, consequences, punchlines
+  prefer_nest_over: [semicolon_wall, comma_wall, "120+ char bullet"]
+  prefer_semicolon_when: two tight peers stay scannable on one line
+
+clustering_rules:
+  identifier_anchor:
+    trigger: "same backtick identifier in 2+ sibling bullets at same indent"
+    action: "parent `- `identifier`:`; each bullet -> child facet"
+    no_merge_when: "facets differ i.e. layer vs key vs debug note- nest don't flatten"
+    homonym_guard: "English word overlap without shared backtick identifier -> do not force cluster"

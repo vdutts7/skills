@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "description": "devspeak data plane router- manifest maps all registry paths",
+  "skill": "devspeak/SKILL.md",
+  "planes": {
+    "control": "devspeak/SKILL.md",
+    "data": "devspeak/registry/",
+    "execution": "devspeak/scripts/devspeak-gate.sh",
+    "gate_engine": "devspeak/scripts/gate.py",
+    "verify": "devspeak/tests/smoke.sh"
+  },
+  "routes": {
+    "entry": "user-preferences.yaml",
+    "core": "core.yaml",
+    "logic_flow": "logic-flow.yaml",
+    "antipatterns": "antipatterns.json",
+    "banned_phrases": "banned-phrases.json",
+    "operator_preferences": "operator-preferences.json"
+  },
+  "pipeline": {
+    "steps": [
+      { "phase": 1, "name": "dump",        "action": "passive first ideas- fragments ok" },
+      { "phase": 2, "name": "cluster",     "action": "group semantically similar bullets" },
+      { "phase": 3, "name": "consolidate", "action": "dedupe; merge without losing meaning" },
+      { "phase": 4, "name": "nest",        "action": "parent=cluster; child=specifics" },
+      { "phase": 5, "name": "delimit",     "action": "apply core delimiters" },
+      { "phase": 6, "name": "logic_flow",  "action": "if/then decision tree- not essay", "source": "logic-flow.yaml" },
+      { "phase": 7, "name": "preferences", "action": "operator overlay", "source": "user-preferences.yaml" },
+      { "phase": 8, "name": "post_gate",   "action": "MANDATORY devspeak-gate.sh on output; exit 0 required", "source": "banned-phrases.json + antipatterns.json" }
+    ]
+  },
+  "future_routers": [
+    { "id": "devspeak-readme", "when": "target is repo README", "note": "separate command later" },
+    { "id": "devspeak-slack",  "when": "target is chat message", "note": "separate command later" }
+  ]
+}

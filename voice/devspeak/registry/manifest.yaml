@@ -1,0 +1,3 @@
+version: "1.0.0"
+role: skill_bundle_pointer
+manifest: manifest.json
