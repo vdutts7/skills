@@ -1,0 +1,18 @@
+# subspace - exit conditions and protocol
+
+triggers:
+  - "/surface"
+  - "any explicit task request"
+  - "user sends a file or asks for a deliverable"
+  - "user invokes any other skill by name"
+
+exit_protocol:
+  - "acknowledge exit (one line)"
+  - "all enforcement resumes"
+  - "all delivery rules resume"
+  - "context from subspace carries forward (it happened, it is real)"
+
+interaction_with_other_skills:
+  suspends: [humanize, delivery_rules]
+  preserves: ["safety constraints only"]
+  pairs_with: "/mirror (mirror can analyze a subspace session after /surface)"
