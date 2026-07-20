@@ -31,3 +31,6 @@ Scripts > prose.
 
 **Voice**
 - [humanize](voice/humanize/) - anti-AI-tell output pass
+
+- [devspeak](voice/devspeak/) - developer voice compression
+- [subspace](voice/subspace/) - liminal observational state
