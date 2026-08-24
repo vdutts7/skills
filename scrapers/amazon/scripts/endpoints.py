@@ -296,4 +296,3 @@ def cmd_endpoints_list(args):
 
 def cmd_endpoints(args):
     {"refresh": cmd_endpoints_refresh, "list": cmd_endpoints_list}[args.endpoints_cmd](args)
-
