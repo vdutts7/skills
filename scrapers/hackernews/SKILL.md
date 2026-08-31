@@ -51,4 +51,3 @@ user_wants_hn_data:
   wants_item: "scripts/hackernews.py item <id>"
 user_wants_non_hn_scraping: "route to other deep-research skills"
 ```
-
