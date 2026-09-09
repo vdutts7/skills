@@ -33,4 +33,3 @@ verify: tests/smoke.sh
 ## Invariant
 
 All 28 laws in `registry/laws.json`. SKILL.md is routing only -- rules do not live here.
-
