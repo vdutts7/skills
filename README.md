@@ -15,6 +15,14 @@
 
 <br/>
 
+
+LAW:
+
+$$S = \frac{W_{\text{prose}}}{W_{\text{total}}}, \qquad S < 0.55$$
+
+
+<br/>
+
 ## The three-plane split
 
 Every entity in this repo lives on exactly one of three planes. Cross-plane calls flow downward only.
