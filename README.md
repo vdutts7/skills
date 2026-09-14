@@ -68,6 +68,55 @@ The control plane is the only surface the agent touches. Everywhere else, the ar
 
 
 
+## The `.skill` bundle
+
+A `*.skill` is just a zipped folder with a `SKILL.md` at root
+- that's it
+- Anthropic did not invent anything- their definition is a glorified containerized markdown file
+
+**The problem:** Markdown is prose. Prose gives the agent room- room to interpret, to fill gaps, to improvise. Every sentence of prose in a `SKILL.md` is a decision you deferred to the model at call time. Anthropic calls that "agent autonomy." Bad engineering calls it non-determinism.
+
+Anthropic's platform is built around that premise deliberately. The more latitude the agent has, the more the vendor controls the outcome. Reliability becomes a service you rent from their inference stack instead of a property you own in your code.
+
+**Bullet version:**
+
+- prose in `SKILL.md` → agent interprets → behavior varies per session
+- "agent autonomy" = vendor owns your reliability, not you
+- JSON can't execute. Scripts don't improvise. Use both.
+- `SKILL.md` is a routing table: infer intent → route payload → repeat
+- every line of prose that could be a script is a bug you haven't caught yet
+
+**Slop metric**- formally, if \(S\) is prose saturation (prose tokens / total tokens):
+
+$$S = \frac{W_{\text{prose}}}{W_{\text{total}}}, \qquad \text{pass threshold: } S < 0.55$$
+
+Above 0.55 you are trusting the model to fill the gap consistently. It won't. Below it, behavior is reproducible across sessions, models, and vendors.
+
+```
+my-skill/
+├── SKILL.md           ← required (control plane; routing table)
+├── registry/*.json    ← optional (data plane; SOT)
+├── scripts/*.{sh,py}  ← optional (execution plane; the actual work)
+└── tests/*            ← optional (verify)
+
+$ zip -r my-skill.skill my-skill/
+$ # done. that is the entire format.
+```
+
+Rename `.zip` to `.skill`. Rename `.skill` to `.zip`. They are the same file. The extension is a social convention.
+
+The convention of `SKILL.md` at root is a platform contract (currently Anthropic's). That contract can change tomorrow. The three-plane split underneath does not. Swap `SKILL.md` for `MANIFEST.yaml` or `agent.toml` or whatever the next vendor invents. The architecture holds.
+
+
+**Most "awesome-claude-skills" lists are prompt folders.** A `SKILL.md` with 40 lines of prose and no scripts is just a bookmarked system prompt. That is a text file, not an agent capability. If a skill does not have a deterministic layer underneath, you are shipping vibes.
+
+**Prose in `SKILL.md` is a token tax.** Every session loads every registered skill's description into context. A 2000-token prose SKILL.md across 20 skills is 40k tokens of overhead before the user types anything. Keep `SKILL.md` thin. Push the work into scripts.
+
+**The vendor dressing is not the engineering.** Anthropic shipped the `SKILL.md` convention. OpenAI will ship a different one. Google will ship a third. The companies that treat their format as the point are selling you lock-in. The three-plane split is the thing underneath that keeps you portable.
+
+This repo is 22 skills under that discipline. The scripts work when you rename the folder, swap the platform, change the LLM, or run them standalone from a terminal.
+
+
 ## Catalog
 
 | | skill | brief | when | why |
