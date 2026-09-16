@@ -84,4 +84,3 @@ captcha_hit:
 curl_cffi_missing:
   action: "pip install curl_cffi"
 ```
-
