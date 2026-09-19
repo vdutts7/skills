@@ -153,6 +153,44 @@ Folder grouping (same 22 skills, physically organized):
 
 
 
+## Install
+
+**Single skill - easiest:**
+
+```bash
+git clone https://github.com/vdutts7/skills
+cd skills
+./pack.sh mirror                          # → ~/Downloads/mirror.skill
+./pack.sh thinking/mirror --install       # pack + unpack to ~/.agents/skills/mirror/
+```
+
+`pack.sh` takes a bare skill name or a group-qualified path (`thinking/mirror`, `tools/extract`, etc.). Works with any agent that reads `~/.agents/skills/` or `~/.claude/skills/`.
+
+**All skills at once:**
+
+```bash
+git clone https://github.com/vdutts7/skills
+cp -r skills/*/* ~/.claude/skills/        # Claude Code, Cursor
+cp -r skills/*/* ~/.agents/skills/        # Codex, Copilot, Gemini CLI
+```
+
+**Python deps** (some deep-research skills):
+
+```bash
+cd ~/.agents/skills/<name>
+pip install -r requirements.txt   # if present
+```
+
+Scripts also run standalone from a terminal. The three-plane split means you do not need the agent to use them.
+
+```bash
+python ~/.claude/skills/amazon/scripts/amazon.py search "mechanical keyboard"
+python ~/.claude/skills/arxiv/scripts/arxiv.py search "attention mechanism" --cat cs.LG
+python ~/.claude/skills/github/scripts/github.py repo anthropics/claude-code
+```
+
+
+
 
 <!-- BADGES -->
 [github]: https://img.shields.io/badge/skills-000000?style=for-the-badge&logo=github&logoColor=white
