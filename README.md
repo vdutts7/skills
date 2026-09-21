@@ -191,6 +191,16 @@ python ~/.claude/skills/github/scripts/github.py repo anthropics/claude-code
 
 
 
+## Contact
+
+<a href="https://vd7.io"><img src="https://res.cloudinary.com/ddyc1es5v/image/upload/v1773910810/readme-badges/readme-badge-vd7.png" alt="vd7.io" height="40" /></a> &nbsp; <a href="https://x.com/vdutts7"><img src="https://res.cloudinary.com/ddyc1es5v/image/upload/v1773910817/readme-badges/readme-badge-x.png" alt="/vdutts7" height="40" /></a>
+
+
+<!-- BADGES -->
+[github]: https://img.shields.io/badge/skills-000000?style=for-the-badge&logo=github&logoColor=white
+[github-url]: https://github.com/vdutts7/skills
+
+
 
 <!-- BADGES -->
 [github]: https://img.shields.io/badge/skills-000000?style=for-the-badge&logo=github&logoColor=white
