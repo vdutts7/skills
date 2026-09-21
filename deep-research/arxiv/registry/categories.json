@@ -1,0 +1,36 @@
+{
+  "cs": {
+    "cs.AI": "Artificial Intelligence",
+    "cs.LG": "Machine Learning",
+    "cs.CL": "Computation and Language (NLP)",
+    "cs.CV": "Computer Vision",
+    "cs.RO": "Robotics",
+    "cs.CR": "Cryptography and Security",
+    "cs.DC": "Distributed Computing",
+    "cs.PL": "Programming Languages",
+    "cs.SE": "Software Engineering",
+    "cs.DS": "Data Structures and Algorithms"
+  },
+  "math": {
+    "math.CO": "Combinatorics",
+    "math.PR": "Probability",
+    "math.ST": "Statistics Theory",
+    "math.OC": "Optimization and Control"
+  },
+  "stat": {
+    "stat.ML": "Machine Learning (Statistics)",
+    "stat.AP": "Applications"
+  },
+  "econ": {
+    "econ.GN": "General Economics",
+    "econ.TH": "Theoretical Economics"
+  },
+  "q-bio": {
+    "q-bio.QM": "Quantitative Methods",
+    "q-bio.NC": "Neurons and Cognition"
+  },
+  "physics": {
+    "physics.soc-ph": "Physics and Society",
+    "cond-mat.stat-mech": "Statistical Mechanics"
+  }
+}

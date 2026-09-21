@@ -1,0 +1,17 @@
+{
+  "base": "https://export.arxiv.org/api/query",
+  "format": "atom+xml",
+  "params": {
+    "search_query": "all:<query> or ti:<query> or au:<query> or cat:<cat>",
+    "id_list": "<arxiv-id>",
+    "start": 0,
+    "max_results": 10,
+    "sortBy": "relevance",
+    "sortOrder": "descending"
+  },
+  "notes": {
+    "id_format": "use bare ID e.g. 2303.08774 (strip arxiv: prefix if present)",
+    "category_filter": "combine with search_query: cat:cs.AI AND all:attention",
+    "recent": "sort by submittedDate, sortOrder descending"
+  }
+}
