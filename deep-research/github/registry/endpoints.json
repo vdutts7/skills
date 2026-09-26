@@ -1,0 +1,19 @@
+{
+  "base": "https://api.github.com",
+  "version_header": "Accept: application/vnd.github.v3+json",
+  "endpoints": {
+    "repo": "/repos/{owner}/{repo}",
+    "user": "/users/{username}",
+    "user_repos": "/users/{username}/repos?per_page=30&sort=updated",
+    "search_repos": "/search/repositories?q={query}&sort=stars&order=desc&per_page={max}",
+    "search_code": "/search/code?q={query}&per_page={max}",
+    "search_users": "/search/users?q={query}&per_page={max}",
+    "releases": "/repos/{owner}/{repo}/releases?per_page={max}",
+    "issues": "/repos/{owner}/{repo}/issues?state={state}&per_page={max}"
+  },
+  "rate_limits": {
+    "unauthenticated": "60/hr",
+    "authenticated": "5000/hr",
+    "search": "10/min (unauthenticated), 30/min (authenticated)"
+  }
+}
