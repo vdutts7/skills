@@ -23,6 +23,28 @@ $$S = \frac{W_{\text{prose}}}{W_{\text{total}}}, \qquad S < 0.55$$
 
 <br/>
 
+## Table of Contents
+
+<ol>
+    <a href="#the-three-plane-split">The three-plane split</a><br/>
+    <a href="#the-skill-bundle">The .skill bundle</a><br/>
+    <a href="#catalog">Catalog</a><br/>
+    <a href="#install">Install</a><br/>
+    <a href="#contact">Contact</a>
+</ol>
+
+
+
+> if deciding between Skills vs MCP → start here: **[vdutts7/skills-not-mcp](https://github.com/vdutts7/skills-not-mcp)** - 80-90% fewer tokens with Skills over MCP
+
+
+<br/>
+
+
+
+> if deciding between Skills vs MCP → start here: **[vdutts7/skills-not-mcp](https://github.com/vdutts7/skills-not-mcp)** - 80-90% fewer tokens with Skills over MCP
+
+
 ## The three-plane split
 
 Every entity in this repo lives on exactly one of three planes. Cross-plane calls flow downward only.
