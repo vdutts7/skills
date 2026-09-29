@@ -41,4 +41,3 @@ verify: tests/smoke.sh
 ## Invariant
 
 A link that echoes the prior without absorbing its domain is averaging, not digestion. `registry/chain-dynamics.yaml`.
-
