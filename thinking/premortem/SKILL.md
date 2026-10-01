@@ -52,4 +52,3 @@ verify:           tests/smoke.sh
 ## Invariant
 
 Do not blend premortem (future failure frame) with execution sequencing or retrospective. Different temporal frames, different outputs. `registry/temporal-triad.yaml`.
-
