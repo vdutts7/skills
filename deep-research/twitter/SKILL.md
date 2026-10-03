@@ -94,4 +94,3 @@ query_ids_stale: "--refresh-qids"
 - atomic_writes: "all output via tmp + rename"
 - resume: "multi-user state persisted to .user_state.json"
 ```
-
