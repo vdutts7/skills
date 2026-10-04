@@ -50,4 +50,3 @@ user_wants_npm_data:
   exhaust:      "scripts/npmcli.py exhaust <package> [--out FILE]"
 not_npm: "route elsewhere"
 ```
-
