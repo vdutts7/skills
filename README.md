@@ -15,7 +15,6 @@
 
 <br/>
 
-
 LAW:
 
 $$S = \frac{W_{\text{prose}}}{W_{\text{total}}}, \qquad S < 0.55$$
@@ -39,11 +38,6 @@ $$S = \frac{W_{\text{prose}}}{W_{\text{total}}}, \qquad S < 0.55$$
 
 
 <br/>
-
-
-
-> if deciding between Skills vs MCP → start here: **[vdutts7/skills-not-mcp](https://github.com/vdutts7/skills-not-mcp)** - 80-90% fewer tokens with Skills over MCP
-
 
 ## The three-plane split
 
@@ -87,7 +81,6 @@ Three specific failure modes that prose enables, in order of how often they bite
 The three-plane split does not ask the agent to stay in its lane. It makes other lanes structurally inaccessible. JSON has no runtime- the agent cannot introduce logic there. The execution plane does not involve the agent- it cannot introduce non-determinism there. Decision authority is not "discouraged" in those planes. It is mechanically absent.
 
 The control plane is the only surface the agent touches. Everywhere else, the architecture makes the decision for it.
-
 
 
 ## The `.skill` bundle
@@ -174,7 +167,6 @@ Folder grouping (same 22 skills, physically organized):
 - `voice/` - output discipline + state (3)
 
 
-
 ## Install
 
 **Single skill - easiest:**
@@ -212,16 +204,9 @@ python ~/.claude/skills/github/scripts/github.py repo anthropics/claude-code
 ```
 
 
-
 ## Contact
 
 <a href="https://vd7.io"><img src="https://res.cloudinary.com/ddyc1es5v/image/upload/v1773910810/readme-badges/readme-badge-vd7.png" alt="vd7.io" height="40" /></a> &nbsp; <a href="https://x.com/vdutts7"><img src="https://res.cloudinary.com/ddyc1es5v/image/upload/v1773910817/readme-badges/readme-badge-x.png" alt="/vdutts7" height="40" /></a>
-
-
-<!-- BADGES -->
-[github]: https://img.shields.io/badge/skills-000000?style=for-the-badge&logo=github&logoColor=white
-[github-url]: https://github.com/vdutts7/skills
-
 
 
 <!-- BADGES -->
