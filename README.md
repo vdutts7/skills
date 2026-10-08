@@ -13,14 +13,13 @@
 
 </div>
 
-<br/>
+<div align="center">
 
-LAW:
+**LAW**
 
-$$S = \frac{W_{\text{prose}}}{W_{\text{total}}}, \qquad S < 0.55$$
+$$\LARGE S = \dfrac{W_{\text{prose}}}{W_{\text{total}}},\; S < 0.55$$
 
-
-<br/>
+</div>
 
 ## Table of Contents
 
