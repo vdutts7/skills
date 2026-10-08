@@ -17,7 +17,7 @@
 
 $$\LARGE [\mathrm{LAW}]\qquad S = \dfrac{W_{\text{prose}}}{W_{\text{total}}},\; S < 0.55$$
 
-$$\text{where }\; S = \text{prose saturation},\; W_{\text{prose}} = \text{\# prose tokens},\; W_{\text{total}} = \text{\# tokens}$$
+$$\text{where }\; S = \text{prose saturation},\; W_{\text{prose}} = \text{prose tokens},\; W_{\text{total}} = \text{total tokens}$$
 
 </div>
 
