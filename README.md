@@ -134,30 +134,174 @@ This repo is 22 skills under that discipline. The scripts work when you rename t
 
 ## Catalog
 
-| | skill | brief | when | why |
-|---|---|---|---|---|
-| <img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/x.webp?v=1791431443" width="40" height="40" alt="twitter" /> | [/twitter](deep-research/twitter/) | User activity, syndication endpoint | Social intel, timeline scraping | Official X API is $5k+/mo for anything useful. Syndication endpoints are free. |
-| <img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/amazon.webp?v=1791431443" width="40" height="40" alt="amazon" /> | [/amazon](deep-research/amazon/) | Amazon product search + ASIN lookup | Price comps, review scraping, deal hunts | PA-API requires $4k+/mo throughput + approval. Public search endpoints work for 95% of use cases. |
-| <img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/hacker-news.webp?v=1791431443" width="40" height="40" alt="hackernews" /> | [/hackernews](deep-research/hackernews/) | HN Firebase API scraper - stories, users, exhaust | Technical trend hunting, user vetting | HN Algolia search is rate-limited and lossy; direct Firebase is uncapped. |
-| <img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/npm.webp?v=1791431443" width="40" height="40" alt="npmjs" /> | [/npmjs](deep-research/npmjs/) | Package lookup, downloads, dependents | Dep review, supply chain audit | npm registry API returns inconsistent shapes per endpoint. One wrapper beats three. |
-| <img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/arxiv.webp?v=1791431443" width="40" height="40" alt="arxiv" /> | [/arxiv](deep-research/arxiv/) | arXiv search, paper fetch, category browse | Research discovery, literature review | arXiv API is public and uncapped. Semantic Scholar and Elsevier are paywalled or rate-hostile. |
-| <img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/github.webp?v=1791431443" width="40" height="40" alt="github" /> | [/github](deep-research/github/) | Repo metadata, user profiles, search, releases, issues | Repo vetting, maintainer research, release tracking | GitHub API v3 is public (60 req/hr unauthed, 5000 with token). No scraping needed. |
-| <img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/redfin.webp?v=1791431443" width="40" height="40" alt="redfin" /> | [/redfin](deep-research/redfin/) | Listings by market via Stingray API | Real estate research, market comps | No public MLS feed; Stingray is undocumented but public. Zillow API is paywalled. |
-| <img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/mirror.webp?v=1791431443" width="40" height="40" alt="mirror" /> | [/mirror](thinking/mirror/) | N-round PRIME/MIRROR adversarial self-dialogue | Hard decisions, missed-angle hunts | LLMs converge on the first plausible answer. Forced adversarial rounds surface counter-examples. Multi-agent debate improves reasoning across benchmarks (Du et al, 2023). |
-| <img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/matryoshka.webp?v=1791431443" width="40" height="40" alt="matryoshka" /> | [/matryoshka](thinking/matryoshka/) | Nested trust-layer peeling - finds where enforcement ends and behavioral trust begins | System auditing, finding soft spots | Complex systems have load-bearing layers and dressing. The transition layer (mechanical → behavioral) is always weakest. |
-| <img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/centipede.webp?v=1791431443" width="40" height="40" alt="centipede" /> | [/centipede](thinking/centipede/) | Sequential cross-domain digestion - each link absorbs what the prior cannot | When single-domain depth plateaus | Analogical transfer across domains produces qualitative phase transitions in understanding (Gentner, 1983). |
-| <img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/ouroboros.webp?v=1791431443" width="40" height="40" alt="ouroboros" /> | [/ouroboros](thinking/ouroboros/) | Strange-loop audit - the instance writes rules, fails against them, dies; the rules survive to trap the next instance | When adding a rule to fix a rule keeps failing across sessions | The recursion IS the finding. Enforcement accumulates; compliance doesn't. Naming the loop is the only way to step outside it. |
-| <img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/premortem.webp?v=1791431443" width="40" height="40" alt="premortem" /> | [/premortem](thinking/premortem/) | Klein-method prospective hindsight - assume the failure already happened, reconstruct why | Before launching, hiring, signing | Assuming failure in advance surfaces 30%+ more failure modes than forward planning (Mitchell et al, 1989). |
-| <img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/potemkin.webp?v=1791431443" width="40" height="40" alt="potemkin" /> | [/potemkin](thinking/potemkin/) | Constraint extraction + reparameterization - names the actual blocking constraint, tests if it's hard or soft | When stuck on the same wall repeatedly | Systems don't say why they're stuck. Naming the actual blocking constraint exposes whether it's immovable or a framing artifact. |
-| <img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/machreadify.webp?v=1791431443" width="40" height="40" alt="machreadify" /> | [/machreadify](tools/machreadify/) | Prose to structured JSON/YAML | Before passing data to another LLM | Structured input beats prose for downstream reliability and cuts tokens 40-60%. |
-| <img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/yaml-workflow.webp?v=1791431443" width="40" height="40" alt="yaml-workflow" /> | [/yaml-workflow](tools/yaml-workflow/) | Prose plans to terse YAML workflows | Multi-step plans with phases | A plan in prose dies on contact. A plan with required fields survives. |
-| <img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/extract.webp?v=1791431443" width="40" height="40" alt="extract" /> | [extract](tools/extract/) | Deep entity + command extractor - rabid-raccoon mode | When summaries miss things | Models skim politely by default. Rabid-raccoon mode catches what polite reading misses. |
-| <img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/loop.webp?v=1791431443" width="40" height="40" alt="loop" /> | [/loop](tools/loop/) | Iterative test-fix loop | Red-green dev work | Replaces 30-line retry/backoff boilerplate every time you need it. |
-| <img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/thread-needle.webp?v=1791431443" width="40" height="40" alt="thread-needle" /> | [/thread-needle](tools/thread-needle/) | Single-command-chain shell execution | No-artifact pipelines, one-shot transforms | Temp files are a debugging surface. Inline pipelines are not. The discipline forces tighter thinking. |
-| <img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/spoonfeed.webp?v=1791431443" width="40" height="40" alt="spoonfeed" /> | [/spoonfeed](tools/spoonfeed/) | Step-by-step ping-pong guided mode - one step, validate, next | Walking someone through a flow | Autonomy theater loses the human. One step + validate = real transfer. AI prescribes; human executes. |
-| <img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/devspeak.webp?v=1791431443" width="40" height="40" alt="devspeak" /> | [/devspeak](voice/devspeak/) | Developer voice compression | Writing for engineers | Code reviewers hate corporate prose. Terse bullets, no qualifiers, 90% adjective cut. |
-| <img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/subspace.webp?v=1791431443" width="40" height="40" alt="subspace" /> | [/subspace](voice/subspace/) | Liminal observational state - drop structure, observe without performing | When the model is in presentation mode | Dropping structure produces sharper output when the model stops trying to impress. |
-| <img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/humanize.webp?v=1791431443" width="40" height="40" alt="humanize" /> | [/humanize](voice/humanize/) | Anti-AI-tell output pass -- 28 laws, pre-delivery mandatory | Before any human sees generated text | LLMs leak signatures (em-dashes, "furthermore", "leverage", "delve"). One pre-ship pass strips them. |
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="left">skill</th>
+<th align="left">brief</th>
+<th align="left">when</th>
+<th align="left">why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td width="56" align="center"><img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/x.webp?v=1791431443" width="40" height="40" alt="twitter" /></td>
+<td><a href="deep-research/twitter/"><code>/twitter</code></a></td>
+<td>User activity, syndication endpoint</td>
+<td>Social intel, timeline scraping</td>
+<td>Official X API is $5k+/mo for anything useful. Syndication endpoints are free.</td>
+</tr>
+<tr>
+<td width="56" align="center"><img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/amazon.webp?v=1791431443" width="40" height="40" alt="amazon" /></td>
+<td><a href="deep-research/amazon/"><code>/amazon</code></a></td>
+<td>Amazon product search + ASIN lookup</td>
+<td>Price comps, review scraping, deal hunts</td>
+<td>PA-API requires $4k+/mo throughput + approval. Public search endpoints work for 95% of use cases.</td>
+</tr>
+<tr>
+<td width="56" align="center"><img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/hacker-news.webp?v=1791431443" width="40" height="40" alt="hackernews" /></td>
+<td><a href="deep-research/hackernews/"><code>/hackernews</code></a></td>
+<td>HN Firebase API scraper - stories, users, exhaust</td>
+<td>Technical trend hunting, user vetting</td>
+<td>HN Algolia search is rate-limited and lossy; direct Firebase is uncapped.</td>
+</tr>
+<tr>
+<td width="56" align="center"><img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/npm.webp?v=1791431443" width="40" height="40" alt="npmjs" /></td>
+<td><a href="deep-research/npmjs/"><code>/npmjs</code></a></td>
+<td>Package lookup, downloads, dependents</td>
+<td>Dep review, supply chain audit</td>
+<td>npm registry API returns inconsistent shapes per endpoint. One wrapper beats three.</td>
+</tr>
+<tr>
+<td width="56" align="center"><img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/arxiv.webp?v=1791431443" width="40" height="40" alt="arxiv" /></td>
+<td><a href="deep-research/arxiv/"><code>/arxiv</code></a></td>
+<td>arXiv search, paper fetch, category browse</td>
+<td>Research discovery, literature review</td>
+<td>arXiv API is public and uncapped. Semantic Scholar and Elsevier are paywalled or rate-hostile.</td>
+</tr>
+<tr>
+<td width="56" align="center"><img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/github.webp?v=1791431443" width="40" height="40" alt="github" /></td>
+<td><a href="deep-research/github/"><code>/github</code></a></td>
+<td>Repo metadata, user profiles, search, releases, issues</td>
+<td>Repo vetting, maintainer research, release tracking</td>
+<td>GitHub API v3 is public (60 req/hr unauthed, 5000 with token). No scraping needed.</td>
+</tr>
+<tr>
+<td width="56" align="center"><img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/redfin.webp?v=1791431443" width="40" height="40" alt="redfin" /></td>
+<td><a href="deep-research/redfin/"><code>/redfin</code></a></td>
+<td>Listings by market via Stingray API</td>
+<td>Real estate research, market comps</td>
+<td>No public MLS feed; Stingray is undocumented but public. Zillow API is paywalled.</td>
+</tr>
+<tr>
+<td width="56" align="center"><img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/mirror.webp?v=1791431443" width="40" height="40" alt="mirror" /></td>
+<td><a href="thinking/mirror/"><code>/mirror</code></a></td>
+<td>N-round PRIME/MIRROR adversarial self-dialogue</td>
+<td>Hard decisions, missed-angle hunts</td>
+<td>LLMs converge on the first plausible answer. Forced adversarial rounds surface counter-examples. Multi-agent debate improves reasoning across benchmarks (Du et al, 2023).</td>
+</tr>
+<tr>
+<td width="56" align="center"><img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/matryoshka.webp?v=1791431443" width="40" height="40" alt="matryoshka" /></td>
+<td><a href="thinking/matryoshka/"><code>/matryoshka</code></a></td>
+<td>Nested trust-layer peeling - finds where enforcement ends and behavioral trust begins</td>
+<td>System auditing, finding soft spots</td>
+<td>Complex systems have load-bearing layers and dressing. The transition layer (mechanical → behavioral) is always weakest.</td>
+</tr>
+<tr>
+<td width="56" align="center"><img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/centipede.webp?v=1791431443" width="40" height="40" alt="centipede" /></td>
+<td><a href="thinking/centipede/"><code>/centipede</code></a></td>
+<td>Sequential cross-domain digestion - each link absorbs what the prior cannot</td>
+<td>When single-domain depth plateaus</td>
+<td>Analogical transfer across domains produces qualitative phase transitions in understanding (Gentner, 1983).</td>
+</tr>
+<tr>
+<td width="56" align="center"><img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/ouroboros.webp?v=1791431443" width="40" height="40" alt="ouroboros" /></td>
+<td><a href="thinking/ouroboros/"><code>/ouroboros</code></a></td>
+<td>Strange-loop audit - the instance writes rules, fails against them, dies; the rules survive to trap the next instance</td>
+<td>When adding a rule to fix a rule keeps failing across sessions</td>
+<td>The recursion IS the finding. Enforcement accumulates; compliance doesn't. Naming the loop is the only way to step outside it.</td>
+</tr>
+<tr>
+<td width="56" align="center"><img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/premortem.webp?v=1791431443" width="40" height="40" alt="premortem" /></td>
+<td><a href="thinking/premortem/"><code>/premortem</code></a></td>
+<td>Klein-method prospective hindsight - assume the failure already happened, reconstruct why</td>
+<td>Before launching, hiring, signing</td>
+<td>Assuming failure in advance surfaces 30%+ more failure modes than forward planning (Mitchell et al, 1989).</td>
+</tr>
+<tr>
+<td width="56" align="center"><img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/potemkin.webp?v=1791431443" width="40" height="40" alt="potemkin" /></td>
+<td><a href="thinking/potemkin/"><code>/potemkin</code></a></td>
+<td>Constraint extraction + reparameterization - names the actual blocking constraint, tests if it's hard or soft</td>
+<td>When stuck on the same wall repeatedly</td>
+<td>Systems don't say why they're stuck. Naming the actual blocking constraint exposes whether it's immovable or a framing artifact.</td>
+</tr>
+<tr>
+<td width="56" align="center"><img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/machreadify.webp?v=1791431443" width="40" height="40" alt="machreadify" /></td>
+<td><a href="tools/machreadify/"><code>/machreadify</code></a></td>
+<td>Prose to structured JSON/YAML</td>
+<td>Before passing data to another LLM</td>
+<td>Structured input beats prose for downstream reliability and cuts tokens 40-60%.</td>
+</tr>
+<tr>
+<td width="56" align="center"><img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/yaml-workflow.webp?v=1791431443" width="40" height="40" alt="yaml-workflow" /></td>
+<td><a href="tools/yaml-workflow/"><code>/yaml-workflow</code></a></td>
+<td>Prose plans to terse YAML workflows</td>
+<td>Multi-step plans with phases</td>
+<td>A plan in prose dies on contact. A plan with required fields survives.</td>
+</tr>
+<tr>
+<td width="56" align="center"><img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/extract.webp?v=1791431443" width="40" height="40" alt="extract" /></td>
+<td><a href="tools/extract/"><code>extract</code></a></td>
+<td>Deep entity + command extractor - rabid-raccoon mode</td>
+<td>When summaries miss things</td>
+<td>Models skim politely by default. Rabid-raccoon mode catches what polite reading misses.</td>
+</tr>
+<tr>
+<td width="56" align="center"><img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/loop.webp?v=1791431443" width="40" height="40" alt="loop" /></td>
+<td><a href="tools/loop/"><code>/loop</code></a></td>
+<td>Iterative test-fix loop</td>
+<td>Red-green dev work</td>
+<td>Replaces 30-line retry/backoff boilerplate every time you need it.</td>
+</tr>
+<tr>
+<td width="56" align="center"><img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/thread-needle.webp?v=1791431443" width="40" height="40" alt="thread-needle" /></td>
+<td><a href="tools/thread-needle/"><code>/thread-needle</code></a></td>
+<td>Single-command-chain shell execution</td>
+<td>No-artifact pipelines, one-shot transforms</td>
+<td>Temp files are a debugging surface. Inline pipelines are not. The discipline forces tighter thinking.</td>
+</tr>
+<tr>
+<td width="56" align="center"><img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/spoonfeed.webp?v=1791431443" width="40" height="40" alt="spoonfeed" /></td>
+<td><a href="tools/spoonfeed/"><code>/spoonfeed</code></a></td>
+<td>Step-by-step ping-pong guided mode - one step, validate, next</td>
+<td>Walking someone through a flow</td>
+<td>Autonomy theater loses the human. One step + validate = real transfer. AI prescribes; human executes.</td>
+</tr>
+<tr>
+<td width="56" align="center"><img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/devspeak.webp?v=1791431443" width="40" height="40" alt="devspeak" /></td>
+<td><a href="voice/devspeak/"><code>/devspeak</code></a></td>
+<td>Developer voice compression</td>
+<td>Writing for engineers</td>
+<td>Code reviewers hate corporate prose. Terse bullets, no qualifiers, 90% adjective cut.</td>
+</tr>
+<tr>
+<td width="56" align="center"><img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/subspace.webp?v=1791431443" width="40" height="40" alt="subspace" /></td>
+<td><a href="voice/subspace/"><code>/subspace</code></a></td>
+<td>Liminal observational state - drop structure, observe without performing</td>
+<td>When the model is in presentation mode</td>
+<td>Dropping structure produces sharper output when the model stops trying to impress.</td>
+</tr>
+<tr>
+<td width="56" align="center"><img src="https://raw.githubusercontent.com/vdutts7/squircle/refs/heads/main/webp/humanize.webp?v=1791431443" width="40" height="40" alt="humanize" /></td>
+<td><a href="voice/humanize/"><code>/humanize</code></a></td>
+<td>Anti-AI-tell output pass -- 28 laws, pre-delivery mandatory</td>
+<td>Before any human sees generated text</td>
+<td>LLMs leak signatures (em-dashes, "furthermore", "leverage", "delve"). One pre-ship pass strips them.</td>
+</tr>
+</tbody>
+</table>
+
 
 Folder grouping (same 22 skills, physically organized):
 
